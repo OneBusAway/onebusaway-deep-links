@@ -10,7 +10,19 @@ class RegionsController < ApplicationController
 
   def site_association
     @regions = Region.all
+    # render json: @regions.to_json
+    dict = {
+      applinks: {
+        apps: [],
+        details: [
+          {
+            appID: "THEWY9596Q.org.onebusaway.iphone",
+            paths: [ "*" ]
+          }
+        ]
+      }
+    }
 
-    render json: @regions.to_json
+    render json: dict
   end
 end
