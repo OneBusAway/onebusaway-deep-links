@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20161028051003) do
     t.string  "api_url"
     t.string  "web_url"
     t.string  "name"
+    t.index ["region_identifier"], name: "index_regions_on_region_identifier", unique: true, using: :btree
   end
 
 end

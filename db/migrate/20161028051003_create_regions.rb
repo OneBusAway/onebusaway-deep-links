@@ -6,5 +6,6 @@ class CreateRegions < ActiveRecord::Migration[5.0]
       t.string :web_url
       t.string :name # -> regionName
     end
+    add_index :regions, :region_identifier, unique: true
   end
 end
