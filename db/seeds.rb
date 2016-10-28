@@ -100,7 +100,7 @@ begin
   Region.create!({
     region_identifier: 9,
     api_url: "http://oba.rvtd.org:8080/onebusaway-api-webapp/",
-    web_url: "http://www.rvtd.org/",
+    web_url: "http://oba.rvtd.org:8080/onebusaway-webapp/",
     name: "Rogue Valley, Oregon"
   })
 rescue
@@ -110,7 +110,7 @@ begin
   Region.create!({
     region_identifier: 10,
     api_url: "http://www.obartd.com/onebusaway-api-webapp/",
-    web_url: "http://www.obartd.com/",
+    web_url: "http://www.obartd.com/onebusaway-webapp/",
     name: "San Joaquin RTD"
   })
 rescue
@@ -120,7 +120,7 @@ begin
   Region.create!({
     region_identifier: 11,
     api_url: "http://realtime.sdmts.com/api/",
-    web_url: "http://realtime.sdmts.com",
+    web_url: "http://realtime.sdmts.com/",
     name: "San Diego"
   })
 rescue
