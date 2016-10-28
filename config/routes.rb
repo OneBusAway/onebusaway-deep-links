@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   root to: 'regions#index'
 
-  resources :regions, only: [:index, :show]
+  resources :regions, only: [:index, :show] do
+    resources :stops, only: [:show]
+  end
+
   get 'apple-app-site-association', to: 'regions#site_association', defaults: { format: 'json' }
 end
