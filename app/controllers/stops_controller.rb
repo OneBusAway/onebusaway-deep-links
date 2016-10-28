@@ -13,4 +13,21 @@ class StopsController < ApplicationController
 
     redirect_to File.join(@region.web_url, "/where/standard/stop.action?id=#{params[:id]}")
   end
+
+  def arrivals
+    @region = Region.find_by(region_identifier: params[:region_id])
+    @stop_id = params[:stop_id]
+    @trip_id = params[:trip_id]
+    @service_date = params[:service_date]
+
+    web_params = {
+      id: @trip_id,
+      serviceDate: @service_date,
+      showVehicleId: "true",
+      stopID: @stop_id
+    }
+
+    path = "/where/standard/trip.action?#{web_params.to_param}"
+    redirect_to File.join(@region.web_url, path)
+  end
 end
