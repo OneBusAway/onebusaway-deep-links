@@ -5,12 +5,10 @@ class RegionsController < ApplicationController
   end
 
   def show
-    @region = Region.find(params[:id])
+    @region = Region.find_by(region_identifier: params[:id])
   end
 
   def site_association
-    @regions = Region.all
-    # render json: @regions.to_json
     dict = {
       applinks: {
         apps: [],
