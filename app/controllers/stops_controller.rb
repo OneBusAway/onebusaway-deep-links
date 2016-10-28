@@ -1,7 +1,7 @@
 class StopsController < ApplicationController
 
   def show
-    @region = Region.find(params[:region_id])
+    @region = Region.find_by(region_identifier: params[:region_id])
 
     # TODO: needs special handling
     # Washington DC - Region API ID: 4
