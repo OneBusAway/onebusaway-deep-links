@@ -19,12 +19,14 @@ class StopsController < ApplicationController
     @stop_id = params[:stop_id]
     @trip_id = params[:trip_id]
     @service_date = params[:service_date]
+    @stop_sequence = params[:stop_sequence]
 
     web_params = {
       id: @trip_id,
       serviceDate: @service_date,
       showVehicleId: "true",
-      stopID: @stop_id
+      stopID: @stop_id,
+      stopSequence: @stop_sequence
     }
 
     path = "/where/standard/trip.action?#{web_params.to_param}"
