@@ -32,4 +32,8 @@ class StopsController < ApplicationController
     path = "/where/standard/trip.action?#{web_params.to_param}"
     redirect_to File.join(@region.web_url, path)
   end
+
+  def trips
+    arrivals
+  end
 end

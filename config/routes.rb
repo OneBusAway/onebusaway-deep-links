@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :regions, only: [:index, :show] do
     resources :stops, only: [:show] do
       get 'arrivals'
+      get 'trips'
     end
   end
 
