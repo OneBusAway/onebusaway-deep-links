@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028051003) do
+ActiveRecord::Schema.define(version: 20170110180424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alarms", force: :cascade do |t|
+    t.integer  "region_id"
+    t.string   "alarm_identifier"
+    t.string   "push_identifier"
+    t.string   "message"
+    t.string   "secure_token"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["alarm_identifier"], name: "index_alarms_on_alarm_identifier", using: :btree
+    t.index ["push_identifier"], name: "index_alarms_on_push_identifier", using: :btree
+    t.index ["region_id"], name: "index_alarms_on_region_id", using: :btree
+    t.index ["secure_token"], name: "index_alarms_on_secure_token", unique: true, using: :btree
+  end
 
   create_table "regions", force: :cascade do |t|
     t.integer "region_identifier"

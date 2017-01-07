@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get 'arrivals'
       get 'trips'
     end
+    resources :alarms, only: [:create, :destroy] do
+      get 'notification_callback', on: :collection
+    end
   end
 
   get 'apple-app-site-association', to: 'regions#site_association', defaults: { format: 'json' }
