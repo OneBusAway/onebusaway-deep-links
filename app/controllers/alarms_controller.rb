@@ -5,7 +5,7 @@ class AlarmsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    callback_url = notification_callback_region_alarms_url(@region)
+    callback_url = notification_callback_region_alarms_url(@region, alarm_id: '#ALARM_ID#')
     response = @region.server.register_alarm(params, callback_url)
     
     puts "Callback URL: #{callback_url}"
@@ -42,7 +42,7 @@ class AlarmsController < ApplicationController
   end
   
   def notification_callback
-    @alarm = @region.alarms.find_by(alarm_identifier: params[:alarmId])
+    @alarm = @region.alarms.find_by(alarm_identifier: params[:alarm_id])
     
     puts "Notification callback called for #{@alarm}"
     
