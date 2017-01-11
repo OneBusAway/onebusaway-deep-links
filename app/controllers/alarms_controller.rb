@@ -8,6 +8,9 @@ class AlarmsController < ApplicationController
     callback_url = notification_callback_region_alarms_url(@region)
     response = @region.server.register_alarm(params, callback_url)
     
+    puts "Callback URL: #{callback_url}"
+    puts "Response: #{response}"
+    
     json = begin
       JSON.load(response.body)
     rescue
@@ -41,15 +44,15 @@ class AlarmsController < ApplicationController
   def notification_callback
     @alarm = @region.alarms.find_by(alarm_identifier: params[:alarmId])
     
+    puts "Notification callback called for #{@alarm}"
+    
     if @alarm.nil?
       head :ok
       return
     end
     
-    client = OneSignal::Client.new(auth_token: ENV['ONESIGNAL_REST_API_KEY'], app_id: ENV['ONESIGNAL_APP_ID'])
-    client.notifications.create({
-      include_player_ids: [@alarm.push_identifier]
-    })
+    client = OneSignal.new(ENV['ONESIGNAL_REST_API_KEY'], ENV['ONESIGNAL_APP_ID'])
+    client.send_message(@alarm.push_identifier, @alarm.message)
     
     @alarm.destroy
     
