@@ -25,6 +25,17 @@ class Server
       alarmTimeOffset: alarm_time_offset,
       url: callback_url
     })
+    
+    puts " "
+    puts "*" * 50
+    puts "*" * 50
+    
+    puts "params: #{params}"
+    puts "URL: #{url}"
+
+    puts "*" * 50
+    puts "*" * 50
+    puts " "
 
     RestClient.get(url, {params: params})
   end
