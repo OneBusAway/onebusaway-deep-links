@@ -8,23 +8,17 @@ class Server
   # Alarms
   
   def register_alarm(input_params, callback_url)
-    # TODO: validate presence of input
-    alarm_time_offset = input_params[:seconds_before]
-    stop_id = input_params[:stop_id]
-    trip_id = input_params[:trip_id]
-    service_date = input_params[:service_date]
-    vehicle_id = input_params[:vehicle_id]
-    stop_sequence = input_params[:stop_sequence]
+    params = build_params()
+    params[:alarmTimeOffset] = input_params[:seconds_before] unless input_params[:seconds_before].blank?
+    params[:url] = callback_url
+    params[:tripId] = input_params[:trip_id]
+    params[:serviceDate] = input_params[:service_date]
+    params[:vehicleId] = input_params[:vehicle_id] unless input_params[:vehicle_id].blank?
+    params[:stopSequence] = input_params[:stop_sequence]
     
-    url = build_url("register-alarm-for-arrival-and-departure-at-stop", stop_id)
-    params = build_params({
-      tripId: trip_id,
-      serviceDate: service_date,
-      vehicleId: vehicle_id,
-      stopSequence: stop_sequence,
-      alarmTimeOffset: alarm_time_offset,
-      url: callback_url
-    })
+    url = build_url("register-alarm-for-arrival-and-departure-at-stop", input_params[:stop_id])
+    url_with_params = "#{url}?#{params.to_param}"
+    response = RestClient.get(url_with_params)
     
     puts " "
     puts "*" * 50
@@ -32,12 +26,14 @@ class Server
     
     puts "params: #{params}"
     puts "URL: #{url}"
-
+    puts "URL with Params: #{url_with_params}"
+    puts "Response: #{response}"
+  
     puts "*" * 50
     puts "*" * 50
     puts " "
 
-    RestClient.get(url, {params: params})
+    response
   end
   
   # Current Time
