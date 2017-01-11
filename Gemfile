@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.0'
+
 # gem install nokogiri -v '1.6.8.1' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
