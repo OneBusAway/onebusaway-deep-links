@@ -14,11 +14,12 @@ class AlarmsController < ApplicationController
 
     render_alarm_creation_error(response) and return if !@alarm.save
         
-    callback_url = region_alarm_callback_url(@region, @alarm)
+    # TODO: make protocol determination less janky :-\
+    callback_url = region_alarm_callback_url(@region, @alarm, protocol: Rails.env.production? ? 'https' : 'http')
     response = @region.server.register_alarm(params, callback_url)
         
-    puts "Callback URL: #{callback_url}"
-    puts "Response: #{response}"
+    puts "Specified Callback URL: #{callback_url}"
+    # puts "Response: #{response}"
 
     render json: {url: region_alarm_url(@region, @alarm)}
   end

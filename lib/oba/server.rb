@@ -42,18 +42,18 @@ class Server
     url_with_params = "#{url}?#{params.to_param}"
     response = RestClient.get(url_with_params)
     
-    puts " "
-    puts "*" * 50
-    puts "*" * 50
-    
-    puts "params: #{params}"
-    puts "URL: #{url}"
-    puts "URL with Params: #{url_with_params}"
-    puts "Response: #{response}"
-  
-    puts "*" * 50
-    puts "*" * 50
-    puts " "
+    # puts " "
+    # puts "*" * 50
+    # puts "*" * 50
+    #
+    # puts "params: #{params}"
+    # puts "URL: #{url}"
+    # puts "URL with Params: #{url_with_params}"
+    # puts "Response: #{response}"
+    #
+    # puts "*" * 50
+    # puts "*" * 50
+    # puts " "
 
     response
   end
