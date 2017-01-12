@@ -21,16 +21,16 @@ class AlarmsController < ApplicationController
       region_alarm_callback_url(@region, @alarm)
     end
     
+    resp = @region.server.register_alarm(params, callback_url)
+        
     puts "*" * 50
     puts "*" * 50
 
-    puts "Response: #{response}"
+    puts "Response: #{resp}"
     puts "Specified Callback URL: #{callback_url}"
 
     puts "*" * 50
     puts "*" * 50
-
-    response = @region.server.register_alarm(params, callback_url)
 
     render json: {url: region_alarm_url(@region, @alarm)}
   end
