@@ -12,7 +12,4 @@ Rails.application.routes.draw do
       get 'callback'
     end
   end
-
-  get '.well-known/apple-app-site-association', to: 'regions#site_association', defaults: { format: 'json' }
-  get 'apple-app-site-association', to: 'regions#site_association', defaults: { format: 'json' }
 end
