@@ -14,12 +14,23 @@ class AlarmsController < ApplicationController
 
     render_alarm_creation_error(response) and return if !@alarm.save
         
-    # TODO: make protocol determination less janky :-\
-    callback_url = region_alarm_callback_url(@region, @alarm, protocol: Rails.env.production? ? 'https' : 'http')
-    response = @region.server.register_alarm(params, callback_url)
-        
+    # TODO: make this less janky :-\
+    callback_url = if Rails.env.production?
+      File.join("http://obaco.herokuapp.com", region_alarm_callback_path(@region, @alarm))
+    else
+      region_alarm_callback_url(@region, @alarm)
+    end
+    
+    puts "*" * 50
+    puts "*" * 50
+
+    puts "Response: #{response}"
     puts "Specified Callback URL: #{callback_url}"
-    # puts "Response: #{response}"
+
+    puts "*" * 50
+    puts "*" * 50
+
+    response = @region.server.register_alarm(params, callback_url)
 
     render json: {url: region_alarm_url(@region, @alarm)}
   end
