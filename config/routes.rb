@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get 'trips'
     end
     resources :alarms, only: [:create, :destroy] do
-      get 'notification_callback', on: :collection
+      get 'callback'
     end
   end
 

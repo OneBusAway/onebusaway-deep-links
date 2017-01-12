@@ -17,6 +17,7 @@ class OneSignal
       contents: {
         en: message
       },
+      mutable_content: true,
       include_player_ids: [user_id]
     }
     uri = URI.parse(ONE_SIGNAL_API_NOTIFICATIONS_URL)

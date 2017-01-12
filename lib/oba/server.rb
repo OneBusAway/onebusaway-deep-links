@@ -1,8 +1,30 @@
+require 'json'
+
 class Server
   attr_accessor :api_base_url
   
   def initialize(api_base_url)
     self.api_base_url = api_base_url
+  end
+  
+  # Arrival and Departure
+  
+  def arrival_and_departure(args = {})
+    params = build_params()
+    params[:tripId] = args[:trip_id]
+    params[:serviceDate] = args[:service_date]
+    params[:vehicleId] = args[:vehicle_id] unless args[:vehicle_id].blank?
+    params[:stopSequence] = args[:stop_sequence]
+    
+    url = build_url("arrival-and-departure-for-stop", args[:stop_id])
+    
+    response = RestClient.get("#{url}?#{params.to_param}")
+    
+    json = JSON.parse(response.body)
+    arr_dep = ArrivalDeparture.from_json(json['data']['entry'])
+    arr_dep.server_response = response
+
+    arr_dep
   end
   
   # Alarms
@@ -46,7 +68,10 @@ class Server
   private
   
   def build_params(params = {})
-    params[:key] = "TEST"
+    params[:key] = "org.onebusaway.iphone"
+    params[:app_uid] = "C071187D-67E0-458C-A1DA-CADE062AE667"
+    params[:app_ver] = "20170105.12"
+    params[:version] = "2"
     
     params
   end
