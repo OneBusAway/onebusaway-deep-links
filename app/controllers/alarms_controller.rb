@@ -7,8 +7,12 @@ class AlarmsController < ApplicationController
   def create
     arrival_departure = @region.server.arrival_and_departure(params)
 
+    minutes = (params[:seconds_before] / 60).to_i
+    pluralized_minutes = "minute".pluralize(minutes)
+    formatted_minutes = "#{minutes} #{pluralized_minutes}"
+
     @alarm = @region.alarms.build({
-      message: "Time to leave for the #{arrival_departure ? arrival_departure.name_with_headsign : 'bus'}",
+      message: "The #{arrival_departure ? arrival_departure.name_with_headsign : 'bus'} leaves in #{formatted_minutes}",
       push_identifier: params[:user_push_id]
     })
 
