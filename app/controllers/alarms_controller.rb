@@ -7,7 +7,10 @@ class AlarmsController < ApplicationController
   def create
     arrival_departure = @region.server.arrival_and_departure(params)
 
-    minutes = (params[:seconds_before] / 60).to_i
+    seconds = params[:seconds_before].to_i
+    seconds = 600 unless seconds > 0
+
+    minutes = (params[:seconds_before].to_i / 60).to_i
     pluralized_minutes = "minute".pluralize(minutes)
     formatted_minutes = "#{minutes} #{pluralized_minutes}"
 
