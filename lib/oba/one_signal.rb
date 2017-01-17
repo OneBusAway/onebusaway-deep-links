@@ -29,7 +29,7 @@ class OneSignal
           vehicle_id: alarm.vehicle_id,
           stop_sequence: alarm.stop_sequence
         }
-      }
+      },
       mutable_content: true,
       include_player_ids: [user_id]
     }
