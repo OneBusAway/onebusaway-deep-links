@@ -18,7 +18,7 @@ class OneSignal
     params = {
       app_id: self.app_id,
       contents: {
-        en: message,
+        en: alarm.message,
       },
       data: {
         arrival_and_departure: {

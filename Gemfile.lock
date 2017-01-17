@@ -38,6 +38,9 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    airbrake (5.6.1)
+      airbrake-ruby (~> 1.6)
+    airbrake-ruby (1.6.0)
     arel (7.1.4)
     awesome_print (1.7.0)
     builder (3.2.2)
@@ -172,6 +175,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake (~> 5.6.1)
   awesome_print
   byebug
   dotenv
