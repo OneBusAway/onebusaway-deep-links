@@ -14,13 +14,22 @@ class OneSignal
     self.app_id = app_id
   end
 
-
-  def send_message(user_id, message)
+  def send_message(user_id, alarm)
     params = {
       app_id: self.app_id,
       contents: {
-        en: message
+        en: message,
       },
+      data: {
+        arrival_and_departure: {
+          region_id: alarm.region_id,
+          stop_id: alarm.stop_id,
+          trip_id: alarm.trip_id,
+          service_date: alarm.service_date,
+          vehicle_id: alarm.vehicle_id,
+          stop_sequence: alarm.stop_sequence
+        }
+      }
       mutable_content: true,
       include_player_ids: [user_id]
     }

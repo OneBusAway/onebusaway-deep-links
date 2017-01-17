@@ -16,7 +16,12 @@ class AlarmsController < ApplicationController
 
     @alarm = @region.alarms.build({
       message: "The #{arrival_departure ? arrival_departure.name_with_headsign : 'bus'} leaves in #{formatted_minutes}",
-      push_identifier: params[:user_push_id]
+      push_identifier: params[:user_push_id],
+      stop_id: params[:stop_id],
+      trip_id: params[:trip_id],
+      service_date: params[:service_date],
+      vehicle_id: params[:vehicle_id],
+      stop_sequence: params[:stop_sequence]
     })
 
     render_alarm_creation_error(response) and return if !@alarm.save
@@ -46,7 +51,7 @@ class AlarmsController < ApplicationController
     head(:ok) and return if @alarm.nil?
 
     client = OneSignal.new(ENV['ONESIGNAL_REST_API_KEY'], ENV['ONESIGNAL_APP_ID'])
-    client.send_message(@alarm.push_identifier, @alarm.message)
+    client.send_message(@alarm.push_identifier, @alarm)
 
     @alarm.destroy
 
