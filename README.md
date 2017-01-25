@@ -1,6 +1,6 @@
 # Setup
 
-1. Install RVM (https://rvm.io)
+1. Install RVM (https://rvm.io): `\curl -sSL https://get.rvm.io | bash -s stable`
 2. Install Postgresql. I like https://postgresapp.com for macOS.
 2. Clone the repo
 3. cd into the directory where you cloned the repo and agree to whatever RVM says
