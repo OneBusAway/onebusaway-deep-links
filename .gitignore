@@ -20,4 +20,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore JetBrains IDE files
+.idea/
+
 .env
