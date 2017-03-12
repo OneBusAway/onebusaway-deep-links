@@ -4,7 +4,7 @@ class AlertFeed < ApplicationRecord
   has_many :alert_feed_items
   belongs_to :region
 
-  # Subclasses of AlertFeed are responsible for implementing #fetch and calling super afterwards
+  # Subclasses of AlertFeed are responsible for implementing #fetch and calling #super afterwards
   def fetch
     update!(last_fetched: Time.now)
   end
