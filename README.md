@@ -26,4 +26,5 @@ Alert feeds are updated from their sources by running `rake update_alert_feeds`.
 ### Endpoints
 
 - `GET /regions/:region_id/alert_feeds` - Returns a JSON collection of `AlertFeed` objects.
-- `GET /regions/:region_id/alert_feeds/:id` - Returns a JSON collection of `AlertFeedItem` objects for the given `AlertFeed` id. Accepts a `since` parameter formatted as a UTC timestamp.  
+- `GET /regions/:region_id/alert_feed_items` - Returns a JSON collection of `AlertFeedItem` objects for the given `Region` id. Accepts a `since` parameter formatted as a UTC timestamp.  
+- `GET /alert_feeds/:id` - Returns a JSON collection of `AlertFeedItem` objects for the given `AlertFeed` id. Accepts a `since` parameter formatted as a UTC timestamp.  
