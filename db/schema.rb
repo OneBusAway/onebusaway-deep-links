@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116231344) do
+ActiveRecord::Schema.define(version: 20170311235106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,27 @@ ActiveRecord::Schema.define(version: 20170116231344) do
     t.index ["push_identifier"], name: "index_alarms_on_push_identifier", using: :btree
     t.index ["region_id"], name: "index_alarms_on_region_id", using: :btree
     t.index ["secure_token"], name: "index_alarms_on_secure_token", unique: true, using: :btree
+  end
+
+  create_table "alert_feed_items", force: :cascade do |t|
+    t.integer  "alert_feed_id", null: false
+    t.string   "title"
+    t.string   "url"
+    t.text     "summary"
+    t.datetime "published_at"
+    t.string   "external_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "alert_feeds", force: :cascade do |t|
+    t.string   "name",         null: false
+    t.string   "url"
+    t.datetime "last_fetched"
+    t.integer  "region_id"
+    t.string   "type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "regions", force: :cascade do |t|

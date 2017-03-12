@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: aaron
+  username: postgres
   password:
   min_messages: WARNING
 
