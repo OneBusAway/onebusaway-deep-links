@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :regions, only: [:index, :show] do
     resources :alert_feeds, only: [:index, :show]
+    resources :alert_feed_items, only: [:index]
     resources :stops, only: [:show] do
       get 'arrivals'
       get 'trips'

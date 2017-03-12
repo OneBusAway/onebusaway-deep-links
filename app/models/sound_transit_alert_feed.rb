@@ -20,7 +20,7 @@ class SoundTransitAlertFeed < AlertFeed
   private
 
   def parse_summary(summary)
-    doc = Nokogiri::HTML.parse(summary)
+    doc  = Nokogiri::HTML.parse(summary)
     text = doc.text.strip
     text.gsub!('&amp;', '&')
     text

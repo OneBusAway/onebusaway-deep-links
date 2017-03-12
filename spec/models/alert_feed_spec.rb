@@ -2,16 +2,20 @@ require 'rails_helper'
 
 RSpec.describe AlertFeed, type: :model do
   before :each do
-    @region = Region.create!(name:              'My Region',
-                             region_identifier: 12345,
-                             api_url:           'http://www.example.com',
-                             web_url:           'http://www.example.com')
+    @region = Region.create!(
+      name:              'My Region',
+      region_identifier: 12345,
+      api_url:           'http://www.example.com',
+      web_url:           'http://www.example.com'
+    )
 
-    @feed = AlertFeed.create!(name:         'My Alert Feed',
-                              url:          'http://www.example.com',
-                              type:         'AlertFeed',
-                              region_id:    @region.id,
-                              last_fetched: 1.day.ago)
+    @feed = AlertFeed.create!(
+      name:         'My Alert Feed',
+      url:          'http://www.example.com',
+      type:         'AlertFeed',
+      region_id:    @region.id,
+      last_fetched: 1.day.ago
+    )
   end
 
   describe '.fetch' do
