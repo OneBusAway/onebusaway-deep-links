@@ -249,6 +249,11 @@ begin
       type: 'KingCountyMetroAlertFeed'
     )
   end
+  region.alert_feeds.create!(
+    name: 'Sound Transit',
+    url: 'http://m.soundtransit.org/schedules/alerts.xml',
+    type: 'SoundTransitAlertFeed'
+  )
 rescue
 end
 
