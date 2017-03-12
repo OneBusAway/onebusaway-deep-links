@@ -19,10 +19,10 @@ gem 'jbuilder', '~> 2.5'
 # API client builder
 gem 'rest-client', '~> 2.0'
 
-gem 'dotenv'
-gem 'awesome_print'
-gem 'feedjira'
-gem 'nokogiri'
+gem 'dotenv', '~> 2.1.1'
+gem 'awesome_print', '~> 1.7.0'
+gem 'feedjira', '~> 2.1.2'
+gem 'nokogiri', '~> 1.6.8.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,6 +40,6 @@ group :development do
 end
 
 group :test do
-  gem 'vcr'
-  gem 'webmock'
+  gem 'vcr', '~> 3.0.3'
+  gem 'webmock', '~> 2.3.2'
 end
