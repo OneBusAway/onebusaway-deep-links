@@ -2,7 +2,8 @@ class AlertFeedsController < ApplicationController
   include AlertFeedItemsConcerns
 
   def index
-    feeds = AlertFeed.where(region_id: params[:region_id])
+    region = Region.find_by(region_identifier: params[:region_id])
+    feeds = region.alert_feeds
     render json: feeds.to_json
   end
 

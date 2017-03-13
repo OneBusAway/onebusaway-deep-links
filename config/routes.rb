@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   root to: 'regions#index'
 
   resources :alert_feeds, only: [:show]
+
+  # Confusingly, the ids that are passed in to identify
+  # regions are the id values present in the multiregion
+  # file: http://regions.onebusaway.org/regions-v3.json
+  # These values are referred to as `region_identifier`.
+  #
+  # The ids that exist locally, in Rails's DB, are
+  # more or less unused.
   resources :regions, only: [:index, :show] do
     resources :alert_feeds, only: [:index]
     resources :alert_feed_items, only: [:index]
