@@ -1,5 +1,12 @@
 require_dependency 'oba/server'
 
+# Confusingly, the ids that are passed in to identify
+# regions are the id values present in the multiregion
+# file: http://regions.onebusaway.org/regions-v3.json
+# These values are referred to as `region_identifier`.
+#
+# The ids that exist locally, in Rails's DB, are
+# more or less unused.
 class Region < ApplicationRecord
   validates_presence_of :api_url, :web_url, :name
   validates_numericality_of :region_identifier
