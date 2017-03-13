@@ -17,12 +17,22 @@ rescue
 end
 
 begin
-  Region.create!({
+  region = Region.create!({
     region_identifier: 1,
     api_url: 'http://api.pugetsound.onebusaway.org/',
     web_url: 'http://pugetsound.onebusaway.org/',
     name: 'Puget Sound'
   })
+  region.alert_feeds.create!(
+    name: 'King County Metro Alerts',
+    url: 'https://public.govdelivery.com/topics/WAKCDOT_255/feed.rss',
+    type: 'KingCountyMetroAlertFeed'
+  )
+  region.alert_feeds.create!(
+    name: 'Sound Transit Alerts',
+    url: 'http://m.soundtransit.org/schedules/alerts.xml',
+    type: 'SoundTransitAlertFeed'
+  )
 rescue
 end
 
