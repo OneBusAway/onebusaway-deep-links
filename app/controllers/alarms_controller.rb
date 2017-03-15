@@ -33,7 +33,8 @@ class AlarmsController < ApplicationController
       region_alarm_callback_url(@region, @alarm)
     end
 
-    resp = @region.server.register_alarm(params, callback_url)
+    @region.server.register_alarm(params, callback_url)
+
     render json: {url: region_alarm_url(@region, @alarm)}
   end
 
