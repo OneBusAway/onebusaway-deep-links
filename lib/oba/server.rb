@@ -10,7 +10,7 @@ class Server
   # Arrival and Departure
 
   def arrival_and_departure(args = {})
-    response = RestClient.get(build_arrival_and_departure_url(params))
+    response = RestClient.get(build_arrival_and_departure_url(args))
 
     json = JSON.parse(response.body)
     arr_dep = ArrivalDeparture.from_json(json['data']['entry'])
