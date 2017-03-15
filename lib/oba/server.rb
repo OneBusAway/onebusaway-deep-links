@@ -10,7 +10,7 @@ class Server
   # Arrival and Departure
 
   def arrival_and_departure(args = {})
-    response = RestClient.get(build_arrival_and_departure_path(params))
+    response = RestClient.get(build_arrival_and_departure_url(params))
 
     json = JSON.parse(response.body)
     arr_dep = ArrivalDeparture.from_json(json['data']['entry'])
@@ -20,7 +20,7 @@ class Server
   end
 
 
-  def build_arrival_and_departure_path(args)
+  def build_arrival_and_departure_url(args)
     params = build_params()
     params[:tripId] = args[:trip_id]
     params[:serviceDate] = args[:service_date]
@@ -34,6 +34,10 @@ class Server
   # Alarms
 
   def register_alarm(input_params, callback_url)
+    RestClient.get(build_alarm_url(input_params, callback_url))
+  end
+
+  def build_alarm_url(input_params, callback_url)
     params = build_params()
     params[:alarmTimeOffset] = input_params[:seconds_before] unless input_params[:seconds_before].blank?
     params[:url] = callback_url
@@ -44,7 +48,7 @@ class Server
 
     url = build_url("register-alarm-for-arrival-and-departure-at-stop", input_params[:stop_id])
     url_with_params = "#{url}?#{params.to_param}"
-    RestClient.get(url_with_params)
+    return url_with_params
   end
 
   # Current Time
