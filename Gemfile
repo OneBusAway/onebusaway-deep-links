@@ -8,6 +8,7 @@ gem 'rails', '~> 5.0.2'
 gem 'pg', '~>0.19.0'
 gem 'puma', '~> 3.0'
 
+gem 'airbrake-ruby', '~>1.8.0'
 gem 'airbrake', '~>5.6.1'
 
 gem 'sass-rails', '~> 5.0'
