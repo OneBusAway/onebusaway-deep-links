@@ -1,3 +1,5 @@
+[![Build Status](https://img.shields.io/travis/OneBusAway/onebusaway-deep-links.svg)](https://travis-ci.org/OneBusAway/onebusaway-deep-links)
+
 # Setup
 
 1. Install RVM (https://rvm.io): `\curl -sSL https://get.rvm.io | bash -s stable`
