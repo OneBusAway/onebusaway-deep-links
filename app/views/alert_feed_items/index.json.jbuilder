@@ -1,4 +1,5 @@
 json.array!(@items) do |item|
+  json.id(item.id)
   json.alert_feed_name(item.alert_feed.name)
   json.alert_feed_id(item.alert_feed_id)
   json.title(item.title)
