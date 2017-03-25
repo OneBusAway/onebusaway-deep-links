@@ -33,6 +33,11 @@ begin
     url: 'http://m.soundtransit.org/schedules/alerts.xml',
     type: 'SoundTransitAlertFeed'
   )
+  region.alert_feeds.create!(
+    name: 'Puget Sound Alerts',
+    url: nil,
+    type: 'PugetSoundManualAlertFeed'
+  )
 rescue
 end
 
