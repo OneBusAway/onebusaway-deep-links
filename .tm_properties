@@ -1,2 +1,2 @@
-excludeInFolderSearch = "{$excludeInFolderSearch,tmp,log}"
+excludeInFolderSearch = "{$excludeInFolderSearch,tmp,log,coverage}"
 excludeInFileChooser = "{$exclude,$excludeInFolderSearch}"
