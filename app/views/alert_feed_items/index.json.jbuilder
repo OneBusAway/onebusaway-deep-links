@@ -7,4 +7,5 @@ json.array!(@items) do |item|
   json.summary(item.summary)
   json.published_at(item.published_at)
   json.external_id(item.external_id)
+  json.priority(item.priority)
 end
