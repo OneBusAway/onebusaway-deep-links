@@ -5,7 +5,7 @@ ruby '2.3.3'
 # gem install nokogiri -v '1.6.8.1' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
 
 gem 'rails', '~> 5.0.2'
-gem 'pg', '~>0.19.0'
+gem 'pg', '~>0.20.0'
 gem 'puma', '~> 3.0'
 
 gem 'airbrake-ruby', '~>1.8.0'
