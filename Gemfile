@@ -4,7 +4,7 @@ ruby '2.3.3'
 
 # gem install nokogiri -v '1.6.8.1' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
 
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.1.4'
 gem 'pg', '~>0.20.0'
 gem 'puma', '~> 3.0'
 
@@ -15,7 +15,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.6'
 
 # API client builder
 gem 'rest-client', '~> 2.0'
