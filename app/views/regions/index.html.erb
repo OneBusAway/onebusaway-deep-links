@@ -1,7 +1,18 @@
-<ul>
-
-<% @regions.each do |r| %>
-  <li><%= link_to r.name, r %></li>
-<% end %>
-
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Web URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @regions.each do |r| %>
+      <tr>
+        <td><%= r.region_identifier %></td>
+        <td><%= link_to r.name, r %></td>
+        <td><%= link_to r.web_url, r.web_url, target: "_blank" %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
