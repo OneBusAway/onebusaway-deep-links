@@ -11,6 +11,7 @@ gem 'puma', '~> 3.0'
 gem 'airbrake-ruby', '~>1.8.0'
 gem 'airbrake', '~>5.6.1'
 
+gem 'hamlit', '~>2.8.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 

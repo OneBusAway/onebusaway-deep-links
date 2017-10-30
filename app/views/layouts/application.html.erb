@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Obaco</title>
-    <%= csrf_meta_tags %>
-    <%= render "common/smart_banner" %>
-
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
-
+  <%= render 'common/head' %>
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-dark bg-oba">
+      <a class="navbar-brand" href="<%= root_path %>">
+        OneBusAway
+      </a>
+    </nav>
+    <div class='container'>
+      <%= yield %>
+    </div>
   </body>
 </html>
