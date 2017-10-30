@@ -1,0 +1,13 @@
+.row
+  .col-sm-12
+    %h1 Puget Sound
+
+.row
+  .col-sm-12
+    %h2 Developer Info
+    %ul
+      %li Region ID: #{@region.id}
+      %li Region API ID: #{@region.region_identifier}
+      %li API URL: #{link_to @region.api_url, @region.api_url}
+      %li Web URL: #{link_to @region.web_url, @region.web_url}
+
