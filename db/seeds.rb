@@ -53,16 +53,6 @@ end
 
 begin
   Region.create!({
-    region_identifier: 3,
-    api_url: "http://atlanta.onebusaway.org/api/",
-    web_url: "http://atlanta.onebusaway.org/",
-    name: "Atlanta"
-  })
-rescue
-end
-
-begin
-  Region.create!({
     region_identifier: 4,
     api_url: "http://buseta.wmata.com/onebusaway-api-webapp/",
     web_url: "http://buseta.wmata.com/",
