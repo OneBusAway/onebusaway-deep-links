@@ -4,7 +4,7 @@ ruby '2.3.3'
 
 # gem install nokogiri -v '1.6.8.1' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.1.6'
 gem 'pg', '~>0.20.0'
 gem 'puma', '~> 3.0'
 
