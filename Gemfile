@@ -25,6 +25,8 @@ gem 'awesome_print', '~> 1.7.0'
 gem 'feedjira', '~> 2.1.2'
 gem 'nokogiri', '~> 1.6.8.1'
 
+gem 'pr_geohash', '~>1.0.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -44,4 +46,8 @@ group :test do
   gem 'vcr', '~> 3.0.3'
   gem 'webmock', '~> 2.3.2'
   gem 'simplecov', require: false
+end
+
+group :production do
+  gem 'iron_cache', '~>1.4.2'
 end
