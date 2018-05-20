@@ -50,4 +50,5 @@ end
 
 group :production do
   gem 'iron_cache', '~>1.4.2'
+  gem 'iron_cache_rails', '~>0.1.5'
 end
