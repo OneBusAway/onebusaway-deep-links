@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # The ids that exist locally, in Rails's DB, are
   # more or less unused.
   resources :regions, only: [:index, :show] do
+    resource :weather, only: [:show]
     resources :alert_feeds, only: [:index]
     resources :alert_feed_items, only: [:index]
     resources :stops, only: [:show] do
