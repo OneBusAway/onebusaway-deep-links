@@ -14,7 +14,6 @@
           %th Pri
           %th Summary
           %th External ID
-          %th URL
           %th Published
           %th Created At
           %th Updated At
@@ -24,9 +23,10 @@
           %tr
             %td= i.title
             %td= i.priority
-            %td= i.summary
+            %td
+              %p.break-url= link_to i.url, i.url
+              %p= i.summary
             %td= i.external_id
-            %td= link_to i.url, i.url
             %td
               = time_ago_in_words i.published_at
               ago
