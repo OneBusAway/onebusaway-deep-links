@@ -18,12 +18,14 @@
     %table.table
       %thead
         %tr
+          %th ID
           %th Name
           %th URL
           %th Last Fetched
       %tbody
         - @region.alert_feeds.each do |af|
           %tr
+            %td= af.id
             %td= af.name
             %td
               - if af.url.blank?
