@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resources :regions, only: [:index, :show] do
     resource :weather, only: [:show]
     resources :alert_feeds, only: [:index]
-    resources :alert_feed_items, only: [:index]
+    resources :alert_feed_items, only: [:index] do
+      get 'items', on: :collection
+    end
     resources :stops, only: [:show] do
       get 'trips'
     end
