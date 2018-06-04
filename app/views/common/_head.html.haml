@@ -1,5 +1,9 @@
 %head
-  %title OneBusAway
+  %title
+    - if t = title
+      = "#{t} | OneBusAway"
+    - else
+      OneBusAway
   = csrf_meta_tags
   %meta{name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no"}
   
