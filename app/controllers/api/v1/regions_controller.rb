@@ -1,6 +1,9 @@
 class Api::V1::RegionsController < Api::V1::ApiController
   
   def index
-    render json: ["woot"]
+    @regions = Region.all
+    respond_to do |format|
+      format.json
+    end
   end
 end

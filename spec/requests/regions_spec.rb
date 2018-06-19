@@ -2,31 +2,26 @@ require 'rails_helper'
 
 describe Api::V1::RegionsController, type: :request do
   describe "GET /api/v1/regions" do
-
+    before { @puget_sound = create_puget_sound_region! }
     before { get('/api/v1/regions', headers: { 'Accept': 'application/json' }) }
 
     it 'has HTTP status 200' do
       expect(response).to have_http_status 200
     end
+    
+    it 'has a JSON content-type' do
+      expect(response.content_type).to eq("application/json")
+    end
 
     it "returns a list of regions" do
       json = JSON.parse(response.body)
-      expect(json).to eq(["woot"])
+      parsed_body = [{"id"=>1,
+        "name"=>"Puget Sound",
+        "oba_api_url"=>"http://api.pugetsound.onebusaway.org/",
+        "web_url"=>"http://pugetsound.onebusaway.org/",
+        "weather_url"=>"http://www.example.com/api/v1/regions/1-puget-sound/weather",
+        "path_templates"=>{"stop_path"=>"/api/v1/regions/1/stops/{id}"}}]
+      expect(json).to eq(parsed_body)
     end
   end
 end
-
-# RSpec.describe "Widget management", :type => :request do
-#
-#   it "creates a Widget" do
-#     headers = {
-#       "ACCEPT" => "application/json",     # This is what Rails 4 accepts
-#       "HTTP_ACCEPT" => "application/json" # This is what Rails 3 accepts
-#     }
-#     post "/widgets", :params => { :widget => {:name => "My Widget"} }, :headers => headers
-#
-#     expect(response.content_type).to eq("application/json")
-#     expect(response).to have_http_status(:created)
-#   end
-#
-# end

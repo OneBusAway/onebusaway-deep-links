@@ -16,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.6'
+gem 'zooplankton', '~>1.3.0'
 
 # API client builder
 gem 'rest-client', '~> 2.0'
