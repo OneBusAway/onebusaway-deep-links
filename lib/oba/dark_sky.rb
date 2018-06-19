@@ -3,8 +3,6 @@ require 'ostruct'
 class DarkSky
   attr_accessor :api_key
 
-  DARK_SKY_BASE_URL = 'https://api.darksky.net/forecast'.freeze
-
   def self.client
     DarkSky.new(ENV['DARKSKY_API_KEY'])
   end
@@ -17,11 +15,13 @@ class DarkSky
     lat,lon = geohash_to_lat_lon(geohash)
     url = build_forecast_url(lat, lon)
     response = RestClient.get(url)
-    
-    puts "*** DarkSky Status ***"
-    puts "Forecast API Calls: #{response.headers[:x_forecast_api_calls]}"
-    puts "Response Time: #{response.headers[:x_response_time]}"
-    
+
+    if !Rails.env.test?
+      puts "*** DarkSky Status ***"
+      puts "Forecast API Calls: #{response.headers[:x_forecast_api_calls]}"
+      puts "Response Time: #{response.headers[:x_response_time]}"
+    end
+
     if response.code == 200
       JSON.parse(response)
     else
@@ -58,11 +58,13 @@ class DarkSky
   
   private
   
+  DARK_SKY_BASE_URL = 'https://api.darksky.net/forecast'.freeze
+  
   def geohash_to_lat_lon(geohash)
     GeoHash.decode(geohash).first
   end
   
-  def build_forecast_url(lat, lon)
-    "#{DARK_SKY_BASE_URL}/#{self.api_key}/#{lat},#{lon}?exclude=daily,flags"
+  def build_forecast_url(lat, lon) #d696019373dc132e9a0c419f4b131bcd
+    "#{DARK_SKY_BASE_URL}/#{self.api_key}/#{lat},#{lon}?exclude=minutely,daily"
   end
 end

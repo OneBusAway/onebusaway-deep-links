@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-def it_has_status(status)
-  expect(response).to have_http_status status
-end
-
 describe Api::V1::StopsController, type: :request do
   let(:puget_sound) { create_puget_sound_region! }
   let(:stop_id) { '12345' }

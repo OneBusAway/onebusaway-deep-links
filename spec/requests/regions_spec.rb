@@ -2,16 +2,13 @@ require 'rails_helper'
 
 describe Api::V1::RegionsController, type: :request do
   describe "GET /api/v1/regions" do
-    before { @puget_sound = create_puget_sound_region! }
-    before { get_json('/api/v1/regions') }
+    before do
+      @puget_sound = create_puget_sound_region!
+      get_json('/api/v1/regions')
+    end
 
-    it 'has HTTP status 200' do
-      expect(response).to have_http_status 200
-    end
-    
-    it 'has a JSON content-type' do
-      expect(response.content_type).to eq("application/json")
-    end
+    it { has_status_code(200) }    
+    it { returns_json }
 
     it "returns a list of regions" do
       json = JSON.parse(response.body)
@@ -22,7 +19,8 @@ describe Api::V1::RegionsController, type: :request do
         "weather_url"=>"http://www.example.com/api/v1/regions/1-puget-sound/weather",
         "path_templates" => {
           "stop_path" => "/api/v1/regions/1/stops/{id}",
-          "trip_status_path" => "/api/v1/regions/1/stops/{stop_id}/trips{?trip_id,service_date,stop_sequence}"
+          "trip_status_path" => "/api/v1/regions/1/stops/{stop_id}/trips{?trip_id,service_date,stop_sequence}",
+          "weather_path" => "/api/v1/regions/1/weather{?lat,lon}"
         }
       }]
       expect(json).to eq(parsed_body)
