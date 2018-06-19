@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Alarm, type: :model do
-  let(:region) { Region.create({ region_identifier: 1, api_url: 'http://api.pugetsound.onebusaway.org/', web_url: 'http://pugetsound.onebusaway.org/', name: 'Puget Sound' }) }
+  let(:region) { create_puget_sound_region! }
   let(:message) { "The 49 bus leaves in 10 minutes" }
   let(:user_push_id) { "Push ID" }
   let(:stop_id) { "Stop ID" }

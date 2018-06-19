@@ -3,6 +3,27 @@ Rails.application.routes.draw do
 
   resources :alert_feeds, only: [:show]
 
+  namespace :api do
+    namespace :v1 do
+      resources :regions, only: [:index] do
+        
+        # Weather
+        resource :weather, only: [:show]
+        
+        # Stop Redirect/Trip Status
+        resources :stops, only: [:show] do
+          get 'trips'
+        end
+        
+        # Alarms
+        resources :alarms, only: [:create, :destroy] do
+          get 'callback'
+        end
+        
+      end
+    end
+  end
+
   # Confusingly, the ids that are passed in to identify
   # regions are the id values present in the multiregion
   # file: http://regions.onebusaway.org/regions-v3.json

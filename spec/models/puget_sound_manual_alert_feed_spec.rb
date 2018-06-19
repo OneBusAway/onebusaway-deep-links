@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PugetSoundManualAlertFeed, type: :model do
   before :each do
-    @region = Region.create!(
-      name:              'My Region',
-      region_identifier: 12345,
-      api_url:           'http://www.example.com',
-      web_url:           'http://www.example.com'
-    )
+    @region = create_region!
     @feed = @region.alert_feeds.create!(
       name: 'Puget Sound Alerts',
       url: nil,
