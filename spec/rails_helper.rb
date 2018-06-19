@@ -47,5 +47,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   
   config.include ApiHelper, type: :request
+  config.include RequestHelper, type: :request
   config.include ModelsHelper
 end

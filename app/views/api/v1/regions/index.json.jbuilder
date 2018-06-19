@@ -8,9 +8,9 @@ json.array! @regions do |region|
   
   json.path_templates do
     json.stop_path Zooplankton.path_template_for(:api_v1_region_stop, region_id: region.region_identifier)
+    json.trip_status_path Zooplankton.path_template_for(:api_v1_region_stop_trips, %i(trip_id service_date stop_sequence), region_id: region.region_identifier)    
+
     # weather
-    # stop redirect
-    # trip status
     # create alarm
     # destroy alarm
   end
