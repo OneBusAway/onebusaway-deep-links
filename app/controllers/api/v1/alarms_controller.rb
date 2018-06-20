@@ -1,7 +1,6 @@
-class AlarmsController < ApplicationController
+class Api::V1::AlarmsController < Api::V1::ApiController
   include AlarmsConcerns
   before_action :load_region
-  skip_before_action :verify_authenticity_token
   
   def create
     create_alarm_in_region(@region)

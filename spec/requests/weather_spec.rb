@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'rspec/expectations'
 
 describe Api::V1::WeatherController, type: :request do
   let(:puget_sound) { create_puget_sound_region! }

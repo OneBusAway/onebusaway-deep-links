@@ -1,11 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe "Alarms", type: :request do
-  describe "GET /alarms" do
-    it "works! (now write some real specs)" do
-      skip
-      # get region_alarms_path
-      # expect(response).to have_http_status(200)
-    end
+describe Api::V1::AlarmsController, type: :request do
+  
+  describe "POST /api/v1/regions/:id/alarms" do
+    skip
+  end
+  
+  describe "DELETE /api/v1/regions/:region_id/alarms/:id" do
+    skip
+  end
+  
+  describe "GET /api/v1/regions/:region_id/alarms/:id/callback" do
+    skip
   end
 end
