@@ -14,9 +14,13 @@ gem 'hamlit', '~>2.8.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.6'
 gem 'zooplankton', '~>1.3.0'
+
+# Protocol Buffers
+# https://github.com/codekitchen/ruby-protocol-buffers
+gem 'ruby-protocol-buffers', '~>1.6.1'
+gem 'varint', '~>0.1.1'
 
 # API client builder
 gem 'rest-client', '~> 2.0'

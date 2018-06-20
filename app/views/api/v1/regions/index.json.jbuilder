@@ -5,6 +5,8 @@ json.array! @regions do |region|
   json.oba_api_url region.api_url
   json.web_url region.web_url
   json.weather_url api_v1_region_weather_url(region)
+  json.alerts_protobuf_url api_v1_region_alerts_url(region, format: 'pb')
+  json.alerts_pbtext_url api_v1_region_alerts_url(region, format: 'pbtext')
   
   json.path_templates do
     json.stop_path Zooplankton.path_template_for(:api_v1_region_stop, region_id: region.region_identifier)

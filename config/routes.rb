@@ -19,7 +19,9 @@ Rails.application.routes.draw do
         resources :alarms, only: [:create, :destroy] do
           get 'callback'
         end
-        
+
+        # Alerts
+        resources :alerts, only: [:index]        
       end
     end
   end
