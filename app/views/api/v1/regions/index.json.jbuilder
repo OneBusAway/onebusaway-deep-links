@@ -4,15 +4,12 @@ json.array! @regions do |region|
 
   json.oba_api_url region.api_url
   json.web_url region.web_url
-  json.weather_url api_v1_region_weather_url(region)
-  json.alerts_protobuf_url api_v1_region_alerts_url(region, format: 'pb')
-  json.alerts_pbtext_url api_v1_region_alerts_url(region, format: 'pbtext')
   
   json.path_templates do
-    json.stop_path Zooplankton.path_template_for(:api_v1_region_stop, region_id: region.region_identifier)
-    json.trip_status_path Zooplankton.path_template_for(:api_v1_region_stop_trips, %i(trip_id service_date stop_sequence), region_id: region.region_identifier)
-    json.weather_path Zooplankton.path_template_for(:api_v1_region_weather, %i(lat lon), region_id: region.region_identifier)
-    # create alarm
-    # destroy alarm
+    json.create_alarm_path Zooplankton.path_template_for(:api_v1_region_alarms, region_id: region.to_param)    
+    json.alerts_path Zooplankton.path_template_for(:api_v1_region_alerts, region_id: region.to_param)
+    json.stop_path Zooplankton.path_template_for(:api_v1_region_stop, region_id: region.to_param)
+    json.trip_status_path Zooplankton.path_template_for(:api_v1_region_stop_trips, %i(trip_id service_date stop_sequence), region_id: region.to_param)
+    json.weather_path Zooplankton.path_template_for(:api_v1_region_weather, %i(lat lon), region_id: region.to_param)
   end
 end

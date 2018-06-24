@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         end
 
         # Alerts
-        resources :alerts, only: [:index]        
+        resources :alerts, only: [:index], defaults: {format: 'pb'}       
       end
     end
   end

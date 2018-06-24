@@ -16,11 +16,12 @@ describe Api::V1::RegionsController, type: :request do
         "name"=>"Puget Sound",
         "oba_api_url"=>"http://api.pugetsound.onebusaway.org/",
         "web_url"=>"http://pugetsound.onebusaway.org/",
-        "weather_url"=>"http://www.example.com/api/v1/regions/1-puget-sound/weather",
         "path_templates" => {
-          "stop_path" => "/api/v1/regions/1/stops/{id}",
-          "trip_status_path" => "/api/v1/regions/1/stops/{stop_id}/trips{?trip_id,service_date,stop_sequence}",
-          "weather_path" => "/api/v1/regions/1/weather{?lat,lon}"
+          "create_alarm_path" => "/api/v1/regions/1-puget-sound/alarms",
+          "alerts_path" => "/api/v1/regions/1-puget-sound/alerts",
+          "stop_path" => "/api/v1/regions/1-puget-sound/stops/{id}",
+          "trip_status_path" => "/api/v1/regions/1-puget-sound/stops/{stop_id}/trips{?trip_id,service_date,stop_sequence}",
+          "weather_path" => "/api/v1/regions/1-puget-sound/weather{?lat,lon}"
         }
       }]
       expect(json).to eq(parsed_body)
