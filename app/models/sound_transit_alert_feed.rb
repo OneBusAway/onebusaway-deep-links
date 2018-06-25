@@ -16,6 +16,11 @@ class SoundTransitAlertFeed < AlertFeed
     end
     super
   end
+  
+  def agency_id
+    # yes, it's intentionally a string. :-\
+    "40"
+  end
 
   private
 

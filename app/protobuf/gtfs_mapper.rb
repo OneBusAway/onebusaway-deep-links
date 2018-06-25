@@ -18,7 +18,7 @@ class GtfsMapper
   def self.alert_feed_item_to_pb_alert(alert)
     pb_alert = TransitRealtime::Alert.new
 
-    # pb_alert.informed_entity = [TransitRealtime::EntitySelector.new(agency_id: 'TODO')]
+    pb_alert.informed_entity = [TransitRealtime::EntitySelector.new(agency_id: alert.alert_feed.agency_id)]
     
     pb_alert.url = pb_english_translated_string(alert.url)
     pb_alert.header_text = pb_english_translated_string(alert.title)
