@@ -1,0 +1,33 @@
+- title "Agencies in #{@region.name}"
+- fluid_container(true)
+
+.row
+  .col-sm-12
+    %table.table
+      %thead
+        %tr
+          %th Name (ID)/URL
+          %th Lang
+          %th Email
+          %th Fare URL
+          %th Phone
+          %th Private Service?
+          %th Disclaimer
+          %th Timezone
+          %th Bounds
+      %tbody
+        - @region.agencies.sort {|a,b| a.name <=> b.name}.each do |a|
+          %tr
+            %td
+              #{a.name} (#{a.id})
+              %br
+              %span.break-url= link_to_if a.url, a.url
+            -#%td
+            %td= a.lang
+            %td= value_or_blank_rep(a.email)
+            %td= value_or_blank_rep(a.fare_url)
+            %td= value_or_blank_rep(a.phone)
+            %td= a.private_service
+            %td= value_or_blank_rep(a.disclaimer)
+            %td= a.timezone
+            %td (#{a.lat.round(4)}&plusmn;#{a.lat_span.round(2)}, #{a.lon.round(4)}&plusmn;#{a.lon_span.round(2)})

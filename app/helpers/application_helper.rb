@@ -8,6 +8,14 @@ module ApplicationHelper
     end
   end
   
+  def value_or_blank_rep(val)
+    if val.blank?
+      "—"
+    else
+      val
+    end
+  end
+  
   def fluid_container(fluid = nil)
     if fluid.nil?
       @use_fluid_container || false
