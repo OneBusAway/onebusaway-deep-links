@@ -10,6 +10,7 @@
       %li Region API ID: #{@region.region_identifier}
       %li API URL: #{link_to @region.api_url, @region.api_url}
       %li Web URL: #{link_to @region.web_url, @region.web_url}
+      %li= link_to "Agencies", agencies_region_path(@region)
 
 .row
   .col-sm-12

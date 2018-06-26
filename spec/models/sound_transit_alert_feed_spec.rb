@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SoundTransitAlertFeed, type: :model do
   before :each do
-    @region = Region.create!(
-      name:              'My Region',
-      region_identifier: 12345,
-      api_url:           'http://www.example.com',
-      web_url:           'http://www.example.com'
-    )
+    @region = create_region!
     @feed = SoundTransitAlertFeed.create!(
       name:         'Sound Transit Alert Feed',
       url:          'http://m.soundtransit.org/schedules/alerts.xml',

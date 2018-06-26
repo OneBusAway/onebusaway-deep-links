@@ -96,4 +96,8 @@ class Region < ApplicationRecord
       OpenStruct.new(lat: midX, lon: midY)
     end
   end
+  
+  def agencies
+    @agencies ||= server.agencies_with_coverage
+  end
 end

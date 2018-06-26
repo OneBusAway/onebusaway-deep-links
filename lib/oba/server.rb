@@ -57,6 +57,29 @@ class Server
     url = build_url('current-time.json')
     RestClient.get(url, {params: build_params})
   end
+  
+  # Agencies
+  
+  def agencies_with_coverage
+    url = build_url('agencies-with-coverage.json')
+    response = RestClient.get(url, {params: build_params})
+    
+    json = JSON.parse(response.body)
+    agencies = json['data']['references']['agencies']
+    service_rects = json['data']['list']
+    
+    agency_map = agencies.inject({}) do |acc, a|
+      acc[a['id']] = Agency.from_json(a)
+      acc
+    end
+    
+    service_rects.each do |sr|
+      agency = agency_map[sr['agencyId']]
+      agency.read_bounding_rect_from_json(sr) unless agency.nil?
+    end
+
+    agency_map.values
+  end
 
   private
 

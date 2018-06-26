@@ -1,7 +1,5 @@
-class AlarmsController < ApplicationController
+class Api::V1::AlarmsController < Api::V1::ApiController
   include AlarmsConcerns
-  before_action :load_region
-  skip_before_action :verify_authenticity_token
   
   def create
     create_alarm_in_region(@region)
@@ -15,9 +13,4 @@ class AlarmsController < ApplicationController
     perform_callback_for_alarm_id(params[:alarm_id], @region)
   end
 
-  protected
-
-  def load_region
-    @region = Region.find_by(region_identifier: params[:region_id])
-  end
 end

@@ -1,8 +1,6 @@
 require File.join(Rails.root, 'lib/oba/dark_sky')
 
-class WeathersController < ApplicationController
-  before_action :load_region
-  
+class Api::V1::WeatherController < Api::V1::ApiController
   def show
     geohash = DarkSky.geohash_from(params[:lat], params[:lon], @region)
     
@@ -21,11 +19,7 @@ class WeathersController < ApplicationController
     lat_lon = lat_lon_from(params, @region)
     GeoHash.encode(lat_lon.lat, lat_lon.lon, 4)
   end
-    
-  def load_region
-    @region = Region.find_by(region_identifier: params[:region_id])
-  end
-  
+
   def dark_sky
     @dark_sky ||= DarkSky.client
   end

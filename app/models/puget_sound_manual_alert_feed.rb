@@ -3,6 +3,12 @@ class PugetSoundManualAlertFeed < AlertFeed
     # no-op
     super
   end
+  
+  def agency_id
+    # yes, it's intentionally a string. :-\
+    # 40 == sound transit
+    "40"
+  end
 
   def add_alert_item(title, summary, url)
 
