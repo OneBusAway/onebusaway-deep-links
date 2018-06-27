@@ -58,7 +58,7 @@ module AlarmsConcerns
   
   def destroy_alarm_with_token(token, region)
     alarm = region.alarms.find_by(secure_token: token)
-    alarm.destroy
+    alarm.destroy unless alarm.nil?
     head :ok
   end
   
