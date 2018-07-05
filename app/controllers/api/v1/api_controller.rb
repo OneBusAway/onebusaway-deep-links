@@ -6,7 +6,10 @@ class Api::V1::ApiController < ApplicationController
   protected
   
   def load_region
-    @region = Region.find_by!(region_identifier: params[:region_id])
+    # due to the vagaries of the Rails routing API, sometimes our
+    # parameter will be called region_id and sometimes id.
+    region_id = params[:region_id] || params[:id]
+    @region = Region.find_by!(region_identifier: region_id)
   end
   
   def render_not_found_response(ex)

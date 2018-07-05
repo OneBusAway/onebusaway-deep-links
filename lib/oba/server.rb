@@ -7,8 +7,10 @@ class Server
     self.api_base_url = api_base_url
   end
 
+  ########################
   # Arrival and Departure
-
+  ########################
+  
   def arrival_and_departure(args = {})
     response = RestClient.get(build_arrival_and_departure_url(args))
 
@@ -31,7 +33,9 @@ class Server
     "#{url}?#{params.to_param}"
   end
 
+  ########################
   # Alarms
+  ########################
 
   def register_alarm(input_params, callback_url)
     RestClient.get(build_alarm_url(input_params, callback_url))
@@ -51,18 +55,28 @@ class Server
     return url_with_params
   end
 
+  ########################
   # Current Time
+  ########################
 
   def current_time
     url = build_url('current-time.json')
     RestClient.get(url, {params: build_params})
   end
   
+  ########################
   # Agencies
+  ########################
   
   def agencies_with_coverage
     url = build_url('agencies-with-coverage.json')
-    response = RestClient.get(url, {params: build_params})
+    begin
+      response = RestClient.get(url, {params: build_params})
+    rescue
+      puts "Failed to load data from #{url}"
+      puts $!
+      return []
+    end
     
     json = JSON.parse(response.body)
     agencies = json['data']['references']['agencies']
@@ -80,7 +94,25 @@ class Server
 
     agency_map.values
   end
-
+    
+  def vehicle_ids_for_agency(agency_id)
+    encoded_id = URI.escape(agency_id)
+    url = build_url("vehicles-for-agency/#{encoded_id}.json")
+    response = RestClient.get(url, {params: build_params})
+    json = JSON.parse(response.body)
+    data = json['data']
+    list = data['list']
+    references = data['references']
+    
+    list.collect {|v| v['vehicleId'] }
+  end 
+  
+  def all_vehicles_in_region
+    agencies_with_coverage.collect do |agency|
+      vehicle_ids_for_agency(agency.id)
+    end.flat_map {|i| i}.sort
+  end
+  
   private
 
   def build_params(params = {})

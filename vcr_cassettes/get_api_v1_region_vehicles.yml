@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.pugetsound.onebusaway.org/api/where/agencies-with-coverage.json?app_uid=C071187D-67E0-458C-A1DA-CADE062AE667&app_ver=20170105.12&key=org.onebusaway.iphone&version=2
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.5.0 x86_64) ruby/2.3.3p222
+      Host:
+      - api.pugetsound.onebusaway.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '926510594'
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '4087'
+      Date:
+      - Thu, 05 Jul 2018 23:11:59 GMT
+    body:
+      encoding: UTF-8
+      string: '{"code":200,"currentTime":1530832981240,"data":{"limitExceeded":false,"list":[{"agencyId":"98","lat":47.6470785,"latSpan":0.06330499999999972,"lon":-122.296449,"lonSpan":0.07930600000000254},{"agencyId":"99","lat":47.115176,"latSpan":0.09129599999999982,"lon":-122.5614875,"lonSpan":0.1564649999999972}],"references":{"agencies":[{"disclaimer":"","email":"","fareUrl":"","id":"98","lang":"en","name":"Seattle Childrens Hospital","phone":"","privateService":false,"timezone":"America/Los_Angeles","url":"http://www.csched.com"},{"disclaimer":"","email":"","fareUrl":"","id":"99","lang":"EN","name":"GO Transit","phone":"+12539663939","privateService":false,"timezone":"America/Los_Angeles","url":"http://GOLewisMcChord.com"}],"routes":[],"situations":[],"stops":[],"trips":[]}},"text":"OK","version":2}'
+    http_version: 
+  recorded_at: Thu, 05 Jul 2018 23:12:00 GMT
+- request:
+    method: get
+    uri: http://api.pugetsound.onebusaway.org/api/where/vehicles-for-agency/98.json?app_uid=C071187D-67E0-458C-A1DA-CADE062AE667&app_ver=20170105.12&key=org.onebusaway.iphone&version=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.5.0 x86_64) ruby/2.3.3p222
+      Host:
+      - api.pugetsound.onebusaway.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '800165254'
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '19138'
+      Date:
+      - Thu, 05 Jul 2018 23:11:59 GMT
+    body:
+      encoding: UTF-8
+      string: '{"code":200,"currentTime":1530832320538,"data":{"limitExceeded":false,"list":[{"lastLocationUpdateTime":1530832300000,"lastUpdateTime":1530832310000,"location":{"lat":47.662601470947266,"lon":-122.28482818603516},"phase":"in_progress","status":"SCHEDULED","tripId":"98_543163-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_543163-SCH-1805-SCH-Weekday-60","blockTripSequence":3,"closestStop":"98_755000","closestStopTimeOffset":18,"distanceAlongTrip":2902.7397923613007,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.662601470947266,"lon":-122.28482818603516},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832300000,"lastUpdateTime":1530832310000,"nextStop":"98_755000","nextStopTimeOffset":18,"orientation":270.56078906913245,"phase":"in_progress","position":{"lat":47.66251930394509,"lon":-122.28476803070745},"predicted":true,"scheduleDeviation":68,"scheduledDistanceAlongTrip":2902.7397923613007,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":2994.236229745071,"vehicleId":"98_223"},"vehicleId":"98_223"},{"lastLocationUpdateTime":1530665239000,"lastUpdateTime":1530665239000,"location":{"lat":47.66252136230469,"lon":-122.28517150878906},"phase":"in_progress","status":"SCHEDULED","tripId":"","tripStatus":null,"vehicleId":"98_213"},{"lastLocationUpdateTime":1530832301000,"lastUpdateTime":1530832311000,"location":{"lat":47.64949035644531,"lon":-122.30328369140625},"phase":"in_progress","status":"SCHEDULED","tripId":"98_543187-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_543187-SCH-1805-SCH-Weekday-60","blockTripSequence":36,"closestStop":"98_755003","closestStopTimeOffset":-34,"distanceAlongTrip":157.32212859630818,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.64949035644531,"lon":-122.30328369140625},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832301000,"lastUpdateTime":1530832311000,"nextStop":"98_25765","nextStopTimeOffset":86,"orientation":179.93134121972105,"phase":"in_progress","position":{"lat":47.64901801780331,"lon":-122.3029448568596},"predicted":true,"scheduleDeviation":17,"scheduledDistanceAlongTrip":157.32212859630818,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":2994.236229745071,"vehicleId":"98_217"},"vehicleId":"98_217"},{"lastLocationUpdateTime":1530832274000,"lastUpdateTime":1530832312000,"location":{"lat":47.68183898925781,"lon":-122.26367950439453},"phase":"in_progress","status":"SCHEDULED","tripId":"98_543102-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_543102-SCH-1805-SCH-Weekday-60","blockTripSequence":58,"closestStop":"98_755007","closestStopTimeOffset":12,"distanceAlongTrip":1579.5470451017027,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.68183898925781,"lon":-122.26367950439453},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832274000,"lastUpdateTime":1530832312000,"nextStop":"98_755007","nextStopTimeOffset":12,"orientation":271.03710213407714,"phase":"in_progress","position":{"lat":47.679479211634735,"lon":-122.26362104945031},"predicted":true,"scheduleDeviation":64,"scheduledDistanceAlongTrip":1579.5470451017027,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":4393.215075917744,"vehicleId":"98_221"},"vehicleId":"98_221"},{"lastLocationUpdateTime":1530832306000,"lastUpdateTime":1530832306000,"location":{"lat":47.66196823120117,"lon":-122.28578186035156},"phase":"in_progress","status":"SCHEDULED","tripId":"98_542800-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_542800-SCH-1805-SCH-Weekday-60","blockTripSequence":5,"closestStop":"98_755000","closestStopTimeOffset":91,"distanceAlongTrip":2561.1930848932006,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.66196823120117,"lon":-122.28578186035156},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832306000,"lastUpdateTime":1530832306000,"nextStop":"98_755000","nextStopTimeOffset":91,"orientation":33.77501302187371,"phase":"in_progress","position":{"lat":47.662008974615325,"lon":-122.28587436968574},"predicted":true,"scheduleDeviation":-403,"scheduledDistanceAlongTrip":2561.1930848932006,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":2849.319391124903,"vehicleId":"98_220"},"vehicleId":"98_220"},{"lastLocationUpdateTime":1530832307000,"lastUpdateTime":1530832307000,"location":{"lat":47.65549087524414,"lon":-122.29976654052734},"phase":"in_progress","status":"SCHEDULED","tripId":"98_543196-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_543196-SCH-1805-SCH-Weekday-60","blockTripSequence":55,"closestStop":"98_755006","closestStopTimeOffset":-88,"distanceAlongTrip":1886.9325008258747,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.65549087524414,"lon":-122.29976654052734},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832307000,"lastUpdateTime":1530832307000,"nextStop":"98_755003","nextStopTimeOffset":332,"orientation":243.43494882292202,"phase":"in_progress","position":{"lat":47.655458647206615,"lon":-122.2997861763967},"predicted":true,"scheduleDeviation":19,"scheduledDistanceAlongTrip":1886.9325008258747,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":3092.6578726069765,"vehicleId":"98_219"},"vehicleId":"98_219"},{"lastLocationUpdateTime":1530832305000,"lastUpdateTime":1530832305000,"location":{"lat":47.66127014160156,"lon":-122.2979965209961},"phase":"in_progress","status":"SCHEDULED","tripId":"98_542795-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_542795-SCH-1805-SCH-Weekday-60","blockTripSequence":6,"closestStop":"98_755000","closestStopTimeOffset":-387,"distanceAlongTrip":1253.701397680943,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.66127014160156,"lon":-122.2979965209961},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832305000,"lastUpdateTime":1530832305000,"nextStop":"98_755009","nextStopTimeOffset":513,"orientation":180.34851017583713,"phase":"in_progress","position":{"lat":47.66127225033579,"lon":-122.29788824479624},"predicted":true,"scheduleDeviation":18,"scheduledDistanceAlongTrip":1253.701397680943,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":2915.584645769635,"vehicleId":"98_218"},"vehicleId":"98_218"},{"lastLocationUpdateTime":1530832303000,"lastUpdateTime":1530832303000,"location":{"lat":47.66297149658203,"lon":-122.28426361083984},"phase":"in_progress","status":"SCHEDULED","tripId":"98_543082-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_543082-SCH-1805-SCH-Weekday-60","blockTripSequence":7,"closestStop":"98_755000","closestStopTimeOffset":-43,"distanceAlongTrip":4393.193559099829,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.66297149658203,"lon":-122.28426361083984},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832303000,"lastUpdateTime":1530832303000,"nextStop":"98_755000","nextStopTimeOffset":77,"orientation":83.48518569586527,"phase":"in_progress","position":{"lat":47.662687807064714,"lon":-122.28425902203274},"predicted":true,"scheduleDeviation":0,"scheduledDistanceAlongTrip":4393.193559099829,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":4393.215075917744,"vehicleId":"98_214"},"vehicleId":"98_214"},{"lastLocationUpdateTime":1529943409000,"lastUpdateTime":1529943409000,"location":{"lat":47.66225814819336,"lon":-122.28604888916016},"phase":"in_progress","status":"SCHEDULED","tripId":"","tripStatus":null,"vehicleId":"98_211"},{"lastLocationUpdateTime":1530832304000,"lastUpdateTime":1530832304000,"location":{"lat":47.66130828857422,"lon":-122.28697204589844},"phase":"in_progress","status":"SCHEDULED","tripId":"98_543206-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_543206-SCH-1805-SCH-Weekday-60","blockTripSequence":6,"closestStop":"98_755000","closestStopTimeOffset":-138,"distanceAlongTrip":450.6110099330326,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.66130828857422,"lon":-122.28697204589844},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832304000,"lastUpdateTime":1530832304000,"nextStop":"98_755006","nextStopTimeOffset":342,"orientation":192.79846631115862,"phase":"in_progress","position":{"lat":47.66136328157739,"lon":-122.28722718315936},"predicted":true,"scheduleDeviation":146,"scheduledDistanceAlongTrip":450.6110099330326,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":3092.6578726069765,"vehicleId":"98_215"},"vehicleId":"98_215"},{"lastLocationUpdateTime":1530832307000,"lastUpdateTime":1530832307000,"location":{"lat":47.65943908691406,"lon":-122.30074310302734},"phase":"in_progress","status":"SCHEDULED","tripId":"98_543175-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_543175-SCH-1805-SCH-Weekday-60","blockTripSequence":5,"closestStop":"98_25765","closestStopTimeOffset":-182,"distanceAlongTrip":1479.9834973309098,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.65943908691406,"lon":-122.30074310302734},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832307000,"lastUpdateTime":1530832307000,"nextStop":"98_755000","nextStopTimeOffset":298,"orientation":58.289858130586694,"phase":"in_progress","position":{"lat":47.65946405622944,"lon":-122.30084115811539},"predicted":true,"scheduleDeviation":45,"scheduledDistanceAlongTrip":1479.9834973309098,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":2994.236229745071,"vehicleId":"98_216"},"vehicleId":"98_216"},{"lastLocationUpdateTime":1530832297000,"lastUpdateTime":1530832307000,"location":{"lat":47.67047119140625,"lon":-122.27118682861328},"phase":"in_progress","status":"SCHEDULED","tripId":"98_542929-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_542929-SCH-1805-SCH-Weekday-60","blockTripSequence":8,"closestStop":"98_755011","closestStopTimeOffset":13,"distanceAlongTrip":1640.0692572624375,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.67047119140625,"lon":-122.27118682861328},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832297000,"lastUpdateTime":1530832307000,"nextStop":"98_755011","nextStopTimeOffset":13,"orientation":134.73350992366858,"phase":"in_progress","position":{"lat":47.670201112690094,"lon":-122.27135538942444},"predicted":true,"scheduleDeviation":0,"scheduledDistanceAlongTrip":1640.0692572624375,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":1701.688961455057,"vehicleId":"98_212"},"vehicleId":"98_212"},{"lastLocationUpdateTime":1530206058000,"lastUpdateTime":1530206038000,"location":{"lat":47.67964172363281,"lon":-122.26361846923828},"phase":"in_progress","status":"SCHEDULED","tripId":"","tripStatus":null,"vehicleId":"98_224"},{"lastLocationUpdateTime":1530548050000,"lastUpdateTime":1530548050000,"location":{"lat":47.6633186340332,"lon":-122.28455352783203},"phase":"in_progress","status":"SCHEDULED","tripId":"","tripStatus":null,"vehicleId":"98_209"},{"lastLocationUpdateTime":1530832306000,"lastUpdateTime":1530832306000,"location":{"lat":47.67578887939453,"lon":-122.25750732421875},"phase":"in_progress","status":"SCHEDULED","tripId":"98_543063-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_543063-SCH-1805-SCH-Weekday-60","blockTripSequence":31,"closestStop":"98_755008","closestStopTimeOffset":31,"distanceAlongTrip":2908.0313144165557,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.67578887939453,"lon":-122.25750732421875},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832306000,"lastUpdateTime":1530832306000,"nextStop":"98_755008","nextStopTimeOffset":31,"orientation":0.7848246025988264,"phase":"in_progress","position":{"lat":47.67580083252867,"lon":-122.25765122540703},"predicted":true,"scheduleDeviation":-43,"scheduledDistanceAlongTrip":2908.0313144165557,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":3174.065278429987,"vehicleId":"98_210"},"vehicleId":"98_210"},{"lastLocationUpdateTime":1530832303000,"lastUpdateTime":1530832310000,"location":{"lat":47.66265869140625,"lon":-122.28427124023438},"phase":"in_progress","status":"SCHEDULED","tripId":"98_542895-SCH-1805-SCH-Weekday-60","tripStatus":{"activeTripId":"98_542895-SCH-1805-SCH-Weekday-60","blockTripSequence":40,"closestStop":"98_755000","closestStopTimeOffset":10,"distanceAlongTrip":1941.67778152533,"frequency":null,"lastKnownDistanceAlongTrip":0,"lastKnownLocation":{"lat":47.66265869140625,"lon":-122.28427124023438},"lastKnownOrientation":0,"lastLocationUpdateTime":1530832303000,"lastUpdateTime":1530832310000,"nextStop":"98_755000","nextStopTimeOffset":10,"orientation":2.6739587754507377,"phase":"in_progress","position":{"lat":47.66235245249408,"lon":-122.28447795836206},"predicted":true,"scheduleDeviation":0,"scheduledDistanceAlongTrip":1941.67778152533,"serviceDate":1530774000000,"situationIds":[],"status":"SCHEDULED","totalDistanceAlongTrip":1991.5015514472348,"vehicleId":"98_222"},"vehicleId":"98_222"}],"outOfRange":false,"references":{"agencies":[{"disclaimer":"","email":"","fareUrl":"","id":"98","lang":"en","name":"Seattle
+        Children''s Hospital","phone":"","privateService":false,"timezone":"America/Los_Angeles","url":"http://www.csched.com"}],"routes":[{"agencyId":"98","color":"","description":"","id":"98_869-16","longName":"Gold","shortName":"Gold","textColor":"","type":3,"url":""},{"agencyId":"98","color":"","description":"","id":"98_871-16","longName":"Blue","shortName":"Blue","textColor":"","type":3,"url":""},{"agencyId":"98","color":"","description":"","id":"98_867-16","longName":"Green","shortName":"Grn","textColor":"","type":3,"url":""},{"agencyId":"98","color":"","description":"","id":"98_865-16","longName":"Pink","shortName":"Pink","textColor":"","type":3,"url":""},{"agencyId":"98","color":"","description":"","id":"98_876-16","longName":"Purple","shortName":"Pur","textColor":"","type":3,"url":""},{"agencyId":"98","color":"","description":"","id":"98_863-16","longName":"Yellow","shortName":"Ylw","textColor":"","type":3,"url":""}],"situations":[],"stops":[{"code":"755000","direction":"N","id":"98_755000","lat":47.662688,"locationType":0,"lon":-122.284262,"name":"Seattle
+        Childrens Hospital / Seattle Childrens Hos","routeIds":["98_871-16","98_869-16","98_867-16","98_865-16","98_876-16","98_863-16"],"wheelchairBoarding":"UNKNOWN"},{"code":"755003","direction":"SW","id":"98_755003","lat":47.649497,"locationType":0,"lon":-122.303808,"name":"UW
+        Link Station / UW Link Station","routeIds":["98_869-16"],"wheelchairBoarding":"UNKNOWN"},{"code":"25765","direction":"NE","id":"98_25765","lat":47.651367,"locationType":0,"lon":-122.303604,"name":"Montlake
+        Blvd NE & NE Pacific Pl - Bay 3","routeIds":["98_869-16"],"wheelchairBoarding":"UNKNOWN"},{"code":"755007","direction":"S","id":"98_755007","lat":47.678731,"locationType":0,"lon":-122.263666,"name":"Sand
+        Point Way / 70th St","routeIds":["98_871-16","98_863-16"],"wheelchairBoarding":"UNKNOWN"},{"code":"755006","direction":"SW","id":"98_755006","lat":47.658232,"locationType":0,"lon":-122.298813,"name":"Walla
+        Walla Rd / Walla Walla Rd","routeIds":["98_869-16","98_865-16"],"wheelchairBoarding":"UNKNOWN"},{"code":"755009","direction":"E","id":"98_755009","lat":47.659806,"locationType":0,"lon":-122.317474,"name":"43rd
+        St / Roosevelt Way","routeIds":["98_867-16","98_876-16"],"wheelchairBoarding":"UNKNOWN"},{"code":"755011","direction":"NE","id":"98_755011","lat":47.670706,"locationType":0,"lon":-122.271079,"name":"SPLC
+        / SR 513","routeIds":["98_871-16","98_863-16"],"wheelchairBoarding":"UNKNOWN"},{"code":"755008","direction":"W","id":"98_755008","lat":47.676503,"locationType":0,"lon":-122.256796,"name":"Magnuson
+        Park Lot / Magnuson Park Lot","routeIds":["98_871-16"],"wheelchairBoarding":"UNKNOWN"}],"trips":[{"blockId":"98_68785","directionId":"0","id":"98_543163-SCH-1805-SCH-Weekday-60","routeId":"98_869-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8690002","timeZone":"","tripHeadsign":"Hospital","tripShortName":""},{"blockId":"98_68775","directionId":"0","id":"98_543187-SCH-1805-SCH-Weekday-60","routeId":"98_869-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8690002","timeZone":"","tripHeadsign":"Hospital","tripShortName":""},{"blockId":"98_68786","directionId":"0","id":"98_543102-SCH-1805-SCH-Weekday-60","routeId":"98_871-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8710006","timeZone":"","tripHeadsign":"Hospital
+        via 70th & SPLC","tripShortName":""},{"blockId":"98_68774","directionId":"0","id":"98_542800-SCH-1805-SCH-Weekday-60","routeId":"98_876-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8760001","timeZone":"","tripHeadsign":"Hospital","tripShortName":""},{"blockId":"98_68788","directionId":"1","id":"98_543196-SCH-1805-SCH-Weekday-60","routeId":"98_869-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8690001","timeZone":"","tripHeadsign":"UW
+        Station via E1","tripShortName":""},{"blockId":"98_68789","directionId":"1","id":"98_542795-SCH-1805-SCH-Weekday-60","routeId":"98_876-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8760002","timeZone":"","tripHeadsign":"Roosevelt","tripShortName":""},{"blockId":"98_68778","directionId":"0","id":"98_543082-SCH-1805-SCH-Weekday-60","routeId":"98_871-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8710006","timeZone":"","tripHeadsign":"Hospital
+        via 70th & SPLC","tripShortName":""},{"blockId":"98_68782","directionId":"1","id":"98_543206-SCH-1805-SCH-Weekday-60","routeId":"98_869-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8690001","timeZone":"","tripHeadsign":"UW
+        Station via E1","tripShortName":""},{"blockId":"98_68779","directionId":"0","id":"98_543175-SCH-1805-SCH-Weekday-60","routeId":"98_869-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8690002","timeZone":"","tripHeadsign":"Hospital","tripShortName":""},{"blockId":"98_68781","directionId":"1","id":"98_542929-SCH-1805-SCH-Weekday-60","routeId":"98_863-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8630003","timeZone":"","tripHeadsign":"SPLC
+        Parking","tripShortName":""},{"blockId":"98_68780","directionId":"1","id":"98_543063-SCH-1805-SCH-Weekday-60","routeId":"98_871-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8710005","timeZone":"","tripHeadsign":"70th
+        via SPLC & Magnuson","tripShortName":""},{"blockId":"98_68776","directionId":"0","id":"98_542895-SCH-1805-SCH-Weekday-60","routeId":"98_863-16","routeShortName":"","serviceId":"98_SCH-1805-SCH-Weekday-60","shapeId":"98_8630004","timeZone":"","tripHeadsign":"Hospital","tripShortName":""}]}},"text":"OK","version":2}'
+    http_version: 
+  recorded_at: Thu, 05 Jul 2018 23:12:00 GMT
+- request:
+    method: get
+    uri: http://api.pugetsound.onebusaway.org/api/where/vehicles-for-agency/99.json?app_uid=C071187D-67E0-458C-A1DA-CADE062AE667&app_ver=20170105.12&key=org.onebusaway.iphone&version=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.5.0 x86_64) ruby/2.3.3p222
+      Host:
+      - api.pugetsound.onebusaway.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '1972976069'
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '203'
+      Date:
+      - Thu, 05 Jul 2018 23:12:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"code":200,"currentTime":1530832322860,"data":{"limitExceeded":false,"list":[],"outOfRange":false,"references":{"agencies":[],"routes":[],"situations":[],"stops":[],"trips":[]}},"text":"OK","version":2}'
+    http_version: 
+  recorded_at: Thu, 05 Jul 2018 23:12:02 GMT
+recorded_with: VCR 4.0.0

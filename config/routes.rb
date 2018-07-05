@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
   root to: 'regions#index'
+  
+  # Confusingly, the ids that are passed in to identify
+  # regions are the id values present in the multiregion
+  # file: http://regions.onebusaway.org/regions-v3.json
+  # These values are referred to as `region_identifier`.
+  #
+  # The ids that exist locally, in Rails's DB, are
+  # more or less unused.
 
   resources :alert_feeds, only: [:show]
 
   namespace :api do
     namespace :v1 do
       resources :regions, only: [:index] do
+        
+        get 'vehicles', on: :member, defaults: {format: 'json'}
         
         # Weather
         resource :weather, only: [:show]
@@ -21,18 +31,13 @@ Rails.application.routes.draw do
         end
 
         # Alerts
-        resources :alerts, only: [:index], defaults: {format: 'pb'}       
+        resources :alerts, only: [:index], defaults: {format: 'pb'}
       end
     end
   end
 
-  # Confusingly, the ids that are passed in to identify
-  # regions are the id values present in the multiregion
-  # file: http://regions.onebusaway.org/regions-v3.json
-  # These values are referred to as `region_identifier`.
-  #
-  # The ids that exist locally, in Rails's DB, are
-  # more or less unused.
+
+  # Old, unversioned API+HTML
   resources :regions, only: [:index, :show] do
     get 'agencies', on: :member
     resources :alert_feeds, only: [:index]

@@ -27,4 +27,19 @@ describe Api::V1::RegionsController, type: :request do
       expect(json).to eq(parsed_body)
     end
   end
+  
+  describe "GET /api/v1/regions/:id/vehicles", vcr: { cassette_name: "get_api_v1_region_vehicles" } do
+    before do
+      @puget_sound = create_puget_sound_region!
+      get_json(vehicles_api_v1_region_path(@puget_sound))
+    end
+    
+    it { has_status_code(200) }    
+    it { returns_json }
+    
+    it "returns a list of active vehicle IDs" do
+      json = JSON.parse(response.body)
+      expect(json).to eq(["98_209", "98_210", "98_211", "98_212", "98_213", "98_214", "98_215", "98_216", "98_217", "98_218", "98_219", "98_220", "98_221", "98_222", "98_223", "98_224"])
+    end
+  end
 end

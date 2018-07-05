@@ -204,7 +204,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.5)
     varint (0.1.1)
-    vcr (3.0.3)
+    vcr (4.0.0)
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -247,7 +247,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   uglifier (>= 1.3.0)
   varint (~> 0.1.1)
-  vcr (~> 3.0.3)
+  vcr (~> 4.0.0)
   web-console
   webmock (~> 2.3.2)
   zooplankton (~> 1.3.0)
