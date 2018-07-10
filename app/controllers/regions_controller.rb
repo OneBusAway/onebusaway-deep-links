@@ -2,6 +2,9 @@ class RegionsController < ApplicationController
 
   def index
     @regions = Region.all
+    respond_to do |format|
+      format.html { render(layout: 'application') }
+    end
   end
 
   def show

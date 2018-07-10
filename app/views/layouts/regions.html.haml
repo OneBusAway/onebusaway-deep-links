@@ -1,0 +1,13 @@
+- fluid_container(true)
+
+.row.mt-3
+  .col-sm-2
+    .list-group
+      = link_to_list_group_item 'Region Info', @region
+      = link_to_list_group_item 'Agencies', agencies_region_path(@region)
+      = link_to_list_group_item 'Alert Feed', items_region_alert_feed_items_path(region_id: @region)
+
+  .col-sm-10
+    = yield
+
+- parent_layout "application"

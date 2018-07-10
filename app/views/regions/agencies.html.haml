@@ -1,5 +1,4 @@
 - title "Agencies in #{@region.name}"
-- fluid_container(true)
 
 .row
   .col-sm-12
@@ -22,7 +21,6 @@
               #{a.name} (#{a.id})
               %br
               %span.break-url= link_to_if a.url, a.url
-            -#%td
             %td= a.lang
             %td= value_or_blank_rep(a.email)
             %td= value_or_blank_rep(a.fare_url)

@@ -1,0 +1,11 @@
+!!! 5
+%html
+  %head
+    = render 'common/head'
+  %body
+    %nav.navbar.navbar-dark.bg-oba
+      = link_to root_path, class: 'navbar-brand' do
+        = image_tag 'oba_logo.png', alt: 'OneBusAway Logo', title: "OneBusAway", height: "30"
+        OneBusAway
+    %div{class: fluid_container ? "container-fluid" : "container"}
+      = yield

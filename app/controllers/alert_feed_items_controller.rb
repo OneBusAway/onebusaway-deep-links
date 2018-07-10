@@ -17,7 +17,7 @@ class AlertFeedItemsController < ApplicationController
   def items
     load_index_data
     respond_to do |format|
-      format.html
+      format.html {render(layout: 'regions')}
     end
   end
     

@@ -23,4 +23,10 @@ module ApplicationHelper
       @use_fluid_container = fluid
     end
   end
+  
+  def link_to_list_group_item(title, path)
+    classes = %w(list-group-item list-group-item-action)
+    classes << 'active' if current_page?(path)
+    link_to(title, path, class: classes.join(' '))
+  end
 end

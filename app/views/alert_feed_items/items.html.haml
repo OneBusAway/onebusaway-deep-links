@@ -1,5 +1,4 @@
 - title "Alert Feed Items - #{@region.name}"
-- fluid_container(true)
 
 .row
   .col-sm-12
@@ -25,7 +24,7 @@
             %td= i.priority
             %td
               %p.break-url= link_to i.url, i.url
-              %p= i.summary
+              %p= truncate(i.summary, length: 500)
             %td= i.external_id
             %td
               = time_ago_in_words i.published_at
