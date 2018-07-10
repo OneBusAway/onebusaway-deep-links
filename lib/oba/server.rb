@@ -100,17 +100,14 @@ class Server
     url = build_url("vehicles-for-agency/#{encoded_id}.json")
     response = RestClient.get(url, {params: build_params})
     json = JSON.parse(response.body)
-    data = json['data']
-    list = data['list']
-    references = data['references']
-    
+    list = json['data']['list']
     list.collect {|v| v['vehicleId'] }
   end 
   
   def all_vehicles_in_region
     agencies_with_coverage.collect do |agency|
-      vehicle_ids_for_agency(agency.id)
-    end.flat_map {|i| i}.sort
+      {id: agency.id, name: agency.name, vehicles: vehicle_ids_for_agency(agency.id)}
+    end
   end
   
   private
