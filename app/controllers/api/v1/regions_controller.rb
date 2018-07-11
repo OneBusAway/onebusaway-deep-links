@@ -25,7 +25,7 @@ class Api::V1::RegionsController < Api::V1::ApiController
     end
 
     # Go hit the API for data.
-    # [{id: "ID", name: "NAME", vehicles: ["vid1", "vid2", "vid3"]}]
+    # [{id: "ID", name: "NAME", vehicle_id: "vid1"}, {...}]
     agency_vehicle_maps = Rails.cache.fetch("region:#{@region.region_identifier}:agency_vehicles_maps", expires_in: 30.minutes, race_condition_ttl: 30.seconds) do
       @region.server.all_vehicles_in_region
     end
@@ -44,8 +44,8 @@ class Api::V1::RegionsController < Api::V1::ApiController
     agency_vehicle_maps.inject([]) do |acc, agency|
       if vehicles = agency[:vehicles]
         filtered = vehicles.select {|v| v.include?(query)}
-        if filtered.count > 0
-          acc << { id: agency[:id], name: agency[:name], vehicles: filtered }
+        filtered.each do |vid|
+          acc << { id: agency[:id], name: agency[:name], vehicle_id: vid }
         end
       end
       acc

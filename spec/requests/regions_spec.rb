@@ -39,7 +39,7 @@ describe Api::V1::RegionsController, type: :request do
     
     it "returns a list of active vehicle IDs" do
       json = JSON.parse(response.body)
-      expect(json).to eq([{"id"=>"98", "name"=>"Seattle Childrens Hospital", "vehicles"=>["98_224"]}])
+      expect(json).to eq([{"id"=>"98", "name"=>"Seattle Childrens Hospital", "vehicle_id"=>"98_224"}])
     end
   end
 end
