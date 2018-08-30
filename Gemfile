@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.3'
+ruby '2.5.0'
 
 # gem install nokogiri -v '1.6.8.1' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
 
@@ -28,7 +28,7 @@ gem 'rest-client', '~> 2.0'
 gem 'dotenv', '~> 2.1.1'
 gem 'awesome_print', '~> 1.7.0'
 gem 'feedjira', '~> 2.1.2'
-gem 'nokogiri', '~> 1.6.8.1'
+gem 'nokogiri', '~> 1.8.4'
 
 gem 'pr_geohash', '~>1.0.0'
 
