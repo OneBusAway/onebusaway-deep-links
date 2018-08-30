@@ -28,6 +28,9 @@ gem 'dotenv', '~> 2.1.1'
 gem 'awesome_print', '~> 1.7.0'
 gem 'feedjira', '~> 2.1.2'
 
+gem 'bcrypt', '~> 3.1.12'
+gem 'strip_attributes', '~>1.8.0'
+
 # gem install nokogiri -v '1.8.4' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
 gem 'nokogiri', '~> 1.8.4'
 
