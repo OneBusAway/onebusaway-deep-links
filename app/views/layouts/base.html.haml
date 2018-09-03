@@ -8,4 +8,5 @@
         = image_tag 'oba_logo.png', alt: 'OneBusAway Logo', title: "OneBusAway", height: "30"
         OneBusAway
     %div{class: fluid_container ? "container-fluid" : "container"}
+      = flash_messages
       = yield

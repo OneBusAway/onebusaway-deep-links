@@ -63,10 +63,28 @@ class Region < ApplicationRecord
   def to_param
     "#{self.region_identifier}-#{self.name.parameterize}"
   end
+  
+  ######
+  # Admins
+  ######
+  
+  has_many :admins, dependent: :destroy
+  
+  ######
+  # Server
+  ######
 
   def server
     @server ||= Server.new(self.api_url)
   end
+  
+  def agencies
+    @agencies ||= server.agencies_with_coverage
+  end
+  
+  ######
+  # Geometry
+  ######
   
   def bounding_rect
     @bounding_rect ||= begin
@@ -97,7 +115,4 @@ class Region < ApplicationRecord
     end
   end
   
-  def agencies
-    @agencies ||= server.agencies_with_coverage
-  end
 end

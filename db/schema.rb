@@ -20,9 +20,13 @@ ActiveRecord::Schema.define(version: 2018_08_30_180657) do
     t.string "name"
     t.string "password_digest"
     t.string "session_token"
+    t.integer "region_id"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["region_id"], name: "index_admins_on_region_id"
     t.index ["session_token"], name: "index_admins_on_session_token", unique: true
   end
 

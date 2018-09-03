@@ -2,8 +2,9 @@ class Admin < ApplicationRecord
   has_secure_password
   strip_attributes only: [:name, :email]
   
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-
+  
   def email=(val)
     sanitized = if val.nil?
       nil
@@ -12,6 +13,39 @@ class Admin < ApplicationRecord
     end
     write_attribute(:email, sanitized)
   end
+  
+  ######
+  # Creation
+  ######
+  
+  after_create :send_password_reset
+  
+  def self.create_admin!(name, email, region_id)
+    region = Region.find(region_id)
+    admin = region.admins.build
+    admin.name = name
+    admin.email = email
+    admin.password = SecureRandom.urlsafe_base64
+    admin.save!
+  end
+  
+  def send_password_reset
+    self.reset_sent_at = DateTime.now
+    self.reset_digest = SecureRandom.urlsafe_base64
+    self.save!
+    
+    UserMailer.password_reset(self)
+  end
+  
+  ######
+  # Regions
+  ######
+  
+  belongs_to :region
+  
+  ######
+  # Password Resets
+  ######
   
   ######
   # Sessions

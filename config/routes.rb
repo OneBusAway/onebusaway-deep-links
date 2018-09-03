@@ -35,6 +35,15 @@ Rails.application.routes.draw do
       end
     end
   end
+  
+  resource :admin, only: [:show, :update] do
+    get 'activate', on: :member
+    get 'reset_password', on: :member
+  end
+  
+  match 'admin/login' => 'admins#new_session', via: :get
+  match 'admin/login' => 'admins#create_session', via: :post
+  match 'admin/logout' => 'admins#destroy_session', via: :delete
 
 
   # Old, unversioned API+HTML
