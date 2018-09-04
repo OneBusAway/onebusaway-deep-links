@@ -43,8 +43,7 @@ Rails.application.routes.draw do
   
   match 'admin/login' => 'admins#new_session', via: :get
   match 'admin/login' => 'admins#create_session', via: :post
-  match 'admin/logout' => 'admins#destroy_session', via: :delete
-
+  match 'admin/logout' => 'admins#destroy_session', via: :get
 
   # Old, unversioned API+HTML
   resources :regions, only: [:index, :show] do
