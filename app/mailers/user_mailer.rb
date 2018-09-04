@@ -7,7 +7,6 @@ class UserMailer < ApplicationMailer
   #
   def password_reset(admin)
     @admin = admin
-
     mail to: @admin.email
   end
 end

@@ -27,6 +27,8 @@ class Admin < ApplicationRecord
     admin.email = email
     admin.password = SecureRandom.urlsafe_base64
     admin.save!
+    
+    admin
   end
   
   def send_password_reset
