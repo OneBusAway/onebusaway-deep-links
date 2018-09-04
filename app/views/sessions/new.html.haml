@@ -1,7 +1,4 @@
-- title "Log In"
-
-%h1 Log In
-= form_for :session, url: admin_login_path do |f|
+= form_for :session, url: login_path do |f|
   = f.label :email
   = f.email_field :email, class: 'form-control'
 

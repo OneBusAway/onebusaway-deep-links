@@ -51,9 +51,15 @@ class Admin < ApplicationRecord
   # Sessions
   ######
   
-  before_validation(on: :create) do
+  def generate_session_token
     generate_token(:session_token)
   end
+  
+  before_validation(on: :create) do
+    generate_session_token
+  end
+  
+  private
   
   def generate_token(column)
     begin

@@ -41,9 +41,10 @@ Rails.application.routes.draw do
     get 'reset_password', on: :member
   end
   
-  match 'admin/login' => 'admins#new_session', via: :get
-  match 'admin/login' => 'admins#create_session', via: :post
-  match 'admin/logout' => 'admins#destroy_session', via: :get
+  # Sessions
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 
   # Old, unversioned API+HTML
   resources :regions, only: [:index, :show] do

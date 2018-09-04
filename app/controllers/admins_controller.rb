@@ -1,19 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :admin_required, except: [:new_session, :create_session, :activate]
-  
-  def new_session
-  end
-  
-  def create_session
-    admin = Admin.find_by(email: params[:email].downcase)
-    if admin && admin.authenticate(params[:password])
-      set_current_admin(admin)
-      redirect_to admin_path, notice: "You are now logged in"
-    else
-      flash.now.alert = "Unable to log in. Check your email and password and try again"
-      render :new
-    end
-  end
+  before_action :admin_required, except: [:activate]
   
   def activate
     @admin = Admin.find_by(reset_digest: params[:code])
@@ -52,12 +38,7 @@ class AdminsController < ApplicationController
       render 'reset_password'
     end
   end
-  
-  def destroy_session
-    logout_admin
-    redirect_to root_path, notice: "You are now logged out."
-  end
-  
+
   def show
     @admin = current_admin
     @region = @admin.region
