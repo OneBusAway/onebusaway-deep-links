@@ -3,7 +3,7 @@ class AlertFeed < ApplicationRecord
   
   class AlertFeedDataMissingError < StandardError ; end
 
-  has_many :alert_feed_items
+  has_many :alert_feed_items, dependent: :destroy
   belongs_to :region
 
   # Subclasses of AlertFeed are responsible for implementing #fetch and calling #super afterwards

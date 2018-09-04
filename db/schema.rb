@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_180657) do
+ActiveRecord::Schema.define(version: 2018_09_04_165710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 2018_08_30_180657) do
     t.string "web_url"
     t.string "name"
     t.jsonb "bounds_list", default: "[]", null: false
+    t.integer "manual_feed_id"
+    t.index ["manual_feed_id"], name: "index_regions_on_manual_feed_id"
     t.index ["region_identifier"], name: "index_regions_on_region_identifier", unique: true
   end
 

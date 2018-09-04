@@ -14,8 +14,14 @@ class Region < ApplicationRecord
   validates_numericality_of :region_identifier
 
   has_many :alarms
-  has_many :alert_feeds
+  
+  ######
+  # Alert Feeds
+  ######
+  
+  has_many :alert_feeds, dependent: :destroy
   has_many :alert_feed_items, through: :alert_feeds
+  has_one :manual_feed, class_name: 'ManualAlertFeed'
 
   def to_param
     "#{self.region_identifier}-#{self.name.parameterize}"
