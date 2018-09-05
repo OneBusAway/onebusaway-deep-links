@@ -8,4 +8,10 @@ module AlertFeedItemsConcerns
     end
     conditions
   end
+  
+  def load_index_data(region)
+    return [] if region.nil?
+
+    region.alert_feed_items.includes(:alert_feed).where(condition_filters(params)).limit(20)
+  end
 end

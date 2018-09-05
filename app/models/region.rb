@@ -15,16 +15,21 @@ class Region < ApplicationRecord
 
   has_many :alarms
   
+  def to_param
+    "#{self.region_identifier}-#{self.name.parameterize}"
+  end
+  
   ######
   # Alert Feeds
   ######
   
   has_many :alert_feeds, dependent: :destroy
   has_many :alert_feed_items, through: :alert_feeds
-  has_one :manual_feed, class_name: 'ManualAlertFeed'
 
-  def to_param
-    "#{self.region_identifier}-#{self.name.parameterize}"
+  def manual_feed
+    return nil if manual_feed_id.nil?
+    
+    AlertFeed.find(manual_feed_id)
   end
   
   ######

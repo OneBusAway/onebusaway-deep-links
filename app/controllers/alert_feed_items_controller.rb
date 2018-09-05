@@ -1,5 +1,6 @@
 class AlertFeedItemsController < ApplicationController
   include AlertFeedItemsConcerns
+  before_action :admin_required, except: [:index, :items]
 
   def index
     # :-\ this is the result of a dumb decision i made here: 
@@ -7,7 +8,8 @@ class AlertFeedItemsController < ApplicationController
     # now I need to hack around it by keeping this action as-is for backwards compatibility reasons for now.
     request.format = :json
     
-    load_index_data
+    @region = Region.find_by(region_identifier: params[:region_id])
+    @items = load_index_data(@region)
     
     respond_to do |format|
       format.json
@@ -15,20 +17,28 @@ class AlertFeedItemsController < ApplicationController
   end
   
   def items
-    load_index_data
+    @items = load_index_data(@region)
     respond_to do |format|
-      format.html {render(layout: 'regions')}
+      format.html { render(layout: 'regions') }
     end
+  end
+  
+  def create
+    @manual_feed = current_admin.region.manual_feed
+    
+    if @manual_feed.nil?
+      redirect_to admin_path, error: "No manual feed has been created for #{current_admin.region.name} yet"
+      return
+    end
+    
+    @manual_feed.add_alert_item(permitted_params[:title], permitted_params[:summary], permitted_params[:url])
+    
+    redirect_to alerts_admin_path, notice: "Added alert to manual feed."
   end
     
   protected
-
-  def load_index_data
-    @region = Region.find_by(region_identifier: params[:region_id])
-    @items = if @region.nil?
-      []
-    else
-      @region.alert_feed_items.includes(:alert_feed).where(condition_filters(params)).limit(20)
-    end
+  
+  def permitted_params
+    params.require(:alert_feed_item).permit(:title, :summary, :url)
   end
 end

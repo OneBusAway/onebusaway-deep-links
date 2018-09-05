@@ -39,8 +39,11 @@ Rails.application.routes.draw do
   resource :admin, only: [:show, :update] do
     get 'activate', on: :member
     get 'reset_password', on: :member
+    get 'alerts', on: :member
   end
   
+  resources :alert_feed_items
+    
   # Sessions
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

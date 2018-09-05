@@ -1,0 +1,8 @@
+= form_for alert_feed_item do |f|
+  = f.label :title
+  = f.text_field :title, class: 'form-control'
+  = f.label :url
+  = f.text_field :url, class: 'form-control'
+  = f.label :summary
+  = f.text_area :summary, class: 'form-control'
+  = f.submit "Add Alert Feed Item"
