@@ -17,8 +17,8 @@ class GtfsMapper
   
   def self.active_period_from_alert(alert)
     active_period = TransitRealtime::TimeRange.new
-    active_period.start = alert.published_at.to_i
-    active_period.end = (alert.published_at.to_i + 8.hours).to_i
+    active_period.start = alert.starts_at.to_i
+    active_period.end = (alert.starts_at.to_i + 8.hours).to_i
 
     active_period
   end

@@ -28,7 +28,7 @@ RSpec.describe SoundTransitAlertFeed, type: :model do
         expect(last_feed_item.title).to_not be blank?
         expect(last_feed_item.url).to_not be blank?
         expect(last_feed_item.summary).to_not be blank?
-        expect(last_feed_item.published_at).to_not be blank?
+        expect(last_feed_item.starts_at).to_not be blank?
         expect(last_feed_item.external_id).to_not be blank?
       end
     end

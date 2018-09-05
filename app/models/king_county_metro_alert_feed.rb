@@ -6,7 +6,7 @@ class KingCountyMetroAlertFeed < AlertFeed
         item.title        = entry.title
         item.url          = entry.url
         item.summary      = parse_summary(entry.summary)
-        item.published_at = entry.published
+        item.starts_at    = entry.published
         item.external_id  = entry.entry_id
       end
     end

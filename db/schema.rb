@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_165710) do
+ActiveRecord::Schema.define(version: 2018_09_05_154744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,15 @@ ActiveRecord::Schema.define(version: 2018_09_04_165710) do
     t.string "title"
     t.string "url"
     t.text "summary"
-    t.datetime "published_at"
+    t.datetime "starts_at"
     t.string "external_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "priority", default: 0
+    t.boolean "test_item", default: false, null: false
+    t.datetime "ends_at"
+    t.integer "cause", default: 1, null: false
+    t.integer "effect", default: 8, null: false
     t.index ["alert_feed_id"], name: "index_alert_feed_items_on_alert_feed_id"
   end
 

@@ -11,7 +11,8 @@
           %th Pri
           %th Summary
           %th External ID
-          %th Published
+          %th Starts At
+          %th Ends At
           %th Created At
           %th Updated At
           %th Feed
@@ -25,8 +26,7 @@
               %p= truncate(i.summary, length: 500)
             %td= i.external_id
             %td
-              = time_ago_in_words i.published_at
+              = time_ago_in_words i.starts_at
               ago
-            %td= i.created_at
-            %td= i.updated_at
+            %td= i.ends_at
             %td= i.alert_feed.name

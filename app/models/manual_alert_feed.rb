@@ -11,7 +11,7 @@ class ManualAlertFeed < AlertFeed
       item.title        = title
       item.url          = url
       item.summary      = summary
-      item.published_at = DateTime.now
+      item.starts_at    = DateTime.now
       item.external_id  = url
       item.priority     = AlertFeedItem::HIGH_PRIORITY
     end
