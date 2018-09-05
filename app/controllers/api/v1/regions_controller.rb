@@ -9,6 +9,8 @@ class Api::V1::RegionsController < Api::V1::ApiController
   end
   
   def vehicles
+    record_pageview(@region, 'vehicles')
+    
     query = params[:query].try(:downcase).try(:strip)
 
     if query.nil? || query.length < 3

@@ -1,10 +1,13 @@
 class Api::V1::StopsController < Api::V1::ApiController
 
   def show
+    record_pageview(@region, 'stop')    
     redirect_to File.join(@region.web_url, "/where/standard/stop.action?id=#{params[:id]}")
   end
   
   def trips
+    record_pageview(@region, 'trips')
+    
     @stop_id = params[:stop_id]
     @trip_id = params[:trip_id]
     @service_date = params[:service_date]

@@ -7,6 +7,9 @@ gem 'pg', '~>1.0.0'
 gem 'puma', '~> 3.11.4'
 gem 'bootsnap', require: false
 
+gem 'redis', '~>4.0.2'
+gem 'redis-objects', '~>1.4.2'
+
 gem 'airbrake', '~>7.3.4'
 
 gem 'hamlit', '~>2.8.4'
