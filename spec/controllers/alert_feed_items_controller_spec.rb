@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe AlertFeedItemsController, type: :controller do
+  
+  describe '#items' do
+    let(:region) { create_puget_sound_region! }
+    before do
+      get :items, params: {region_id: region.to_param}
+    end
+    it 'loads successfully' do
+      expect(response.status).to eq(200)
+    end
+  end
+  
   describe '#index' do
     let(:region) { create_puget_sound_region! }
     let(:alert_feed) { create_puget_sound_manual_alert_feed(region) }
