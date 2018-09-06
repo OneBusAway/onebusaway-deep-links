@@ -60,5 +60,21 @@ describe Api::V1::AlertsController, type: :request do
         expect(@pb_alert.effect).to eq(8) # unknown
       end
     end
+
+    context 'with test flag passed in' do
+      before do
+        @test_item = alert_feed.add_alert_item("test title", "test summary", "http://example.com/test", true)
+        @live_item = alert_feed.add_alert_item("live title", "live summary", "http://example.com/live", false)
+        
+        get("/api/v1/regions/#{region.to_param}/alerts.pb", params: {test: '1'})
+        
+        msg = TransitRealtime::FeedMessage.parse(response.body)
+        @entities = msg.entity
+      end
+      
+      it "returns two entities" do
+        expect(@entities.count).to eq(2)
+      end
+    end
   end
 end

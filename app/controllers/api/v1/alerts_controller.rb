@@ -2,8 +2,12 @@ class Api::V1::AlertsController < Api::V1::ApiController
 
   def index
     record_pageview(@region, 'alerts')
-    
-    conditions = {test_item: false}
+
+    conditions = if params[:test].blank?
+      {test_item: false}
+    else
+      {}
+    end
 
     alerts = @region.alert_feed_items.where(conditions).includes(:alert_feed).order(starts_at: :desc).limit(20)
     pb_message = GtfsMapper.alerts_to_pb_message(alerts, Time.now.to_i)
