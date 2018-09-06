@@ -12,7 +12,4 @@ class Api::V1::ApiController < ApplicationController
     @region = Region.find_by!(region_identifier: region_id)
   end
   
-  def render_not_found_response(ex)
-    render json: { error: ex.message }, status: :not_found
-  end
 end
