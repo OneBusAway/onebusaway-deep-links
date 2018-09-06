@@ -21,8 +21,18 @@ RSpec.describe AlertFeedItemsController, type: :controller do
     end
     
     context 'when only live items exist' do
-      it 'fails' do
-        expect(0).to eq(1)
+      before do
+        @live_item1 = alert_feed.add_alert_item("live title 1", "live summary 1", "http://example.com/live1", false)
+        @live_item2 = alert_feed.add_alert_item("live title 2", "live summary 2", "http://example.com/live2", false)
+        
+        get :index, params: {region_id: region.region_identifier}
+      end
+
+      it 'returns both live items' do
+        json = JSON.parse(response.body)
+        expect(json.count).to eq(2)
+        expect(json.first['id']).to eq(@live_item2.id)
+        expect(json.last['id']).to eq(@live_item1.id)
       end
     end
   end
