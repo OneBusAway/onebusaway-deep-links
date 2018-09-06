@@ -3,7 +3,7 @@ require 'rails_helper'
 # abxoxo - todo fill me in!
 
 describe Api::V1::AlarmsController, type: :request do
-  
+
   describe "POST /api/v1/regions/:id/alarms" do
     context 'with a bad region ID' do
       before do

@@ -12,6 +12,7 @@ class SoundTransitAlertFeed < AlertFeed
         item.summary      = parse_summary(entry.summary)
         item.starts_at    = entry.published
         item.external_id  = entry_id
+        item.test_item    = false
       end
     end
     super

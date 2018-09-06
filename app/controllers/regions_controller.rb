@@ -1,7 +1,7 @@
 class RegionsController < ApplicationController
 
   def index
-    @regions = Region.all
+    @regions = Region.order(region_identifier: :asc)
     respond_to do |format|
       format.html { render(layout: 'application') }
     end

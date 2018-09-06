@@ -18,7 +18,12 @@ class GtfsMapper
   def self.active_period_from_alert(alert)
     active_period = TransitRealtime::TimeRange.new
     active_period.start = alert.starts_at.to_i
-    active_period.end = (alert.starts_at.to_i + 8.hours).to_i
+    
+    active_period.end = if alert.ends_at.nil?
+     (alert.starts_at.to_i + 8.hours).to_i
+   else
+     alert.ends_at.to_i
+   end
 
     active_period
   end
@@ -32,12 +37,10 @@ class GtfsMapper
     pb_alert.header_text = pb_english_translated_string(alert.title)
     pb_alert.description_text = pb_english_translated_string(alert.summary)
     pb_alert.active_period << active_period_from_alert(alert)
+    pb_alert.cause = alert.gtfs_cause
+    pb_alert.effect = alert.gtfs_effect
     
     return pb_alert
-
-    # Currently unsupported on the obaco side:
-    # optional ::TransitRealtime::Alert::Cause, :cause, 6, :default => ::TransitRealtime::Alert::Cause::UNKNOWN_CAUSE
-    # optional ::TransitRealtime::Alert::Effect, :effect, 7, :default => ::TransitRealtime::Alert::Effect::UNKNOWN_EFFECT
   end
   
   def self.alerts_to_pb_message(alerts, timestamp)

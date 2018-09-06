@@ -9,7 +9,7 @@ class AlertFeedItemsController < ApplicationController
     request.format = :json
     
     @region = Region.find_by(region_identifier: params[:region_id])
-    @items = load_index_data(@region)
+    @items = load_index_data(@region, true)
     
     respond_to do |format|
       format.json

@@ -14,5 +14,19 @@ module ModelsHelper
           web_url:           'http://www.example.com'
         )
   end
+  
+  def create_puget_sound_manual_alert_feed(region)
+    alert_feed = region.alert_feeds.build(
+      name: 'Puget Sound Alerts',
+      url: nil,
+      type: 'PugetSoundManualAlertFeed'
+    )
+    alert_feed.save!
+    
+    region.manual_feed_id = alert_feed.id
+    region.save!
+    
+    alert_feed
+  end
 end
 

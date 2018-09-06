@@ -1,8 +1,9 @@
-= form_for alert_feed_item do |f|
-  = f.label :title
-  = f.text_field :title, class: 'form-control'
-  = f.label :url
-  = f.text_field :url, class: 'form-control'
-  = f.label :summary
-  = f.text_area :summary, class: 'form-control'
-  = f.submit "Add Alert Feed Item"
+= bootstrap_form_for alert_feed_item do |f|
+  = f.text_field :title
+  = f.text_field :url
+  = f.text_area :summary
+  = f.select :cause, AlertFeedItem.causes.keys.map { |k| [k.humanize, k] }
+  = f.select :effect, AlertFeedItem.effects.keys.map { |k| [k.humanize, k] }
+  = f.check_box :test_item
+  %p.form-text.text-muted Test items are only visible to test app users. Uncheck this box to send the item out to all of your users.
+  = f.submit "Add Feed Item"

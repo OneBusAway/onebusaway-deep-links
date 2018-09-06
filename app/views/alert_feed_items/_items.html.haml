@@ -13,20 +13,25 @@
           %th External ID
           %th Starts At
           %th Ends At
-          %th Created At
-          %th Updated At
           %th Feed
       %tbody
         - @items.each do |i|
           %tr
-            %td= i.title
+            %td
+              = i.title
+              - if i.test_item
+                %br
+                %strong TEST MODE
             %td= i.priority
             %td
               %p.break-url= link_to i.url, i.url
               %p= truncate(i.summary, length: 500)
             %td= i.external_id
             %td
-              = time_ago_in_words i.starts_at
-              ago
-            %td= i.ends_at
+              = i.starts_at.strftime("%D %I:%M %p")
+            %td
+              - if i.ends_at
+                = i.starts_at.strftime("%D %I:%M %p")
+              - else
+                —
             %td= i.alert_feed.name

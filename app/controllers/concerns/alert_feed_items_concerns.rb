@@ -9,9 +9,15 @@ module AlertFeedItemsConcerns
     conditions
   end
   
-  def load_index_data(region)
+  def load_index_data(region, live_data_only = false)
     return [] if region.nil?
+    
+    opts = condition_filters(params)
+    
+    if live_data_only
+      opts[:test_item] = false
+    end
 
-    region.alert_feed_items.includes(:alert_feed).where(condition_filters(params)).limit(20)
+    region.alert_feed_items.includes(:alert_feed).where(opts).limit(20)
   end
 end

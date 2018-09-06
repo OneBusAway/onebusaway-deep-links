@@ -19,6 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.6'
 gem 'zooplankton', '~>1.3.0'
 
+gem 'bootstrap_form', ">= 4.0.0.alpha1"
+
 # Protocol Buffers
 # https://github.com/codekitchen/ruby-protocol-buffers
 gem 'ruby-protocol-buffers', '~>1.6.1'

@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 2018_09_05_154744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "priority", default: 0
-    t.boolean "test_item", default: false, null: false
+    t.boolean "test_item", default: true, null: false
     t.datetime "ends_at"
-    t.integer "cause", default: 1, null: false
-    t.integer "effect", default: 8, null: false
+    t.integer "cause", default: 0, null: false
+    t.integer "effect", default: 7, null: false
     t.index ["alert_feed_id"], name: "index_alert_feed_items_on_alert_feed_id"
   end
 
