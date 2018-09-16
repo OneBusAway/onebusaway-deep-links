@@ -9,7 +9,7 @@ module AlarmsConcerns
   
   def create_alarm_in_region(region)
     alarm = build_alarm_in_region(region)
-    render_alarm_creation_error(response) and return unless alarm.save
+    render_alarm_creation_error(response, alarm.errors.full_messages) and return unless alarm.save
     
     callback_url = build_callback_url(region, alarm)
 
@@ -18,8 +18,8 @@ module AlarmsConcerns
     render json: {url: region_alarm_url(region, alarm)}
   end
   
-  def render_alarm_creation_error(response)
-    render json: {error: "Unable to register alarm"}, status: response.status
+  def render_alarm_creation_error(response, errors = [])
+    render json: {error: "Unable to register alarm", messages: errors}, status: response.status
   end
   
   def build_alarm_in_region(region)
