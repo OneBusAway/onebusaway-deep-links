@@ -43,6 +43,8 @@ gem 'pr_geohash', '~>1.0.0'
 
 gem 'dalli', '~>2.7.8'
 
+gem 'mailgun-ruby', '~>1.1.10'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
