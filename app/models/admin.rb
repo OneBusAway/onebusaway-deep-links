@@ -36,7 +36,8 @@ class Admin < ApplicationRecord
     self.reset_digest = SecureRandom.urlsafe_base64
     self.save!
     
-    UserMailer.password_reset(self)
+    mailer = UserMailer.password_reset(self)
+    mailer.deliver_now
   end
   
   ######

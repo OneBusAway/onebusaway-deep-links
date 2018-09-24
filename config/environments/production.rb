@@ -71,6 +71,7 @@ Rails.application.configure do
     api_key: ENV['MAILGUN_API_KEY'],
     domain: 'onebusaway.co',
   }
+  config.action_mailer.default_url_options = { host: "www.onebusaway.co" }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
