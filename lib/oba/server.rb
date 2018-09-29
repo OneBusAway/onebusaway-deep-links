@@ -10,7 +10,7 @@ class Server
   ########################
   # Arrival and Departure
   ########################
-  
+
   def arrival_and_departure(args = {})
     response = RestClient.get(build_arrival_and_departure_url(args))
 
@@ -63,11 +63,11 @@ class Server
     url = build_url('current-time.json')
     RestClient.get(url, {params: build_params})
   end
-  
+
   ########################
   # Agencies
   ########################
-  
+
   def agencies_with_coverage
     url = build_url('agencies-with-coverage.json')
     begin
@@ -77,16 +77,16 @@ class Server
       puts $!
       return []
     end
-    
+
     json = JSON.parse(response.body)
     agencies = json['data']['references']['agencies']
     service_rects = json['data']['list']
-    
+
     agency_map = agencies.inject({}) do |acc, a|
       acc[a['id']] = Agency.from_json(a)
       acc
     end
-    
+
     service_rects.each do |sr|
       agency = agency_map[sr['agencyId']]
       agency.read_bounding_rect_from_json(sr) unless agency.nil?
@@ -94,7 +94,7 @@ class Server
 
     agency_map.values
   end
-    
+
   def vehicle_ids_for_agency(agency_id)
     encoded_id = URI.escape(agency_id)
     url = build_url("vehicles-for-agency/#{encoded_id}.json")
@@ -102,14 +102,14 @@ class Server
     json = JSON.parse(response.body)
     list = json['data']['list']
     list.collect {|v| v['vehicleId'] }
-  end 
-  
+  end
+
   def all_vehicles_in_region
     agencies_with_coverage.collect do |agency|
       {id: agency.id, name: agency.name, vehicles: vehicle_ids_for_agency(agency.id)}
     end
   end
-  
+
   private
 
   def build_params(params = {})
