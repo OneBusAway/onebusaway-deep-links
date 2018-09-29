@@ -32,5 +32,8 @@
               - else
                 = link_to af.url, af.url, target: "_blank"
             %td
-              = time_ago_in_words af.last_fetched
-              ago
+              - if af.last_fetched
+                = time_ago_in_words af.last_fetched
+                ago
+              - else
+                —
