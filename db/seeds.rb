@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require File.join(Rails.root, "lib/oba/regions.rb")
+
 begin
   Region.create!({
     region_identifier: 0,
@@ -130,3 +132,5 @@ begin
   })
 rescue
 end
+
+Regions.update_regions
