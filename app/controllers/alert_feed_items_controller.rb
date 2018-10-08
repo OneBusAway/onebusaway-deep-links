@@ -34,7 +34,17 @@ class AlertFeedItemsController < ApplicationController
       return
     end
 
-    @manual_feed.add_alert_item(permitted_params[:title], permitted_params[:summary], permitted_params[:url])
+    # Create the item
+    item = @manual_feed.alert_feed_items.build(permitted_params)
+    item.external_id = item.url
+    item.starts_at    = DateTime.now
+    item.priority     = AlertFeedItem::HIGH_PRIORITY
+    item.save!
+
+    # Poke the record's 'updated at' timestamp
+    @manual_feed.fetch()
+
+    # @manual_feed.add_alert_item(permitted_params[:title], permitted_params[:summary], permitted_params[:url], params[:test_item])
 
     redirect_to alerts_admin_path, notice: "Added alert to manual feed."
   end
