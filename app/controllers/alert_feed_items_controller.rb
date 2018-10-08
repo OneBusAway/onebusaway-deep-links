@@ -42,6 +42,6 @@ class AlertFeedItemsController < ApplicationController
   protected
 
   def permitted_params
-    params.require(:alert_feed_item).permit(:title, :summary, :url)
+    params.require(:alert_feed_item).permit(:title, :summary, :url, :cause, :effect, :test_item)
   end
 end

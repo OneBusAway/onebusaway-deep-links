@@ -3,11 +3,10 @@
 %p
   Hi #{@admin.name} - You are an admin for #{@region.name}.
 
-%p Stats are forthcoming!
+-#%p Stats are forthcoming!
 
 - if @manual_feed.nil?
   %p nil
 - else
   %p Add an item to the manual feed:
   = render 'alert_feed_items/form', alert_feed_item: @alert_feed_item
-  
