@@ -124,12 +124,17 @@ rescue
 end
 
 begin
-  Region.create!({
+  region = Region.create!({
     region_identifier: 11,
     api_url: "http://realtime.sdmts.com/api/",
     web_url: "http://realtime.sdmts.com/",
     name: "San Diego"
   })
+  region.alert_feeds.create!(
+    name: 'San Diego Alerts',
+    url: nil,
+    type: 'SanDiegoManualAlertFeed'
+  )
 rescue
 end
 
