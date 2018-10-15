@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'regions#index'
-  
+
   # Confusingly, the ids that are passed in to identify
   # regions are the id values present in the multiregion
   # file: http://regions.onebusaway.org/regions-v3.json
@@ -14,17 +14,17 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :regions, only: [:index] do
-        
+
         get 'vehicles', on: :member, defaults: {format: 'json'}
-        
+
         # Weather
         resource :weather, only: [:show]
-        
+
         # Stop Redirect/Trip Status
         resources :stops, only: [:show] do
           get 'trips'
         end
-        
+
         # Alarms
         resources :alarms, only: [:create, :destroy] do
           get 'callback'
@@ -35,19 +35,19 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   resource :admin, only: [:show, :update] do
     get 'activate', on: :member
     get 'reset_password', on: :member
     get 'alerts', on: :member
   end
-  
+
   resources :alert_feed_items
-    
+
   # Sessions
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get    '/logout',  to: 'sessions#destroy'
 
   # Old, unversioned API+HTML
   resources :regions, only: [:index, :show] do
