@@ -6,4 +6,4 @@
     - if admin_logged_in?
       %nav.my-2.my-md-0.mr-md-3
         = link_to current_admin.name, admin_path, class: 'p-2 text-light'
-        = link_to 'Log Out', logout_path, class: 'p-2 text-light'
+        = link_to 'Log Out', logout_path, method: :delete, class: 'p-2 text-light'
