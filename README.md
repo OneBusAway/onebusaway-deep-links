@@ -25,8 +25,30 @@ Service alerts involve the following models:
 
 Alert feeds are updated from their sources by running `rake update_alert_feeds`. In production, this is managed with the Heroku Scheduler add-on.
 
-### Endpoints
+### API Endpoint
 
-- `GET /regions/:region_id/alert_feeds` - Returns a JSON collection of `AlertFeed` objects.
-- `GET /regions/:region_id/alert_feed_items` - Returns a JSON collection of `AlertFeedItem` objects for the given `Region` id. Accepts a `since` parameter formatted as a UTC timestamp.  
-- `GET /alert_feeds/:id` - Returns a JSON collection of `AlertFeedItem` objects for the given `AlertFeed` id. Accepts a `since` parameter formatted as a UTC timestamp.  
+[GTFS-RT compliant alerts](https://developers.google.com/transit/gtfs-realtime/#data_format) are available in protobuf format from:
+
+```
+http://alerts.onebusaway.org/api/v1/regions/{region_id}/alerts.pb
+```
+
+where `region_id` is the region identifier defined in the [OBA Regions API](http://regions.onebusaway.org/regions-v3.json). For instance, Tampa is `0` and Puget Sound is `1`.
+
+A text version of alerts can be viewed by changing the URL's file extension from `pb` to `pbtext`. For instance:
+
+```
+http://alerts.onebusaway.org/api/v1/regions/1/alerts.pb
+```
+
+can be changed to:
+
+```
+http://alerts.onebusaway.org/api/v1/regions/1/alerts.pbtext
+```
+
+Append `?test=1` to the URL to view any test feed items that have been created:
+
+```
+http://alerts.onebusaway.org/api/v1/regions/1/alerts.pb?test=1
+```
