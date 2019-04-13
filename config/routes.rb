@@ -26,9 +26,7 @@ Rails.application.routes.draw do
         end
 
         # Alarms
-        resources :alarms, only: [:create, :destroy] do
-          get 'callback'
-        end
+        resources :alarms, only: [:create, :destroy]
 
         # Alerts
         resources :alerts, only: [:index], defaults: {format: 'pb'}
@@ -40,6 +38,7 @@ Rails.application.routes.draw do
     get 'activate', on: :member
     get 'reset_password', on: :member
     get 'alerts', on: :member
+    get 'alarms', on: :collection
   end
 
   resources :alert_feed_items
@@ -59,8 +58,6 @@ Rails.application.routes.draw do
     resources :stops, only: [:show] do
       get 'trips'
     end
-    resources :alarms, only: [:create, :destroy] do
-      get 'callback'
-    end
+    resources :alarms, only: [:create, :destroy]
   end
 end

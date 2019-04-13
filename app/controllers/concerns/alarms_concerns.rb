@@ -35,42 +35,14 @@ module AlarmsConcerns
       stop_sequence: params[:stop_sequence]
     })
   end
-  
-  def build_callback_url(region, alarm)
-    # TODO: make this less janky :-\
-    if Rails.env.production?
-      File.join("http://obaco.herokuapp.com", region_alarm_callback_path(region, alarm))
-    else
-      region_alarm_callback_url(region, alarm)
-    end
-  end
-  
+
   #############
   # Destruction
   #############
-  
+
   def destroy_alarm_with_token(token, region)
     alarm = region.alarms.find_by(secure_token: token)
     alarm.destroy unless alarm.nil?
-    head :ok
-  end
-  
-  ##############
-  # Callback
-  ##############
-
-  def perform_callback_for_alarm_id(alarm_id, region)
-    alarm = region.alarms.find_by(secure_token: alarm_id)
-
-    puts "Notification callback called for #{alarm}"
-
-    head(:ok) and return if alarm.nil?
-
-    client = OneSignal.new(ENV['ONESIGNAL_REST_API_KEY'], ENV['ONESIGNAL_APP_ID'])
-    client.send_message(alarm.push_identifier, alarm)
-
-    alarm.destroy
-
     head :ok
   end
 end

@@ -21,7 +21,6 @@ class Server
     arr_dep
   end
 
-
   def build_arrival_and_departure_url(args)
     params = build_params()
     params[:tripId] = args[:trip_id]
@@ -31,28 +30,6 @@ class Server
 
     url = build_url("arrival-and-departure-for-stop", args[:stop_id])
     "#{url}?#{params.to_param}"
-  end
-
-  ########################
-  # Alarms
-  ########################
-
-  def register_alarm(input_params, callback_url)
-    RestClient.get(build_alarm_url(input_params, callback_url))
-  end
-
-  def build_alarm_url(input_params, callback_url)
-    params = build_params()
-    params[:alarmTimeOffset] = input_params[:seconds_before] unless input_params[:seconds_before].blank?
-    params[:url] = callback_url
-    params[:tripId] = input_params[:trip_id]
-    params[:serviceDate] = input_params[:service_date]
-    params[:vehicleId] = input_params[:vehicle_id] unless input_params[:vehicle_id].blank?
-    params[:stopSequence] = input_params[:stop_sequence]
-
-    url = build_url("register-alarm-for-arrival-and-departure-at-stop", input_params[:stop_id])
-    url_with_params = "#{url}?#{params.to_param}"
-    return url_with_params
   end
 
   ########################
