@@ -1,34 +1,27 @@
-require_dependency 'oba/one_signal'
-
 module AlarmsConcerns
   extend ActiveSupport::Concern
-  
+
   ###########
   # Creation
   ###########
-  
+
   def create_alarm_in_region(region)
     alarm = build_alarm_in_region(region)
     render_alarm_creation_error(response, alarm.errors.full_messages) and return unless alarm.save
-    
-    callback_url = build_callback_url(region, alarm)
-
-    region.server.register_alarm(params, callback_url)
-
     render json: {url: region_alarm_url(region, alarm)}
   end
-  
+
   def render_alarm_creation_error(response, errors = [])
     render json: {error: "Unable to register alarm", messages: errors}, status: response.status
   end
-  
+
   def build_alarm_in_region(region)
     arrival_departure = region.server.arrival_and_departure(params)
 
     seconds = params[:seconds_before].to_i
     seconds = 600 unless seconds > 0
 
-    minutes = (params[:seconds_before].to_i / 60).to_i
+    minutes = (seconds / 60).to_i
     pluralized_minutes = "minute".pluralize(minutes)
     formatted_minutes = "#{minutes} #{pluralized_minutes}"
 

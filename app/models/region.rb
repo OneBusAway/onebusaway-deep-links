@@ -1,4 +1,3 @@
-require_dependency 'oba/server'
 require 'ostruct'
 
 # Confusingly, the ids that are passed in to identify

@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_dependency 'oba/server'
 
 RSpec.describe Server do
   context "with Tampa's API server" do

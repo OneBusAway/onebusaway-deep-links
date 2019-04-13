@@ -1,5 +1,3 @@
-require File.join(Rails.root, 'lib/oba/dark_sky')
-
 class Api::V1::WeatherController < Api::V1::ApiController
   def show
     record_pageview(@region, 'weather')
