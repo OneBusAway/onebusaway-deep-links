@@ -1,3 +1,4 @@
+
 class AlarmChecker
 
   # Checks to see if the referenced alarm should be triggered. (i.e. A push notification should be sent.)
@@ -6,10 +7,7 @@ class AlarmChecker
   # @param pusher [#send_message] (OneSignal.client) The object that will be used to send the push notification, if required.
   def self.check_alarm(id:, pusher: OneSignal.client)
     alarm = Alarm.find(id)
-
-    if alarm.nil?
-      return
-    end
+    return if alarm.nil?
 
     arr_dep = fetch_arr_dep(alarm)
     if alarm.seconds_before < arr_dep.seconds_until_departure
@@ -17,11 +15,8 @@ class AlarmChecker
     end
 
     if arr_dep.seconds_until_departure < 0
-      # TODO
-      # if the vehicle departure has already occurred, log an error (or something)
-      # and just delete the alarm.
       alarm.destroy
-      return
+      raise PastDueAlarmTriggeredError, "An alarm in #{alarm.region_id} was triggered after its due date. seconds_before: #{alarm.seconds_before}, Late by: #{arr_dep.seconds_until_departure} (+ the seconds_before value.)"
     end
 
     pusher.send_message(alarm.push_identifier, alarm)

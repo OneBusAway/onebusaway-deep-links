@@ -1,9 +1,5 @@
 require 'json'
 
-module OBAErrors
-  class EmptyResponse < StandardError ; end
-end
-
 class Server
   attr_accessor :api_base_url
 
@@ -26,7 +22,7 @@ class Server
     url = build_arrival_and_departure_url(args)
     response = RestClient.get(url)
 
-    raise OBAErrors::EmptyResponse if response.body.blank?
+    raise OBAErrors::EmptyServerResponse if response.body.blank?
 
     json = JSON.parse(response.body)
     arr_dep = ArrivalDeparture.from_json(json['data']['entry'])
