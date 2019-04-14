@@ -35,6 +35,17 @@ class Server
     arr_dep
   end
 
+  def build_arrival_and_departure_url(args)
+    params = build_params()
+    params[:tripId] = args[:trip_id]
+    params[:serviceDate] = args[:service_date]
+    params[:vehicleId] = args[:vehicle_id] unless args[:vehicle_id].blank?
+    params[:stopSequence] = args[:stop_sequence]
+
+    url = build_url("arrival-and-departure-for-stop", args[:stop_id])
+    "#{url}?#{params.to_param}"
+  end
+
   ########################
   # Current Time
   ########################
@@ -91,17 +102,6 @@ class Server
   end
 
   private
-
-    def build_arrival_and_departure_url(args)
-      params = build_params()
-      params[:tripId] = args[:trip_id]
-      params[:serviceDate] = args[:service_date]
-      params[:vehicleId] = args[:vehicle_id] unless args[:vehicle_id].blank?
-      params[:stopSequence] = args[:stop_sequence]
-
-      url = build_url("arrival-and-departure-for-stop", args[:stop_id])
-      "#{url}?#{params.to_param}"
-    end
 
     def build_params(params = {})
       params[:key] = "org.onebusaway.iphone"
