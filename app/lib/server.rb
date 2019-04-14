@@ -17,12 +17,12 @@ class Server
 
   # Requests data from the `arrival-and-departure-for-stop/{stop_id}.json` endpoint.
   #
-  # @option args [Integer] :service_date
-  # @option args [String] :stop_id
-  # @option args [Integer] :stop_sequence
-  # @option args [String] :trip_id
-  # @option args [String] :vehicle_id ('')
-  def arrival_and_departure(args = {})
+  # @param service_date [Integer]
+  # @param stop_id [String]
+  # @param stop_sequence [Integer]
+  # @param trip_id [String]
+  # @param vehicle_id [String] (`nil`)
+  def arrival_and_departure(stop_id:, service_date:, stop_sequence:, trip_id:, vehicle_id:)
     url = build_arrival_and_departure_url(args)
     response = RestClient.get(url)
 

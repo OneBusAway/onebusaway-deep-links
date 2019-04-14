@@ -35,13 +35,13 @@ class AlarmChecker
       region = alarm.region
       server = region.server
 
-      arr_dep = server.arrival_and_departure({
+      arr_dep = server.arrival_and_departure(
         stop_id: alarm.stop_id,
         trip_id: alarm.trip_id,
         service_date: alarm.service_date,
         vehicle_id: alarm.vehicle_id,
         stop_sequence: alarm.stop_sequence
-      })
+      )
 
       return arr_dep
     end
