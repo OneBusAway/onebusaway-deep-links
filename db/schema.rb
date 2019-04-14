@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_154744) do
+ActiveRecord::Schema.define(version: 2019_04_13_201949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_154744) do
     t.bigint "service_date"
     t.string "vehicle_id"
     t.integer "stop_sequence"
+    t.integer "seconds_before", default: 600, null: false
     t.index ["push_identifier"], name: "index_alarms_on_push_identifier"
     t.index ["region_id"], name: "index_alarms_on_region_id"
     t.index ["secure_token"], name: "index_alarms_on_secure_token", unique: true

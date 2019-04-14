@@ -15,19 +15,21 @@ gem 'airbrake', '~>7.3.4'
 gem 'hamlit', '~>2.8.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'bootstrap_form', ">= 4.0.0.alpha1"
 
+# API
 gem 'jbuilder', '~> 2.6'
 gem 'zooplankton', '~>1.3.0'
+gem 'rest-client', '~> 2.0'
 
-gem 'bootstrap_form', ">= 4.0.0.alpha1"
+# Jobs
+gem 'clockwork', '~>2.0.3'
+gem 'sidekiq', '~>5.2.6'
 
 # Protocol Buffers
 # https://github.com/codekitchen/ruby-protocol-buffers
 gem 'ruby-protocol-buffers', '~>1.6.1'
 gem 'varint', '~>0.1.1'
-
-# API client builder
-gem 'rest-client', '~> 2.0'
 
 gem 'dotenv', '~> 2.1.1'
 gem 'awesome_print', '~> 1.7.0'

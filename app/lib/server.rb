@@ -1,5 +1,9 @@
 require 'json'
 
+module OBAErrors
+  class EmptyResponse < StandardError ; end
+end
+
 class Server
   attr_accessor :api_base_url
 
@@ -11,25 +15,24 @@ class Server
   # Arrival and Departure
   ########################
 
+  # Requests data from the `arrival-and-departure-for-stop/{stop_id}.json` endpoint.
+  #
+  # @option args [Integer] :service_date
+  # @option args [String] :stop_id
+  # @option args [Integer] :stop_sequence
+  # @option args [String] :trip_id
+  # @option args [String] :vehicle_id ('')
   def arrival_and_departure(args = {})
-    response = RestClient.get(build_arrival_and_departure_url(args))
+    url = build_arrival_and_departure_url(args)
+    response = RestClient.get(url)
+
+    raise OBAErrors::EmptyResponse if response.body.blank?
 
     json = JSON.parse(response.body)
     arr_dep = ArrivalDeparture.from_json(json['data']['entry'])
+    arr_dep.current_server_time = json["currentTime"]
     arr_dep.server_response = response
-
     arr_dep
-  end
-
-  def build_arrival_and_departure_url(args)
-    params = build_params()
-    params[:tripId] = args[:trip_id]
-    params[:serviceDate] = args[:service_date]
-    params[:vehicleId] = args[:vehicle_id] unless args[:vehicle_id].blank?
-    params[:stopSequence] = args[:stop_sequence]
-
-    url = build_url("arrival-and-departure-for-stop", args[:stop_id])
-    "#{url}?#{params.to_param}"
   end
 
   ########################
@@ -89,23 +92,34 @@ class Server
 
   private
 
-  def build_params(params = {})
-    params[:key] = "org.onebusaway.iphone"
-    params[:app_uid] = "C071187D-67E0-458C-A1DA-CADE062AE667"
-    params[:app_ver] = "20170105.12"
-    params[:version] = "2"
+    def build_arrival_and_departure_url(args)
+      params = build_params()
+      params[:tripId] = args[:trip_id]
+      params[:serviceDate] = args[:service_date]
+      params[:vehicleId] = args[:vehicle_id] unless args[:vehicle_id].blank?
+      params[:stopSequence] = args[:stop_sequence]
 
-    params
-  end
-
-  def build_url(endpoint, resource = nil)
-    parts = [self.api_base_url, "api", "where", endpoint]
-
-    unless resource.nil?
-      encoded_resource = ERB::Util.url_encode(resource)
-      parts << "#{encoded_resource}.json"
+      url = build_url("arrival-and-departure-for-stop", args[:stop_id])
+      "#{url}?#{params.to_param}"
     end
 
-    File.join(*parts)
-  end
+    def build_params(params = {})
+      params[:key] = "org.onebusaway.iphone"
+      params[:app_uid] = "C071187D-67E0-458C-A1DA-CADE062AE667"
+      params[:app_ver] = "20170105.12"
+      params[:version] = "2"
+
+      params
+    end
+
+    def build_url(endpoint, resource = nil)
+      parts = [self.api_base_url, "api", "where", endpoint]
+
+      unless resource.nil?
+        encoded_resource = ERB::Util.url_encode(resource)
+        parts << "#{encoded_resource}.json"
+      end
+
+      File.join(*parts)
+    end
 end

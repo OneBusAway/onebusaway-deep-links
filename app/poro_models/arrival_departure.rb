@@ -5,6 +5,7 @@ class ArrivalDeparture
   attr_accessor :server_response
   attr_accessor :predicted_departure_time
   attr_accessor :scheduled_departure_time
+  attr_accessor :current_server_time
 
   def self.from_json(hash)
     ad = ArrivalDeparture.new
@@ -33,6 +34,15 @@ class ArrivalDeparture
     else
       self.scheduled_departure_time
     end
+  end
+
+  # Returns the number of seconds until the departure occurs.
+  # Positive numbers indicate that the departure occurs in the future.
+  # Negative numbers indicate that the departure occurred in the past.
+  #
+  # @Return [Integer] The number of seconds until departure.
+  def seconds_until_departure
+    (best_departure_time - current_server_time) / 1000
   end
 
   # arrivalEnabled

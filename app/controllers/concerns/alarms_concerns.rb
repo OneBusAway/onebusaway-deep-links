@@ -32,7 +32,8 @@ module AlarmsConcerns
       trip_id: params[:trip_id],
       service_date: params[:service_date],
       vehicle_id: params[:vehicle_id],
-      stop_sequence: params[:stop_sequence]
+      stop_sequence: params[:stop_sequence],
+      seconds_before: seconds
     })
   end
 
