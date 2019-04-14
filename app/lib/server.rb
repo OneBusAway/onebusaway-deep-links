@@ -3,8 +3,8 @@ require 'json'
 class Server
   attr_accessor :api_base_url
 
-  def initialize(api_base_url)
-    self.api_base_url = api_base_url
+  def initialize(api_url)
+    self.api_base_url = api_url
   end
 
   ########################
@@ -19,7 +19,7 @@ class Server
   # @param trip_id [String]
   # @param vehicle_id [String] (`nil`)
   def arrival_and_departure(stop_id:, service_date:, stop_sequence:, trip_id:, vehicle_id:)
-    url = build_arrival_and_departure_url(args)
+    url = build_arrival_and_departure_url(stop_id: stop_id, service_date: service_date, stop_sequence: stop_sequence, trip_id: trip_id, vehicle_id: vehicle_id)
     response = RestClient.get(url)
 
     raise OBAErrors::EmptyServerResponse if response.body.blank?
@@ -31,14 +31,19 @@ class Server
     arr_dep
   end
 
-  def build_arrival_and_departure_url(args)
+  # @param service_date [Integer]
+  # @param stop_id [String]
+  # @param stop_sequence [Integer]
+  # @param trip_id [String]
+  # @param vehicle_id [String] (`nil`)
+  def build_arrival_and_departure_url(stop_id:, stop_sequence:, service_date:, trip_id:, vehicle_id: nil)
     params = build_params()
-    params[:tripId] = args[:trip_id]
-    params[:serviceDate] = args[:service_date]
-    params[:vehicleId] = args[:vehicle_id] unless args[:vehicle_id].blank?
-    params[:stopSequence] = args[:stop_sequence]
+    params[:tripId] = trip_id
+    params[:serviceDate] = service_date
+    params[:vehicleId] = vehicle_id unless vehicle_id.blank?
+    params[:stopSequence] = stop_sequence
 
-    url = build_url("arrival-and-departure-for-stop", args[:stop_id])
+    url = build_url("arrival-and-departure-for-stop", stop_id)
     "#{url}?#{params.to_param}"
   end
 
