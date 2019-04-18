@@ -5,7 +5,7 @@ class AlarmsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def create
-    create_alarm_in_region(region: @region, params: params)
+    create_alarm(params: params)
   end
 
   def destroy

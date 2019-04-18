@@ -1,8 +1,5 @@
 require 'rails_helper'
 
-# abxoxo - todo - refactor functionality in AlarmsConcerns into a separate
-# class that i can directly test.
-
 RSpec.describe Api::V1::AlarmsController, type: :controller do
   let(:region) { create_puget_sound_region! }
 
