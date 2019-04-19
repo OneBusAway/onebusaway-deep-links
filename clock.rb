@@ -8,5 +8,6 @@ module Clockwork
     "#{job}".constantize.perform_later
   end
 
+  puts "Starting AlarmQueuerJob at 1 minute intervals."
   every(1.minute, 'AlarmQueuerJob')
 end
