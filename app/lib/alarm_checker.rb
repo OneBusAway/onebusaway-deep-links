@@ -20,6 +20,7 @@ class AlarmChecker
       raise OBAErrors::PastDueAlarmTriggeredError, "An alarm in Region #{@alarm.region_id} was triggered after its due date. seconds_before: #{@alarm.seconds_before}, Late by: #{arr_dep.seconds_until_departure} (+ the seconds_before value.)"
     end
 
+    puts "Alarm #{@alarm.id} has been triggered. (Seconds Before: #{@alarm.seconds_before} // Time til Departure: #{arr_dep.seconds_until_departure}) Sending a push notification."
     @pusher.send_message(@alarm.push_identifier, @alarm)
 
     @alarm.destroy
