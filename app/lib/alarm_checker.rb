@@ -13,7 +13,11 @@ class AlarmChecker
   # (i.e. A push notification should be sent.)
   def check_alarm()
     arr_dep = fetch_arr_dep(@alarm)
-    return if @alarm.seconds_before < arr_dep.seconds_until_departure
+
+    if @alarm.seconds_before < arr_dep.seconds_until_departure
+      puts "Alarm #{@alarm.id} is not ready to fire yet. #{arr_dep.seconds_until_departure - @alarm.seconds_before} seconds remain."
+      return
+    end
 
     if arr_dep.seconds_until_departure < 0
       @alarm.destroy
