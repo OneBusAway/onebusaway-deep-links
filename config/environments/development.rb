@@ -13,7 +13,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   config.active_job.queue_adapter     = :sidekiq
-  config.active_job.queue_name_prefix = "obaco_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "obaco_#{Rails.env}"
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
