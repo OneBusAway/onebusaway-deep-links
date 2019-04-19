@@ -1,6 +1,7 @@
 %table.table
   %thead
     %tr
+      %th ID
       %th Region
       %th Push ID/Message
       %th Stop ID
@@ -12,6 +13,7 @@
   %tbody
     - @alarms.each do |a|
       %tr
+        %td= a.id
         %td= a.region.name
         %td
           = a.message

@@ -10,6 +10,7 @@ class OneSignal
   end
 
   def initialize(api_key, app_id)
+    raise "Unable to start Push Client" if api_key.blank? || app_id.blank?
     self.api_key = api_key
     self.app_id = app_id
   end
