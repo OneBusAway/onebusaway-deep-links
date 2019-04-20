@@ -1,4 +1,5 @@
 namespace :obaco do
+
   desc 'This task is called by the Heroku scheduler add-on'
   task :update_alert_feeds => :environment do
     puts 'Updating alert feeds'
@@ -7,5 +8,13 @@ namespace :obaco do
       feed.fetch_if_necessary
     end
     puts 'Done updating alert feeds'
+  end
+
+  # This task runs every ten minutes, so we set up
+  # ten separate jobs to run one minute apart.
+  desc 'Enqueues jobs to enqueue alarms.'
+  task :queue_alarms => :environment do
+    puts "Enqueueing alarms via cron"
+    10.times {|i| AlarmQueuerJob.perform_in(i.minutes)}
   end
 end
