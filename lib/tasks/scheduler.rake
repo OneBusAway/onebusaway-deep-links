@@ -17,6 +17,6 @@ namespace :obaco do
   desc 'Enqueues jobs to enqueue alarms.'
   task :queue_alarms => :environment do
     puts "Enqueueing alarms via cron"
-    10.times {|i| AlarmQueuerWorker.perform_in(i.minutes, {})}
+    10.times {|i| AlarmQueuerWorker.perform_in(i.minutes)}
   end
 end
