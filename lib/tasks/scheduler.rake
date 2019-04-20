@@ -1,3 +1,5 @@
+require 'sidekiq'
+
 namespace :obaco do
 
   desc 'This task is called by the Heroku scheduler add-on'
@@ -15,6 +17,6 @@ namespace :obaco do
   desc 'Enqueues jobs to enqueue alarms.'
   task :queue_alarms => :environment do
     puts "Enqueueing alarms via cron"
-    10.times {|i| AlarmQueuerJob.perform_in(i.minutes)}
+    10.times {|i| AlarmQueuerWorker.perform_in(i.minutes, {})}
   end
 end
