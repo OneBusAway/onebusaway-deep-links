@@ -41,11 +41,13 @@ Airbrake.configure do |c|
   # https://github.com/airbrake/airbrake-ruby#ignore_environments
   c.ignore_environments = %w(test development)
 
+  c.performance_stats = true
+
   # A list of parameters that should be filtered out of what is sent to
   # Airbrake. By default, all "password" attributes will have their contents
   # replaced.
   # https://github.com/airbrake/airbrake-ruby#blacklist_keys
-  c.blacklist_keys = [/password/i, /authorization/i]
+  c.blacklist_keys = [/password/i, /authorization/i, /session/i, /reset_digest/i, /secure_token/i]
 
   # Alternatively, you can integrate with Rails' filter_parameters.
   # Read more: https://goo.gl/gqQ1xS

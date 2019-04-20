@@ -10,7 +10,7 @@ gem 'bootsnap', require: false
 gem 'redis', '~>4.0.2'
 gem 'redis-objects', '~>1.4.2'
 
-gem 'airbrake', '~>7.3.4'
+gem 'airbrake', '~>9.1.0'
 
 gem 'hamlit', '~>2.8.4'
 gem 'sass-rails', '~> 5.0'
