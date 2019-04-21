@@ -2,7 +2,6 @@ class ArrivalDeparture
 
   attr_accessor :route_short_name
   attr_accessor :trip_headsign
-  attr_accessor :server_response
   attr_accessor :predicted_departure_time
   attr_accessor :scheduled_departure_time
   attr_accessor :current_server_time

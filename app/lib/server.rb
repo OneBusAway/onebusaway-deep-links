@@ -27,8 +27,7 @@ class Server
     json = JSON.parse(response.body)
     arr_dep = ArrivalDeparture.from_json(json['data']['entry'])
     arr_dep.current_server_time = json["currentTime"]
-    arr_dep.server_response = response
-    arr_dep
+    return arr_dep
   end
 
   # @param service_date [Integer]

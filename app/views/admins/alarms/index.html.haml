@@ -15,7 +15,7 @@
       %tbody
         - @alarms.each do |a|
           %tr
-            %td= a.id
+            %td= link_to a.id, admin_alarm_path(a.id)
             %td= a.region.name
             %td
               = a.message

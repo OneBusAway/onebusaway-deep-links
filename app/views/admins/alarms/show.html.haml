@@ -1,0 +1,60 @@
+- title "Alarm in #{@alarm.region.name}"
+
+.row
+  .col
+    %table.table.table-sm.table-striped
+      %thead
+        %tr
+          %th{colspan: "2"} Alarm Data
+      %tbody
+        %tr
+          %td{style: 'width: 250px'} ID
+          %td= @alarm.id
+        %tr
+          %td Created at
+          %td= local_time @alarm.created_at
+        %tr
+          %td Region
+          %td= @alarm.region.name
+        %tr
+          %td Push ID
+          %td= @alarm.push_identifier
+        %tr
+          %td Message
+          %td= @alarm.message
+        %tr
+          %td Stop ID
+          %td= @alarm.stop_id
+        %tr
+          %td Trip ID
+          %td= @alarm.trip_id
+        %tr
+          %td Service date
+          %td= Time.at(@alarm.service_date / 1000.0).strftime("%m-%d-%Y")
+        %tr
+          %td Vehicle ID
+          %td= value_or_blank_rep(@alarm.vehicle_id)
+        %tr
+          %td Stop Sequence
+          %td= @alarm.stop_sequence
+
+.row
+  .col
+    %table.table.table-sm.table-striped
+      %thead
+        %tr
+          %th{colspan: "2"} Arrival/Departure
+      %tbody
+        %tr
+          %td{style: 'width: 250px'} Name with Headsign
+          %td= @arr_dep.name_with_headsign
+        %tr
+          %td Seconds until departure
+          %td
+            = @arr_dep.seconds_until_departure
+        %tr
+          %td Best departure time
+          %td= local_time Time.at(@arr_dep.best_departure_time / 1000.0)
+        %tr
+          %td Current server time
+          %td= local_time Time.at(@arr_dep.current_server_time / 1000.0)

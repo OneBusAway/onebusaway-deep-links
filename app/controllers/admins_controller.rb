@@ -2,10 +2,6 @@ class AdminsController < ApplicationController
   include AlertFeedItemsConcerns
   before_action :admin_required, except: [:activate]
 
-  def alarms
-    @alarms = Alarm.order(created_at: :desc).includes(:region)
-  end
-
   def activate
     @admin = Admin.find_by(reset_digest: params[:code])
 

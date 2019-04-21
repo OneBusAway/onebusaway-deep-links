@@ -39,10 +39,12 @@ Rails.application.routes.draw do
   end
 
   resource :admin, only: [:show, :update] do
+    scope module: 'admins' do
+      resources :alarms, only: [:index, :show]
+    end
     get 'activate', on: :member
     get 'reset_password', on: :member
     get 'alerts', on: :member
-    get 'alarms', on: :collection
   end
 
   resources :alert_feed_items
