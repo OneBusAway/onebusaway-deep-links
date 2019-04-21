@@ -16,6 +16,7 @@ gem 'hamlit', '~>2.8.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap_form', ">= 4.0.0.alpha1"
+gem 'local_time', '~>2.1.0'
 
 # API
 gem 'jbuilder', '~> 2.6'

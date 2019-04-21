@@ -1,27 +1,29 @@
-%table.table
-  %thead
-    %tr
-      %th ID
-      %th Region
-      %th Push ID/Message
-      %th Stop ID
-      %th Trip ID
-      %th Service Date
-      %th Vehicle ID
-      %th Stop Sequence
-      %th Created At
-  %tbody
-    - @alarms.each do |a|
-      %tr
-        %td= a.id
-        %td= a.region.name
-        %td
-          = a.message
-          %br
-          = a.push_identifier
-        %td= a.stop_id
-        %td= a.trip_id
-        %td= Time.at(a.service_date / 1000.0)
-        %td= a.vehicle_id
-        %td= a.stop_sequence
-        %td= a.created_at
+.col
+  .row
+    %table.table.table-striped.table-sm
+      %thead
+        %tr
+          %th ID
+          %th Region
+          %th Push ID/Message
+          %th Stop ID
+          %th Trip ID
+          %th Service Date
+          %th Vehicle ID
+          %th Stop Sequence
+          %th Created At
+      %tbody
+        - @alarms.each do |a|
+          %tr
+            %td= a.id
+            %td= a.region.name
+            %td
+              = a.message
+              %br
+              = a.push_identifier
+            %td= a.stop_id
+            %td= a.trip_id
+            %td= Time.at(a.service_date / 1000.0).strftime("%m-%d-%Y")
+            %td= value_or_blank_rep(a.vehicle_id)
+            %td= a.stop_sequence
+            %td= local_time a.created_at
