@@ -23,7 +23,6 @@ gem 'zooplankton', '~>1.3.0'
 gem 'rest-client', '~> 2.0'
 
 # Jobs
-gem 'clockwork', '~>2.0.3'
 gem 'sidekiq', '~>5.2.6'
 
 # Protocol Buffers

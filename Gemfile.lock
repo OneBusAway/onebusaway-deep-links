@@ -58,8 +58,6 @@ GEM
       rails (>= 5.0)
     builder (3.2.3)
     byebug (10.0.2)
-    clockwork (2.0.3)
-      tzinfo
     concurrent-ruby (1.0.5)
     connection_pool (2.2.2)
     crack (0.4.3)
@@ -263,7 +261,6 @@ DEPENDENCIES
   bootsnap
   bootstrap_form (>= 4.0.0.alpha1)
   byebug
-  clockwork (~> 2.0.3)
   dalli (~> 2.7.8)
   dotenv (~> 2.1.1)
   feedjira (~> 2.1.2)
