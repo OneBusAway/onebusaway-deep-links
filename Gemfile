@@ -7,10 +7,10 @@ gem 'pg', '~>1.0.0'
 gem 'puma', '~> 3.11.4'
 gem 'bootsnap', require: false
 
+gem 'raygun4ruby', '~>3.2.1'
+
 gem 'redis', '~>4.0.2'
 gem 'redis-objects', '~>1.4.2'
-
-gem 'airbrake', '~>9.1.0'
 
 gem 'hamlit', '~>2.8.4'
 gem 'sass-rails', '~> 5.0'
