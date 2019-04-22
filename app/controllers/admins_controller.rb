@@ -1,5 +1,4 @@
 class AdminsController < ApplicationController
-  include AlertFeedItemsConcerns
   before_action :admin_required, except: [:activate]
 
   def activate
@@ -48,10 +47,6 @@ class AdminsController < ApplicationController
     unless @manual_feed.nil?
       @alert_feed_item = @manual_feed.alert_feed_items.build
     end
-  end
-
-  def alerts
-    @items = load_index_data(current_admin.region)
   end
 
   protected

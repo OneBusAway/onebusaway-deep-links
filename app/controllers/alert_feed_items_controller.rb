@@ -46,7 +46,7 @@ class AlertFeedItemsController < ApplicationController
 
     # @manual_feed.add_alert_item(permitted_params[:title], permitted_params[:summary], permitted_params[:url], params[:test_item])
 
-    redirect_to alerts_admin_path, notice: "Added alert to manual feed."
+    redirect_to admin_alerts_path, notice: "Added alert to manual feed."
   end
 
   protected
