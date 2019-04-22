@@ -7,31 +7,35 @@
     %table.table
       %thead
         %tr
+          %th Feed/ID
           %th Title
           %th Pri
           %th Summary
-          %th External ID
           %th Starts At
           %th Ends At
-          %th Feed
       %tbody
         - @items.each do |i|
           %tr
+            %td
+              %p{style: 'width: 100px; overflow-x: hidden', title: "#{i.alert_feed.name}/#{i.external_id}"}
+                #{i.alert_feed.name}/#{i.external_id}
             %td
               = i.title
               - if i.test_item
                 %br
                 %strong TEST MODE
+              - if admin_logged_in?
+                %p
+                  = link_to 'Edit Alert', edit_alert_feed_item_path(i), class: 'btn btn-primary btn-sm'
+                  %br
+                  = button_to 'Delete Alert', i, method: :delete, data: {confirm: "Are you sure you want to delete this?"}, class: 'btn btn-danger btn-sm'
             %td= i.priority
             %td
               %p.break-url= link_to i.url, i.url
               %p= truncate(i.summary, length: 500)
-            %td= i.external_id
-            %td
-              = i.starts_at.strftime("%D %I:%M %p")
+            %td= i.starts_at.strftime("%D %I:%M %p")
             %td
               - if i.ends_at
-                = i.starts_at.strftime("%D %I:%M %p")
+                = i.ends_at.strftime("%D %I:%M %p")
               - else
                 —
-            %td= i.alert_feed.name

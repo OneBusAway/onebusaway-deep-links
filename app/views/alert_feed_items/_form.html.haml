@@ -6,4 +6,6 @@
   = f.select :effect, AlertFeedItem.effects.keys.map { |k| [k.humanize, k] }
   = f.check_box :test_item
   %p.form-text.text-muted Test items are only visible to test app users. Uncheck this box to send the item out to all of your users.
-  = f.submit "Add Feed Item"
+  = f.submit "Save", class: "btn btn-primary"
+  or
+  = link_to 'Cancel', :back

@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require local-time
+//= require rails-ujs
 //= require_tree .

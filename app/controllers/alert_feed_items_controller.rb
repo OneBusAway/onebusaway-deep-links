@@ -49,6 +49,25 @@ class AlertFeedItemsController < ApplicationController
     redirect_to admin_alerts_path, notice: "Added alert to manual feed."
   end
 
+  def edit
+    @item = AlertFeedItem.find(params[:id])
+  end
+
+  def update
+    @item = AlertFeedItem.find(params[:id])
+    if @item.update_attributes(permitted_params)
+      redirect_to admin_alerts_path, note: "Updated alert feed item: #{@item.title}."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @item = AlertFeedItem.find(params[:id])
+    @item.destroy
+    redirect_to admin_alerts_path, note: "Deleted alert feed item: #{@item.title}."
+  end
+
   protected
 
   def permitted_params
