@@ -55,6 +55,25 @@ RSpec.describe KingCountyMetroAlertFeed, type: :model do
       expect(last_feed_item.summary).to eql('peanut butter & jelly')
     end
 
+    it "skips items with the word 'elevator' in the summary" do
+      @mock_response[1] = <<-XML
+        <item>
+          <title>Item title</title>
+          <link>https://content.govdelivery.com/accounts/WAKING/bulletins/18c9610</link>
+          <description>here is a comment about an elevator being out of service.</description>
+          <pubDate>Fri, 10 Mar 2017 15:13:14 -0600</pubDate>
+        </item>
+      XML
+
+      stub_request(:get, @feed.url).to_return(headers: { 'Last-Modified': Time.now.utc.to_s },
+                                              body:    @mock_response.join)
+
+      @feed.fetch
+      @feed.reload
+
+      expect(@feed.alert_feed_items.count).to eql(0)
+    end
+
     it 'trims leading and trailing whitespace in the summary' do
       @mock_response[1] = <<-XML
         <item>
