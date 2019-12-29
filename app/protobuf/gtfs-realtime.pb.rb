@@ -83,6 +83,7 @@ module TransitRealtime
         SCHEDULED = 0
         SKIPPED = 1
         NO_DATA = 2
+        UNSCHEDULED = 3
       end
 
       set_fully_qualified_name "transit_realtime.TripUpdate.StopTimeUpdate"
@@ -191,6 +192,19 @@ module TransitRealtime
       OTHER_EFFECT = 7
       UNKNOWN_EFFECT = 8
       STOP_MOVED = 9
+      NO_EFFECT = 10
+      ACCESSIBILITY_ISSUE = 11
+    end
+
+    module SeverityLevel
+      include ::ProtocolBuffers::Enum
+
+      set_fully_qualified_name "transit_realtime.Alert.SeverityLevel"
+
+      UNKNOWN_SEVERITY = 1
+      INFO = 2
+      WARNING = 3
+      SEVERE = 4
     end
 
     set_fully_qualified_name "transit_realtime.Alert"
@@ -202,6 +216,9 @@ module TransitRealtime
     optional ::TransitRealtime::TranslatedString, :url, 8
     optional ::TransitRealtime::TranslatedString, :header_text, 10
     optional ::TransitRealtime::TranslatedString, :description_text, 11
+    optional ::TransitRealtime::TranslatedString, :tts_header_text, 12
+    optional ::TransitRealtime::TranslatedString, :tts_description_text, 13
+    optional ::TransitRealtime::Alert::SeverityLevel, :severity_level, 14, :default => ::TransitRealtime::Alert::SeverityLevel::UNKNOWN_SEVERITY
   end
 
   class TimeRange < ::ProtocolBuffers::Message
@@ -234,6 +251,7 @@ module TransitRealtime
       ADDED = 1
       UNSCHEDULED = 2
       CANCELED = 3
+      REPLACEMENT = 5
     end
 
     set_fully_qualified_name "transit_realtime.TripDescriptor"
@@ -262,6 +280,7 @@ module TransitRealtime
     optional :int32, :route_type, 3
     optional ::TransitRealtime::TripDescriptor, :trip, 4
     optional :string, :stop_id, 5
+    optional :uint32, :direction_id, 6
   end
 
   class TranslatedString < ::ProtocolBuffers::Message
