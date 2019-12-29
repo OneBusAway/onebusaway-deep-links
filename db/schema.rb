@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_201949) do
+ActiveRecord::Schema.define(version: 2019_12_29_174152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_201949) do
     t.datetime "ends_at"
     t.integer "cause", default: 0, null: false
     t.integer "effect", default: 7, null: false
+    t.integer "severity", default: 1
     t.index ["alert_feed_id"], name: "index_alert_feed_items_on_alert_feed_id"
   end
 

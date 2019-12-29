@@ -39,6 +39,7 @@ class GtfsMapper
     pb_alert.active_period << active_period_from_alert(alert)
     pb_alert.cause = alert.gtfs_cause
     pb_alert.effect = alert.gtfs_effect
+    pb_alert.severity_level = alert.severity
     
     return pb_alert
   end

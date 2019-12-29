@@ -5,10 +5,12 @@ class AlertFeedItem < ApplicationRecord
   delegate :region, to: :alert_feed
 
   default_scope { order(starts_at: :desc) }
-
-  # priority can be NORMAL = 0 or HIGH = 1
-  NORMAL_PRIORITY = 0
-  HIGH_PRIORITY = 1
+  
+  # Severity names and values are from an extension to GTFS-RT.
+  SEVERITY_UNKNOWN = 1
+  SEVERITY_INFO = 2
+  SEVERITY_WARNING = 3
+  SEVERITY_SEVERE = 4
 
   ###########
   # Cause

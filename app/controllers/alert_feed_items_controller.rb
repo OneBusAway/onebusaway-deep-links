@@ -36,9 +36,9 @@ class AlertFeedItemsController < ApplicationController
 
     # Create the item
     item = @manual_feed.alert_feed_items.build(permitted_params)
-    item.external_id = item.url
+    item.external_id  = item.url
     item.starts_at    = DateTime.now
-    item.priority     = AlertFeedItem::HIGH_PRIORITY
+    item.severity     = AlertFeedItem::SEVERITY_WARNING
     item.save!
 
     # Poke the record's 'updated at' timestamp

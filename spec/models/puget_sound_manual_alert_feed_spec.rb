@@ -36,8 +36,8 @@ RSpec.describe PugetSoundManualAlertFeed, type: :model do
       expect(subject.external_id).to eq(url)
     end
 
-    it 'sets the priority field to be HIGH' do
-      expect(subject.priority).to eq(AlertFeedItem::HIGH_PRIORITY)
+    it 'sets the severity field to be WARNING' do
+      expect(subject.severity).to eq(AlertFeedItem::SEVERITY_WARNING)
     end
   end
 end

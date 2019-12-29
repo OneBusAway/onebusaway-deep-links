@@ -12,7 +12,7 @@ class ManualAlertFeed < AlertFeed
       item.summary      = summary
       item.starts_at    = DateTime.now
       item.external_id  = url
-      item.priority     = AlertFeedItem::HIGH_PRIORITY
+      item.severity     = AlertFeedItem::SEVERITY_WARNING
       item.test_item    = test_item
     end
 
