@@ -4,7 +4,7 @@ ruby '2.6.3'
 
 gem 'rails', '~> 5.2.4.1'
 gem 'pg', '~>1.0.0'
-gem 'puma', '~> 3.11.4'
+gem 'puma', '~> 3.12.2'
 gem 'bootsnap', require: false
 
 gem 'raygun4ruby', '~>3.2.1'
