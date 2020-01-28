@@ -1,1 +1,8 @@
-{"applinks":{"apps":[],"details":[{"appID":"THEWY9596Q.org.onebusaway.iphone","paths":["*"]}]}}
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {"appID": "4ZQCMA634J.org.onebusaway.iphone", "paths":["*"]}
+    ]
+  }
+}
