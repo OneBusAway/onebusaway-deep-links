@@ -14,18 +14,11 @@ class DarkSky
   def forecast(geohash)
     lat,lon = geohash_to_lat_lon(geohash)
     url = build_forecast_url(lat, lon)
-    response = RestClient.get(url)
+    response = RestClient.get(url) rescue nil
 
-    if !Rails.env.test?
-      puts "*** DarkSky Status ***"
-      puts "Forecast API Calls: #{response.headers[:x_forecast_api_calls]}"
-      puts "Response Time: #{response.headers[:x_response_time]}"
-    end
-
-    if response.code == 200
+    if response&.code == 200
       JSON.parse(response)
     else
-      puts "Forecast request was unsuccessful: #{response.code} (#{response.body})"
       raise "Forecast request was unsuccessful"
     end
   end

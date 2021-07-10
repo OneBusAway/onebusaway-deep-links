@@ -2,12 +2,15 @@ class Api::V1::WeatherController < Api::V1::ApiController
   def show
     record_pageview(@region, 'weather')
 
-    @forecast = Rails.cache.fetch("regions/#{@region.to_param}/weather", expires_in: 30.minutes, race_condition_ttl: 30.seconds) do
-      dark_sky.forecast(DarkSky.geohash_from(@region))
-    end
-
-    respond_to do |format|
-      format.json
+    begin
+      @forecast = Rails.cache.fetch("regions/#{@region.to_param}/weather", expires_in: 30.minutes, race_condition_ttl: 30.seconds) do
+        dark_sky.forecast(DarkSky.geohash_from(@region))
+      end
+      respond_to do |format|
+        format.json
+      end
+    rescue
+      render nothing: true, status: :forbidden
     end
   end
 
