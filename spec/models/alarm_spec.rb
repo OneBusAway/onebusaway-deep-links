@@ -50,7 +50,7 @@ RSpec.describe Alarm, type: :model do
 
     describe "error messages" do
       it "mentions the missing message param" do
-        expect(subject.errors.keys).to eq([:message])
+        expect(subject.errors.attribute_names).to eq([:message])
       end
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe Alarm, type: :model do
 
     describe "error messages" do
       it "mentions the missing push_identifier param" do
-        expect(subject.errors.keys).to eq([:push_identifier])
+        expect(subject.errors.attribute_names).to eq([:push_identifier])
       end
     end
   end

@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.7.3'
 
-gem 'rails', '~> 6.0.4'
-gem 'pg', '~>1.0.0'
+gem 'rails', '~> 6.1.4'
+gem 'pg', '~>1.1.0'
 gem 'puma', '~> 3.11.4'
 gem 'bootsnap', require: false
 
@@ -49,7 +49,7 @@ gem 'mailgun-ruby', '~>1.1.10'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~>3.5.2'
+  gem 'rspec-rails', '~>5.0.1'
 end
 
 group :development do
