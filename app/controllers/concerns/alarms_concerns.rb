@@ -8,7 +8,11 @@ module AlarmsConcerns
   def create_alarm(params:)
     alarm = alarm_builder.build_alarm(params: params)
     json_response = if alarm.save
-      {json: {url: region_alarm_url(alarm_builder.region, alarm)}}
+      {
+        json: { url:
+          api_v1_region_alarm_url(alarm_builder.region, alarm, host: "https://onebusaway.co", protocol: "https")
+        }
+      }
     else
       {json: {error: "Unable to register alarm", messages: alarm.errors.full_messages}, status: response.status}
     end

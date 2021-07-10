@@ -96,7 +96,7 @@ RSpec.describe AlarmsController, type: :controller do
       it 'returns a JSON body containing the URL for the alarm' do
         json = JSON.parse(response.body)
         url = json["url"]
-        expect(url).to match(/http:\/\/test\.host\/regions\/1-puget-sound\/alarms\/.*/)
+        expect(url).to eq("https://onebusaway.co/api/v1/regions/1-puget-sound/alarms/#{Alarm.first.to_param}")
       end
     end
   end
