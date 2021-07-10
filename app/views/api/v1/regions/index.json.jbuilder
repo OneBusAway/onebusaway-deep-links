@@ -4,12 +4,12 @@ json.array! @regions do |region|
 
   json.oba_api_url region.api_url
   json.web_url region.web_url
-  
+
   json.path_templates do
-    json.create_alarm_path Zooplankton.path_template_for(:api_v1_region_alarms, region_id: region.to_param)    
-    json.alerts_path Zooplankton.path_template_for(:api_v1_region_alerts, region_id: region.to_param)
-    json.stop_path Zooplankton.path_template_for(:api_v1_region_stop, region_id: region.to_param)
-    json.trip_status_path Zooplankton.path_template_for(:api_v1_region_stop_trips, %i(trip_id service_date stop_sequence), region_id: region.to_param)
-    json.weather_path Zooplankton.path_template_for(:api_v1_region_weather, %i(lat lon), region_id: region.to_param)
+    json.create_alarm_path api_v1_region_alarms_path(region_id: region.to_param)
+    json.alerts_path api_v1_region_alerts_path(region_id: region.to_param)
+    json.stop_path api_v1_region_stop_path(region_id: region.to_param, id: "TKREPLACEME").gsub("TKREPLACEME", "{id}")
+    json.trip_status_path api_v1_region_stop_trips_path(region_id: region.to_param, stop_id: "TKREPLACEME").gsub("TKREPLACEME", "{stop_id}") + "{?trip_id,service_date,stop_sequence}"
+    json.weather_path api_v1_region_weather_path(region_id: region.to_param) + "{?lat,lon}"
   end
 end

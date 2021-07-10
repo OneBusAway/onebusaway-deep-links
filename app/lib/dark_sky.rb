@@ -46,7 +46,7 @@ class DarkSky
     GeoHash.decode(geohash).first
   end
 
-  def build_forecast_url(lat, lon) #d696019373dc132e9a0c419f4b131bcd
+  def build_forecast_url(lat, lon)
     "#{DARK_SKY_BASE_URL}/#{self.api_key}/#{lat},#{lon}?exclude=minutely,daily"
   end
 end

@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.6.3'
+ruby '2.7.3'
 
-gem 'rails', '~> 5.2.4.1'
+gem 'rails', '~> 5.2.6'
 gem 'pg', '~>1.0.0'
 gem 'puma', '~> 3.11.4'
 gem 'bootsnap', require: false
@@ -20,7 +20,6 @@ gem 'local_time', '~>2.1.0'
 
 # API
 gem 'jbuilder', '~> 2.6'
-gem 'zooplankton', '~>1.3.0'
 gem 'rest-client', '~> 2.0'
 
 # Jobs
@@ -39,7 +38,7 @@ gem 'bcrypt', '~> 3.1.12'
 gem 'strip_attributes', '~>1.8.0'
 
 # gem install nokogiri -v '1.8.4' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
-gem 'nokogiri', '~> 1.8.5'
+gem 'nokogiri', '~> 1.11.7'
 
 gem 'pr_geohash', '~>1.0.0'
 
@@ -64,6 +63,6 @@ end
 
 group :test do
   gem 'vcr', '~> 4.0.0'
-  gem 'webmock', '~> 2.3.2'
+  gem 'webmock', '~> 3.13.0'
   gem 'simplecov', require: false
 end
