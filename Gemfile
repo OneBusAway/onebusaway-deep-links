@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.7.3'
 
-gem 'rails', '~> 5.2.6'
+gem 'rails', '~> 6.0.4'
 gem 'pg', '~>1.0.0'
 gem 'puma', '~> 3.11.4'
 gem 'bootsnap', require: false
@@ -12,10 +12,10 @@ gem 'raygun4ruby', '~>3.2.1'
 gem 'redis', '~>4.0.2'
 gem 'redis-objects', '~>1.4.2'
 
-gem 'hamlit', '~>2.8.4'
+gem 'hamlit', '~>2.15.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'bootstrap_form', ">= 4.0.0.alpha1"
+gem 'bootstrap_form', "~>4.0.0"
 gem 'local_time', '~>2.1.0'
 
 # API

@@ -15,7 +15,9 @@ class AlarmChecker
     arr_dep = fetch_arr_dep(@alarm)
 
     if @alarm.seconds_before < arr_dep.seconds_until_departure
-      puts "Alarm #{@alarm.id} is not ready to fire yet. #{arr_dep.seconds_until_departure - @alarm.seconds_before} seconds remain."
+      if @debugging
+        puts "Alarm #{@alarm.id} is not ready to fire yet. #{arr_dep.seconds_until_departure - @alarm.seconds_before} seconds remain."
+      end
       return
     end
 
@@ -24,7 +26,10 @@ class AlarmChecker
       raise OBAErrors::PastDueAlarmTriggeredError, "An alarm in Region #{@alarm.region_id} was triggered after its due date. seconds_before: #{@alarm.seconds_before}, Late by: #{arr_dep.seconds_until_departure} (+ the seconds_before value.)"
     end
 
-    puts "Alarm #{@alarm.id} has been triggered. (Seconds Before: #{@alarm.seconds_before} // Time til Departure: #{arr_dep.seconds_until_departure}) Sending a push notification."
+    if @debugging
+      puts "Alarm #{@alarm.id} has been triggered. (Seconds Before: #{@alarm.seconds_before} // Time til Departure: #{arr_dep.seconds_until_departure}) Sending a push notification."
+    end
+
     @pusher.send_message(@alarm.push_identifier, @alarm)
 
     @alarm.destroy

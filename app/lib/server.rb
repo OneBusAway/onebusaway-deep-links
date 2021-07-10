@@ -87,7 +87,7 @@ class Server
   end
 
   def vehicle_ids_for_agency(agency_id)
-    encoded_id = URI.escape(agency_id)
+    encoded_id = uri_parser.escape(agency_id)
     url = build_url("vehicles-for-agency/#{encoded_id}.json")
     response = RestClient.get(url, {params: build_params})
     json = JSON.parse(response.body)
@@ -102,6 +102,10 @@ class Server
   end
 
   private
+
+    def uri_parser
+      @uri_parser ||= URI::Parser.new
+    end
 
     def build_params(params = {})
       params[:key] = "org.onebusaway.iphone"
