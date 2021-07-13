@@ -7,7 +7,7 @@ gem 'pg', '~>1.1.0'
 gem 'puma', '~> 5.3.2'
 gem 'bootsnap', require: false
 
-gem 'raygun4ruby', '~>3.2.1'
+gem 'rollbar'
 
 gem 'redis', '~>4.0.2'
 gem 'redis-objects', '~>1.4.2'
