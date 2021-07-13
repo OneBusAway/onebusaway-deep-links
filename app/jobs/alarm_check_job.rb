@@ -8,6 +8,8 @@ class AlarmCheckJob < ApplicationJob
       checker.check_alarm()
     rescue ActiveRecord::RecordNotFound
       # Only ignore RecordNotFound errors.
+    rescue OBAErrors::EmptyServerResponse
+      # ignore this too.
     end
   end
 end
