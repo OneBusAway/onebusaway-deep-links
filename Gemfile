@@ -4,7 +4,7 @@ ruby '2.7.3'
 
 gem 'rails', '~> 6.1.4'
 gem 'pg', '~>1.1.0'
-gem 'puma', '~> 5.3.2'
+gem 'puma', '~> 5.5.1'
 gem 'bootsnap', require: false
 
 gem 'rollbar'
