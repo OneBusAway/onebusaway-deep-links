@@ -38,7 +38,7 @@ gem 'bcrypt', '~> 3.1.12'
 gem 'strip_attributes', '~>1.8.0'
 
 # gem install nokogiri -v '1.8.4' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
-gem 'nokogiri', '~> 1.11.7'
+gem 'nokogiri', '~> 1.13.5'
 
 gem 'pr_geohash', '~>1.0.0'
 
