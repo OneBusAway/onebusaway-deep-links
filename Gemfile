@@ -8,8 +8,8 @@ gem 'puma', '~> 5.3.2'
 gem 'bootsnap', require: false
 gem "sentry-ruby"
 gem "sentry-rails"
-gem 'redis', '~>4.0.2'
-gem 'redis-objects', '~>1.4.2'
+gem 'redis', '~>4.8.0'
+gem 'redis-objects', '~>1.7.0'
 
 gem 'hamlit', '~>2.15.0'
 gem 'sass-rails', '~> 5.0'
@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.6'
 gem 'rest-client', '~> 2.0'
 
 # Jobs
-gem 'sidekiq', '~>5.2.6'
+gem 'sidekiq', '~>6.5.5'
 
 # Protocol Buffers
 # https://github.com/codekitchen/ruby-protocol-buffers
