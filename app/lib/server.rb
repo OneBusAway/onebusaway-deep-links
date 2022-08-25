@@ -8,6 +8,29 @@ class Server
   end
 
   ########################
+  # Arrivals and Departures
+  ########################
+
+  # Requests data from the `arrivals-and-departures-for-stop/{stop_id}.json` endpoint.
+  #
+  # @param stop_id [String]
+  # @param minutes_before [Integer] Default 5
+  # @param minutes_after [Integer] Default 35
+  def arrivals_and_departures(stop_id:, minutes_before: 5, minutes_after: 35)
+    params = build_params()
+    params[:minutesBefore] = minutes_before
+    params[:minutesAfter] = minutes_after
+
+    url = build_url("arrivals-and-departures-for-stop", stop_id)
+    url = "#{url}?#{params.to_param}"
+    response = RestClient.get(url)
+
+    raise OBAErrors::EmptyServerResponse if response.body.blank?
+
+    JSON.parse(response.body)
+  end
+
+  ########################
   # Arrival and Departure
   ########################
 
