@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 ruby '2.7.3'
 
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 6.1.6'
 gem 'pg', '~>1.1.0'
-gem 'puma', '~> 5.3.2'
+gem 'puma', '~> 5.6.4'
 gem 'bootsnap', require: false
 gem "sentry-ruby"
 gem "sentry-rails"
-gem 'redis', '~>4.0.2'
-gem 'redis-objects', '~>1.4.2'
+gem 'redis', '~>4.7.1'
+gem 'redis-objects', '~>1.7'
 
 gem 'hamlit', '~>2.15.0'
 gem 'sass-rails', '~> 5.0'
@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.6'
 gem 'rest-client', '~> 2.0'
 
 # Jobs
-gem 'sidekiq', '~>5.2.6'
+gem 'sidekiq', '~>6.5'
 
 # Protocol Buffers
 # https://github.com/codekitchen/ruby-protocol-buffers
@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.12'
 gem 'strip_attributes', '~>1.8.0'
 
 # gem install nokogiri -v '1.8.4' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
-gem 'nokogiri', '~> 1.11.7'
+gem 'nokogiri', '~> 1.13.6'
 
 gem 'pr_geohash', '~>1.0.0'
 
