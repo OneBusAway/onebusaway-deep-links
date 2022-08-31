@@ -58,16 +58,6 @@ end
 
 begin
   Region.create!({
-    region_identifier: 5,
-    api_url: "http://oba.yrt.ca/",
-    web_url: "https://www.yrt.ca/",
-    name: "York"
-  })
-rescue
-end
-
-begin
-  Region.create!({
     region_identifier: 6,
     api_url: "http://bt.v-a.io/onebusaway/",
     web_url: "http://bt.v-a.io/",
