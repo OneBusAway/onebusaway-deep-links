@@ -29,11 +29,6 @@ begin
     type: 'KingCountyMetroAlertFeed'
   )
   region.alert_feeds.create!(
-    name: 'Sound Transit Alerts',
-    url: 'http://m.soundtransit.org/schedules/alerts.xml',
-    type: 'SoundTransitAlertFeed'
-  )
-  region.alert_feeds.create!(
     name: 'Puget Sound Alerts',
     url: nil,
     type: 'PugetSoundManualAlertFeed'
