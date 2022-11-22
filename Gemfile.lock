@@ -76,7 +76,7 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    dalli (2.7.11)
+    dalli (3.2.3)
     diff-lcs (1.4.4)
     docile (1.4.0)
     domain_name (0.5.20190701)
@@ -291,7 +291,7 @@ DEPENDENCIES
   bootsnap
   bootstrap_form (~> 4.0.0)
   byebug
-  dalli (~> 2.7.8)
+  dalli (~> 3.2.3)
   dotenv (~> 2.1.1)
   feedjira (~> 2.1.2)
   hamlit (~> 2.15.0)

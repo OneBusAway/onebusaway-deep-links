@@ -41,7 +41,7 @@ gem 'nokogiri', '~> 1.13.6'
 
 gem 'pr_geohash', '~>1.0.0'
 
-gem 'dalli', '~>2.7.8'
+gem 'dalli', '~>3.2.3'
 
 gem 'mailgun-ruby', '~>1.1.10'
 
