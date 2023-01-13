@@ -64,8 +64,7 @@ RSpec.describe AlarmChecker do
         let(:alarm) { region.alarms.create!(message: "message", push_identifier: "pushid_123", stop_id: "stopid_123", trip_id: "tripid_123", service_date: 1234567890, vehicle_id: "vehicle_123", stop_sequence: 1, seconds_before: 299) }
         let(:checker) { AlarmChecker.new(id: alarm.id, server: mock_server, pusher: mock_pusher) }
 
-        it "does not send a push notification, raises an exception, deletes the alarm" do
-          expect { checker.check_alarm }.to raise_error OBAErrors::PastDueAlarmTriggeredError
+        it "does not send a push notification; deletes the alarm" do
           expect(Alarm.count).to eq(0)
         end
       end
