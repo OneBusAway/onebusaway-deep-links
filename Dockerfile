@@ -73,7 +73,7 @@ RUN bundle install && rm -rf vendor/bundle/ruby/*/cache
 
 FROM base
 
-ARG DEPLOY_PACKAGES="postgresql-client file vim curl gzip libsqlite3-0 nodejs"
+ARG DEPLOY_PACKAGES="postgresql-client file vim curl gzip libsqlite3-0 nodejs cron"
 ENV DEPLOY_PACKAGES=${DEPLOY_PACKAGES}
 
 RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \
@@ -109,6 +109,8 @@ ENV SECRET_KEY_BASE 1
 # Run build task defined in lib/tasks/fly.rake
 ARG BUILD_COMMAND="bin/rails fly:build"
 RUN ${BUILD_COMMAND}
+
+COPY crontab /app/etc/crontab
 
 # Default server start instructions.  Generally Overridden by fly.toml.
 ENV PORT 8080
