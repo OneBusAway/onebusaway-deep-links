@@ -1,2 +1,2 @@
-*/10 * * * * /app/bin/rails obaco:update_alert_feeds >> /app/var/log/cron.log 2>&1
-* * * * * /app/bin/rails obaco:queue_alarms >> /app/var/log/cron.log 2>&1
+*/10 * * * * /app/bin/rails obaco:update_alert_feeds >> /var/log/cron.log 2>&1
+* * * * * /app/bin/rails obaco:queue_alarms >> /var/log/cron.log 2>&1
