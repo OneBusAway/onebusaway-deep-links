@@ -6,7 +6,10 @@ class OneSignal
   ONE_SIGNAL_API_NOTIFICATIONS_URL = 'https://onesignal.com/api/v1/notifications'.freeze
 
   def self.client
-    OneSignal.new(ENV['ONESIGNAL_REST_API_KEY'], ENV['ONESIGNAL_APP_ID'])
+    OneSignal.new(
+      Rails.application.credentials.dig(:onesignal, :api_key),
+      Rails.application.credentials.dig(:onesignal, :app_id)
+    )
   end
 
   def initialize(api_key, app_id)

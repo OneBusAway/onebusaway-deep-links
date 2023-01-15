@@ -26,3 +26,5 @@
 .env
 
 coverage
+
+/config/master.key
