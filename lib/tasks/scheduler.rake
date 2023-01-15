@@ -12,11 +12,14 @@ namespace :obaco do
     puts 'Done updating alert feeds'
   end
 
-  # This task runs every ten minutes, so we set up
-  # ten separate jobs to run one minute apart.
+
   desc 'Enqueues jobs to enqueue alarms.'
   task :queue_alarms => :environment do
     puts "Enqueueing alarms via cron"
-    10.times {|i| AlarmQueuerWorker.perform_in(i.minutes)}
+    alarms = Alarm.all
+    puts "Enqueueing #{alarms.count} jobs to inspect alarms."
+    alarms.each do |a|
+      AlarmCheckJob.perform_later(a.id)
+    end
   end
 end
