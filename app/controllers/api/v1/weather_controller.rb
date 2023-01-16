@@ -4,7 +4,7 @@ class Api::V1::WeatherController < Api::V1::ApiController
 
     begin
       @forecast = Rails.cache.fetch("regions/#{@region.to_param}/weather", expires_in: 30.minutes, race_condition_ttl: 30.seconds) do
-        dark_sky.forecast(DarkSky.geohash_from(@region))
+        dark_sky.forecast(@region)
       end
       respond_to do |format|
         format.json
