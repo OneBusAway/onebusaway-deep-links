@@ -109,7 +109,7 @@ GEM
       loofah (>= 2.0)
       sax-machine (>= 1.0)
     ffi (1.15.3)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     hamlit (2.15.0)
       temple (>= 0.8.2)
@@ -141,7 +141,7 @@ GEM
     mime-types-data (3.2021.0704)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.3)
+    minitest (5.17.0)
     msgpack (1.4.2)
     multipart-post (2.1.1)
     netrc (0.11.0)
@@ -280,7 +280,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
