@@ -3,10 +3,6 @@ require 'ostruct'
 class DarkSky
   attr_accessor :api_key
 
-  def self.client
-    DarkSky.new(Rails.application.credentials.dig(:pirate_weather_api_key))
-  end
-
   def initialize(api_key)
     self.api_key = api_key
   end
@@ -20,7 +16,7 @@ class DarkSky
     if response&.code == 200
       JSON.parse(response)
     else
-      raise "Forecast request was unsuccessful"
+      raise "Forecast request was unsuccessful (#{response&.code})"
     end
   end
 

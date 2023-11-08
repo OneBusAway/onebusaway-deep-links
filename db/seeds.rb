@@ -131,4 +131,4 @@ begin
 rescue
 end
 
-Regions.update_regions
+Regions.new.update_regions

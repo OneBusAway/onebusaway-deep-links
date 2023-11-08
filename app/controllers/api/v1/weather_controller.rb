@@ -21,6 +21,6 @@ class Api::V1::WeatherController < Api::V1::ApiController
   end
 
   def dark_sky
-    @dark_sky ||= DarkSky.client
+    $dark_sky_client
   end
 end

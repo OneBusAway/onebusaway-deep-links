@@ -2,7 +2,7 @@ require 'open-uri'
 require 'json'
 
 class Regions
-  def self.update_regions
+  def update_regions
     url = "http://regions.onebusaway.org/regions-v3.json"
     json = JSON.load(open(url).read)
     raise "Unable to load region data" if json['code'] != 200 || json['text'] != 'OK'
