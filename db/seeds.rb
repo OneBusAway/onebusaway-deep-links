@@ -121,4 +121,14 @@ begin
 rescue
 end
 
+begin
+  region = Region.create!({
+    region_identifier: 12,
+    api_url: "https://www.oba4spokane.com/api/",
+    web_url: "https://www.oba4spokane.com/",
+    name: "Spokane"
+  })
+rescue
+end
+
 Regions.update_regions
