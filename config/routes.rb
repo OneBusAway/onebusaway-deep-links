@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      # PaymentIntents (Stripe SDK)
+      resources :payment_intents, only: [:create]
+
       resources :regions, only: [:index] do
 
         get 'vehicles', on: :member, defaults: {format: 'json'}
