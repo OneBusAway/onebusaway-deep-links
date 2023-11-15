@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.7.3'
+ruby '3.2'
 
 gem 'rails', '~> 6.1.6'
 gem 'pg', '~>1.5.0'
@@ -16,6 +16,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap_form', "~>4.0.0"
 gem 'local_time', '~>2.1.0'
+gem 'stripe', '~>10.1.0'
 
 # API
 gem 'jbuilder', '~> 2.6'
@@ -37,7 +38,7 @@ gem 'bcrypt', '~> 3.1.12'
 gem 'strip_attributes', '~>1.8.0'
 
 # gem install nokogiri -v '1.8.4' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
-gem 'nokogiri', '~> 1.13.6'
+gem 'nokogiri', '~> 1.15.4'
 
 gem 'pr_geohash', '~>1.0.0'
 
