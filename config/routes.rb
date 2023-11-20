@@ -53,6 +53,8 @@ Rails.application.routes.draw do
 
   resources :alert_feed_items
 
+  get 'manage-donations', to: 'donations#index'
+
   # Sessions
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
