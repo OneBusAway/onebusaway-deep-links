@@ -1,15 +1,12 @@
 
 module Donations
-  class Recurring
-    def initialize(donation_amount_in_cents)
-      @donation_amount_in_cents = donation_amount_in_cents
-    end
+  class Recurring < Donations::Base
 
     def run
-      recurring_response = RecurringResponse.new(@donation_amount_in_cents)
+      recurring_response = RecurringResponse.new(donation_amount_in_cents)
 
       begin
-        customer = Stripe::Customer.create()
+        customer = find_or_create_customer(email, name)
         recurring_response.customer_id = customer.id
 
         recurring_response.ephemeral_key = Stripe::EphemeralKey.create(
@@ -29,10 +26,10 @@ module Donations
     def create_subscription(customer_id)
       # Create a new price for the custom donation amount
       price = Stripe::Price.create(
-        unit_amount: @donation_amount_in_cents,
+        unit_amount: donation_amount_in_cents,
         currency: 'usd',
         recurring: { interval: 'month' },
-        product: $stripe_recurring_donation_product_id,
+        product: recurring_donation_product_id,
         )
 
       # Create or update the subscription with the new price
@@ -44,6 +41,14 @@ module Donations
         )
 
       subscription
+    end
+
+    def recurring_donation_product_id
+      if @rails_env.production? && !@test_mode
+        "prod_OqlLl6mR66dLVQ"
+      else
+        "prod_P1xUtsgjEfkGgu"
+      end
     end
   end
 

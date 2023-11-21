@@ -2,11 +2,14 @@ class Api::V1::PaymentIntentsController < Api::V1::ApiController
   skip_before_action :load_region
 
   def create
-    if params[:donation_frequency] == 'recurring'
-      @recurring_response = Donations::Recurring.new(params[:donation_amount_in_cents]).run
+    json_data = request.body.read
+    data = JSON.parse(json_data)
+
+    if data['donation_frequency'] == 'recurring'
+      @recurring_response = Donations::Recurring.new(data).run
       @error = @recurring_response.error
     else
-      @intent, @error = Donations::OneTime.new(params[:donation_amount_in_cents]).run
+      @intent, @error = Donations::OneTime.new(data).run
     end
 
     if @error
