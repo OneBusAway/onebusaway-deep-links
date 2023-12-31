@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     scope module: 'admins' do
       resources :alarms, only: [:index, :show]
       resources :alerts
+      resource :redis, only: [:show]
     end
     get 'activate', on: :member
     get 'reset_password', on: :member

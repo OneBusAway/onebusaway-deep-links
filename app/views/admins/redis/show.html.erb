@@ -1,0 +1,21 @@
+<h1>Redis Keys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @keys.each_with_index do |key, index| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= @values[index] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Previous', admin_redis_path(page: @page - 1) unless @page <= 0 %>
+<%= link_to 'Next', admin_redis_path(page: @page + 1) unless @keys.size < 100 %>
