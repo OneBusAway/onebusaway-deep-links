@@ -8,7 +8,7 @@ class AlertFeedItemsController < ApplicationController
     # # now I need to hack around it by keeping this action as-is for backwards compatibility reasons for now.
     # request.format = :json
     #
-    # @region = Region.find_by(region_identifier: params[:region_id])
+    # @region = Region.find_by!(region_identifier: params[:region_id])
     # @items = load_index_data(@region, true)
     #
     # respond_to do |format|
@@ -19,7 +19,7 @@ class AlertFeedItemsController < ApplicationController
   end
 
   def items
-    @region = Region.find_by(region_identifier: params[:region_id])
+    @region = Region.find_by!(region_identifier: params[:region_id])
     @items = load_index_data(@region)
     respond_to do |format|
       format.html { render(layout: 'regions') }

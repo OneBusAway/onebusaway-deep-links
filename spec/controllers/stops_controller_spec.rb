@@ -22,7 +22,7 @@ RSpec.describe StopsController, type: :controller do
     describe 'GET trips' do
       subject { get(:trips, params: {region_id: nonexistent, stop_id: '123', trip_id: '456', service_date: '1234567890', stop_sequence: 3}) }
       it "redirects the caller to the trips web url for the specified region" do
-        expect { subject.status }.to raise_error(ActiveRecord::RecordNotFound)
+        expect(subject).to be_not_found
       end
     end
   end

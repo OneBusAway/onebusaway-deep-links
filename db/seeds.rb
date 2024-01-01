@@ -24,11 +24,6 @@ begin
     name: 'Puget Sound'
   })
   region.alert_feeds.create!(
-    name: 'King County Metro Alerts',
-    url: 'https://public.govdelivery.com/topics/WAKCDOT_255/feed.rss',
-    type: 'KingCountyMetroAlertFeed'
-  )
-  region.alert_feeds.create!(
     name: 'Puget Sound Alerts',
     url: nil,
     type: 'PugetSoundManualAlertFeed'
