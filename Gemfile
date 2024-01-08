@@ -4,7 +4,7 @@ ruby '3.2'
 
 gem 'rails', '~> 6.1.6'
 gem 'pg', '~>1.5.0'
-gem 'puma', '~> 5.6.4'
+gem 'puma', '~> 5.6.8'
 gem 'bootsnap', require: false
 gem "sentry-ruby"
 gem "sentry-rails"
