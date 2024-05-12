@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .link {
+    @apply text-blue-600 hover:underline;
+  }
+
+  .oba-td {
+    @apply whitespace-nowrap pr-3 py-4 text-sm text-gray-500;
+  }
+
+  .oba-btn {
+    @apply rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-700 font-semibold shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand;
+  }
+
+  .oba-btn--primary {
+    @apply rounded-md bg-brand px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-tertiary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand;
+  }
+
+  .oba-btn--danger {
+    @apply rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600;
+  }
+
+  .oba-btn--sm {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .h1 {
+    @apply font-semibold text-3xl text-gray-800;
+  }
+
+  .h2 {
+    @apply font-semibold text-xl text-gray-800;
+  }
+
+  .h3 {
+    @apply font-semibold text-lg text-gray-800;
+  }
+
+  .h4 {
+    @apply font-semibold text-md text-gray-800;
+  }
+
+  .oba-flash-alert {
+    @apply rounded-md px-3 py-4 text-sm font-medium shadow-sm bg-slate-50 border bg-gradient-to-br from-slate-50 to-slate-100;
+  }
+
+  .oba-flash-alert--success {
+    @apply from-brand to-brand-tertiary text-white border-brand;
+  }
+
+  .oba-flash-alert--danger {
+    @apply from-red-500 to-red-600 text-white border-red-400;
+  }
+
+  .oba-flash-alert--warning {
+    @apply from-yellow-500 to-yellow-600 text-white border-yellow-500;
+  }
+
+  .oba-flash-alert--info {
+    @apply from-blue-400 to-blue-500 text-white border-blue-400;
+  }
+}

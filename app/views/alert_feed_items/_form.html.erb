@@ -1,0 +1,45 @@
+<%= form_for alert_feed_item do |f| %>
+  <div class='space-y-4'>
+    <%= render Forms::TextFieldComponent.new(
+      form: f,
+      method: :title,
+      placeholder: "Salmon Truck Overturned on I-5",
+      autofocus: true
+    ) %>
+
+    <%= render Forms::TextFieldComponent.new(
+      form: f,
+      method: :url,
+      placeholder: "https://soundtransit.org/news/salmon-truck"
+    ) %>
+
+    <%= render Forms::TextAreaComponent.new(
+      form: f,
+      method: :summary,
+      placeholder: "A truck carrying 10,000 pounds of salmon overturned on I-5 this morning. Expect delays."
+    ) %>
+
+    <%= render Forms::SelectComponent.new(
+      form: f,
+      method: :cause,
+      collection: AlertFeedItem.causes.keys.map { |k| [k.humanize, k] }
+    ) %>
+
+    <%= render Forms::SelectComponent.new(
+      form: f,
+      method: :effect,
+      collection: AlertFeedItem.effects.keys.map { |k| [k.humanize, k] }
+    ) %>
+
+    <%= render Forms::CheckboxComponent.new(
+      form: f,
+      method: :test_item,
+      help_text: "Test items are only visible to test app users. Uncheck this box to send the item out to all of your users."
+    ) %>
+
+    <div class="mt-6 flex items-center justify-end gap-x-6">
+      <%= link_to "Cancel", :back, class: 'oba-btn' %>
+      <button type="submit" class="oba-btn--primary">Save</button>
+    </div>
+  </div>
+<% end %>

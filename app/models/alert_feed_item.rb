@@ -1,11 +1,11 @@
-require 'gtfs-realtime.pb.rb'
+require_relative '../protobuf/gtfs-realtime.pb.rb'
 
 class AlertFeedItem < ApplicationRecord
   belongs_to :alert_feed
   delegate :region, to: :alert_feed
 
   default_scope { order(starts_at: :desc) }
-  
+
   # Severity names and values are from an extension to GTFS-RT.
   SEVERITY_UNKNOWN = 1
   SEVERITY_INFO = 2
@@ -22,7 +22,7 @@ class AlertFeedItem < ApplicationRecord
     [:technical_problem, TransitRealtime::Alert::Cause::TECHNICAL_PROBLEM],
     [:strike, TransitRealtime::Alert::Cause::STRIKE],
     [:demonstration, TransitRealtime::Alert::Cause::DEMONSTRATION],
-    [:accident, TransitRealtime::Alert::Cause::ACCIDENT],      
+    [:accident, TransitRealtime::Alert::Cause::ACCIDENT],
     [:holiday, TransitRealtime::Alert::Cause::HOLIDAY],
     [:weather, TransitRealtime::Alert::Cause::WEATHER],
     [:maintenance, TransitRealtime::Alert::Cause::MAINTENANCE],
@@ -30,21 +30,21 @@ class AlertFeedItem < ApplicationRecord
     [:police_activity, TransitRealtime::Alert::Cause::POLICE_ACTIVITY],
     [:medical_emergency, TransitRealtime::Alert::Cause::MEDICAL_EMERGENCY]
   ].freeze
-  
+
   def gtfs_cause
     CAUSES.each do |sym, gtfs_val|
       return gtfs_val if sym == cause
     end
-    
+
     TransitRealtime::Alert::Cause::UNKNOWN_CAUSE
   end
-  
+
   enum cause: CAUSES.collect(&:first)
-  
+
   ###########
   # Effect
   ###########
-  
+
   EFFECTS = [
     [:no_service, TransitRealtime::Alert::Effect::NO_SERVICE],
     [:reduced_service, TransitRealtime::Alert::Effect::REDUCED_SERVICE],
@@ -58,17 +58,17 @@ class AlertFeedItem < ApplicationRecord
   ].freeze
 
   enum effect: EFFECTS.collect(&:first)
-  
+
   def gtfs_effect
     EFFECTS.each do |sym, gtfs_val|
       return gtfs_val if sym == effect
     end
-    
+
     TransitRealtime::Alert::Effect::UNKNOWN_EFFECT
   end
-  
+
   #######
-  
+
   # [
   #   :no_service,         # 0
   #   :reduced_service,    # 1
@@ -80,7 +80,7 @@ class AlertFeedItem < ApplicationRecord
   #   :unknown_effect,     # 7
   #   :stop_moved          # 8
   # ]
-  
+
   # [
   #     :unknown,            # 0
   #     :other,              # 1

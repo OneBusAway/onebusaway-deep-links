@@ -1,0 +1,17 @@
+<% title("#{@region.name} Admin") %>
+
+<%= render Containers::SideTabsComponent.new do |c| %>
+  <%= render Admin::SideTabsComponent.new(context: c, current_path: request.fullpath) %>
+
+  <% if @manual_feed.nil? %>
+    <p>
+      There is no manual feed for this region.
+    </p>
+  <% else %>
+    <p>
+      Add an item to the manual feed:
+    </p>
+    <%= render 'alert_feed_items/form', alert_feed_item: @alert_feed_item %>
+  <% end %>
+
+<% end %>

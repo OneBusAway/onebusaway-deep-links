@@ -1,0 +1,6 @@
+<% title "Alert Feed Items - #{@region.name}" %>
+
+<%= render Containers::SideTabsComponent.new do |c| %>
+  <%= render Regions::SideTabsComponent.new(@region, context: c, current_path: request.fullpath) %>
+  <%= render 'alert_feed_items/items' %>
+<% end %>

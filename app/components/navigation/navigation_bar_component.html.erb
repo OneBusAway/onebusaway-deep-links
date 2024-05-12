@@ -1,0 +1,24 @@
+<nav class="border-b border-gray-200 bg-brand">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 justify-between">
+      <div class="flex">
+        <div class="flex flex-shrink-0 items-center">
+          <%= image_tag "oba_logo.png", alt: "OneBusAway", class: "block h-8 w-auto" %>
+        </div>
+        <div class="sm:-my-px sm:ml-6 flex sm:space-x-8"> <!-- hidden sm:flex -->
+          <%= render Navigation::BarItemComponent.new(title: "Dashboard", path: root_path, current_path: request.fullpath) %>
+          <%= render Navigation::BarItemComponent.new(title: "Manage Your Donation", path: manage_donations_path, current_path: request.fullpath) %>
+          <% if helpers.current_admin %>
+            <%= render Navigation::BarItemComponent.new(title: "Admin", path: admin_path, current_path: request.fullpath) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="hidden sm:ml-6 sm:flex sm:items-center gap-x-4 text-gray-100 font-medium text-sm">
+        <% if helpers.current_admin %>
+          <%= link_to helpers.current_admin.name, admin_path %>
+          <%= link_to "Log Out", logout_path, class: 'link text-white' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

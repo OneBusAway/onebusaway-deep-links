@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::V1::WeatherController, type: :request do
+describe "Api::V1::WeatherController", type: :request do
   let(:puget_sound) { create_puget_sound_region! }
 
   def expect_response_to_offer_weather_for_location(lat,lon)
@@ -11,9 +11,9 @@ describe Api::V1::WeatherController, type: :request do
     expect(json['region_name']).to eq('Puget Sound')
     expect(json['retrieved_at']).to_not be_nil
     expect(json['units']).to eq('us')
-    expect(json['today_summary']).to eq('Cloudy')
+    expect(json['today_summary']).to eq('Clear')
     expect(json['current_forecast'].keys).to eq(["icon", "precip_per_hour", "precip_probability", "summary", "temperature", "temperature_feels_like", "time", "wind_speed"])
-    expect(json['current_forecast']['icon']).to eq('partly-cloudy-day')
+    expect(json['current_forecast']['icon']).to eq('clear-night')
   end
 
   describe "GET /api/v1/regions/{region_id}/weather" do

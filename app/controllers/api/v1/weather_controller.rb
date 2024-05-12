@@ -21,6 +21,10 @@ class Api::V1::WeatherController < Api::V1::ApiController
   end
 
   def dark_sky
-    $dark_sky_client
+    @dark_sky ||= if Rails.env.test?
+                    DarkSky.new('fake_key')
+                  else
+                    DarkSky.new(Rails.application.credentials.dig(:pirate_weather_api_key))
+                  end
   end
 end

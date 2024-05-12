@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_10_150803) do
-
+ActiveRecord::Schema[7.1].define(version: 2021_07_10_150803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_150803) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -33,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_150803) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -50,9 +49,9 @@ ActiveRecord::Schema.define(version: 2021_07_10_150803) do
     t.string "session_token"
     t.integer "region_id"
     t.string "reset_digest"
-    t.datetime "reset_sent_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "reset_sent_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["region_id"], name: "index_admins_on_region_id"
     t.index ["session_token"], name: "index_admins_on_session_token", unique: true
@@ -63,8 +62,8 @@ ActiveRecord::Schema.define(version: 2021_07_10_150803) do
     t.string "push_identifier"
     t.string "message"
     t.string "secure_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "stop_id"
     t.string "trip_id"
     t.bigint "service_date"
@@ -81,13 +80,13 @@ ActiveRecord::Schema.define(version: 2021_07_10_150803) do
     t.string "title"
     t.string "url"
     t.text "summary"
-    t.datetime "starts_at"
+    t.datetime "starts_at", precision: nil
     t.string "external_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "priority", default: 0
     t.boolean "test_item", default: true, null: false
-    t.datetime "ends_at"
+    t.datetime "ends_at", precision: nil
     t.integer "cause", default: 0, null: false
     t.integer "effect", default: 7, null: false
     t.integer "severity", default: 1
@@ -97,11 +96,11 @@ ActiveRecord::Schema.define(version: 2021_07_10_150803) do
   create_table "alert_feeds", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "url"
-    t.datetime "last_fetched"
+    t.datetime "last_fetched", precision: nil
     t.integer "region_id"
     t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["region_id"], name: "index_alert_feeds_on_region_id"
     t.index ["url"], name: "index_alert_feeds_on_url", unique: true
   end

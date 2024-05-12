@@ -1,0 +1,11 @@
+<div>
+  <%= @form.label @method, class: "block text-sm font-medium leading-6 text-gray-900" %>
+  <div class="mt-0.5">
+    <%= @form.select(
+      @method,
+      @collection,
+      @options,
+      @html_options
+    ) %>
+  </div>
+</div>

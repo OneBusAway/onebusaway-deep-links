@@ -21,9 +21,6 @@ class AlertFeedItemsController < ApplicationController
   def items
     @region = Region.find_by!(region_identifier: params[:region_id])
     @items = load_index_data(@region)
-    respond_to do |format|
-      format.html { render(layout: 'regions') }
-    end
   end
 
   def create

@@ -1,0 +1,5 @@
+<% @flash.each do |msg_type, message| %>
+  <div class="oba-flash-alert <%= class_for(msg_type) %>" role="alert">
+    <%= message %>
+  </div>
+<% end %>

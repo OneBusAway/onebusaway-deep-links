@@ -1,0 +1,29 @@
+<% @context.with_tab(
+   title: "Home",
+   path: admin_path,
+   active: @current_path == admin_path
+ ) %>
+
+<% @context.with_tab(
+   title: "Alert Feed",
+   path: admin_alerts_path,
+   active: @current_path == admin_alerts_path
+ ) %>
+
+<% @context.with_tab(
+   title: "Alarms",
+   path: admin_alarms_path,
+   active: @current_path == admin_alarms_path
+ ) %>
+
+<% @context.with_tab(
+   title: "Redis",
+   path: admin_redis_path,
+   active: @current_path == admin_redis_path
+ ) %>
+
+<% @context.with_tab(
+   title: "View Public Page",
+   path: helpers.current_admin.region,
+   active: false
+ ) %>
