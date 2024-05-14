@@ -1,31 +1,17 @@
-<div class='row'>
-  <div class='col-sm-12'>
-    <div class="alert alert-info" role="alert">
-      Hey, are you looking for more information on the OneBusAway project, or for links to download the apps? <a href='http://www.onebusaway.org'>You'll find all of that and more at the onebusaway.org website</a>.
-    </div>
-  </div>
-</div>
+<% title "Available Regions" %>
 
-<div class='row'>
-  <div class='col-sm-12'>
-    <h2>Available Regions</h2>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Web URL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @regions.each do |r| %>
-          <tr>
-            <td><%= r.region_identifier %></td>
-            <td><%= link_to r.name, r %></td>
-            <td><%= link_to r.web_url, r.web_url, target: "_blank" %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+<%= render Tables::TableComponent.new do |c| %>
+  <% c.with_column("ID") %>
+  <% c.with_column("Name") %>
+  <% c.with_column("Web URL") %>
+
+  <% c.with_tbody do %>
+    <% @regions.each do |r| %>
+      <tr>
+        <td class="oba-td"><%= r.region_identifier %></td>
+        <td class="oba-td font-medium"><%= link_to r.name, r, class: 'link' %></td>
+        <td class="oba-td"><%= link_to r.web_url, r.web_url, class: 'link', target: "_blank" %>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>

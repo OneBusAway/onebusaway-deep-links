@@ -1,0 +1,34 @@
+<% title("#{@region.name} Alarms") %>
+<%= render Containers::SideTabsComponent.new do |c| %>
+  <%= render Admin::SideTabsComponent.new(context: c, current_path: request.fullpath) %>
+
+  <%= render Tables::TableComponent.new do |c| %>
+    <% c.with_column("ID") %>
+    <% c.with_column("Region") %>
+    <% c.with_column("Push ID/Message") %>
+    <% c.with_column("Stop ID") %>
+    <% c.with_column("Trip ID") %>
+    <% c.with_column("Service Date") %>
+    <% c.with_column("Vehicle ID") %>
+    <% c.with_column("Stop Sequence") %>
+    <% c.with_column("Created At") %>
+    <% c.with_tbody do %>
+      <% @alarms.each do |a| %>
+        <tr>
+          <td class="oba-td"><%= link_to a.id, admin_alarm_path(a.id) %></td>
+          <td class="oba-td"><%= a.region.name %></td>
+          <td class="oba-td">
+            <%= a.message %><br>
+            <%= a.push_identifier %>
+          </td>
+          <td class="oba-td"><%= a.stop_id %></td>
+          <td class="oba-td"><%= a.trip_id %></td>
+          <td class="oba-td"><%= Time.at(a.service_date / 1000.0).strftime("%m-%d-%Y") %></td>
+          <td class="oba-td"><%= value_or_blank_rep(a.vehicle_id) %></td>
+          <td class="oba-td"><%= a.stop_sequence %></td>
+          <td class="oba-td"><%= local_time a.created_at %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

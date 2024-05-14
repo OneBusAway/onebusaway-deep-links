@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="h-full bg-white">
+  <head>
+    <title>
+      <% if t = title %>
+        <%= t %> | OneBusAway
+      <% else %>
+        OneBusAway
+      <% end %>
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="apple-itunes-app" content="app-id=329380089">
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="h-full">
+    <div class="min-h-full">
+      <%= render Navigation::NavigationBarComponent.new %>
+
+      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-4">
+        <%= render FlashComponent.new(flash) %>
+      </div>
+
+      <% if request.fullpath == root_path %>
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-5">
+          <%= render BannerComponent.new do %>
+            <a href="https://onebusaway.org" class="text-center">
+              👋
+              Hey, are you looking for more information on the OneBusAway project, or for links to download the apps?
+              <br>
+              You'll find all of that and more at the onebusaway.org website.&nbsp;<span aria-hidden="true">&rarr;</span>
+            </a>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="py-5 space-y-4">
+        <header>
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900"><%= @title %></h1>
+          </div>
+        </header>
+        <main>
+          <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <%= yield %>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

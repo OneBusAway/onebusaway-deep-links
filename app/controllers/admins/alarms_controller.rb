@@ -1,8 +1,8 @@
 class Admins::AlarmsController < ApplicationController
   before_action :admin_required
-  layout 'admins'
-
+  
   def index
+    @region = current_admin.region
     @alarms = Alarm.order(created_at: :desc).includes(:region)
   end
 

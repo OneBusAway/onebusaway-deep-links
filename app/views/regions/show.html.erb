@@ -1,0 +1,66 @@
+<% title(@region.name) %>
+
+<%= render Containers::SideTabsComponent.new do |c| %>
+  <%= render Regions::SideTabsComponent.new(@region, context: c, current_path: request.fullpath) %>
+
+  <h2 class="h2">Developer Info</h2>
+  <%= render Tables::TableComponent.new do |c| %>
+    <% c.with_column("Property") %>
+    <% c.with_column("Value") %>
+    <% c.with_tbody do %>
+      <tr>
+        <td class="oba-td">Region ID</td>
+        <td class="oba-td"><%= @region.id %></td>
+      </tr>
+
+      <tr>
+        <td class="oba-td">Region API ID</td>
+        <td class="oba-td"><%= @region.region_identifier %></td>
+      </tr>
+
+      <tr>
+        <td class="oba-td">API URL</td>
+        <td class="oba-td"><%= link_to @region.api_url, @region.api_url, class: 'link' %></td>
+      </tr>
+
+      <tr>
+        <td class="oba-td">Web URL</td>
+        <td class="oba-td"><%= link_to @region.web_url, @region.web_url, class: 'link' %></td>
+      </tr>
+    <% end %>
+  <% end %>
+
+  <h2 class="h2 mt-4">Alert Feeds</h2>
+  <% if @region.alert_feeds.blank? %>
+    <%= render Containers::EmptyStateComponent.new(title: "No Alert Feeds", description: "Admins can create an Alert Feed that will appear here.") %>
+  <% else %>
+    <%= render Tables::TableComponent.new do |t| %>
+      <% t.with_column("ID") %>
+      <% t.with_column("Name") %>
+      <% t.with_column("URL") %>
+      <% t.with_column("Last Fetched") %>
+      <% t.with_tbody do %>
+        <% @region.alert_feeds.each do |alert_feed| %>
+          <tr>
+            <td><%= alert_feed.id %></td>
+            <td><%= alert_feed.name %></td>
+            <td>
+              <% if alert_feed.url.present? %>
+                <%= link_to alert_feed.url, alert_feed.url, target: "_blank" %>
+              <% else %>
+                n/a
+              <% end %>
+            </td>
+
+            <td>
+              <% if alert_feed.last_fetched.present? %>
+                <%= time_ago_in_words alert_feed.last_fetched %> ago
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+

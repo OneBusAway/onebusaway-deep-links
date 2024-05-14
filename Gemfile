@@ -1,68 +1,88 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby '3.2'
+ruby "3.3.0"
 
-gem 'rails', '~> 6.1.6'
-gem 'pg', '~>1.5.0'
-gem 'puma', '~> 5.6.4'
-gem 'bootsnap', require: false
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "~> 7.1.3", ">= 7.1.3.2"
+
+# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "sprockets-rails"
+
+# Use postgresql as the database for Active Record
+gem "pg", "~> 1.1"
+
+# Use the Puma web server [https://github.com/puma/puma]
+gem "puma", ">= 5.0"
+
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
+
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+
+# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails"
+
+# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem "jbuilder"
+gem 'rest-client', '~> 2.1'
+
+# Use Redis adapter to run Action Cable in production
+gem "redis", ">= 4.0.1"
+
+# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+# gem "kredis"
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem "bcrypt", "~> 3.1.7"
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "tzinfo-data", platforms: %i[ windows jruby ]
+
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap", require: false
+
+gem 'haml', '~> 6.3'
+gem 'stripe', '~>11.3'
+gem 'mailgun-ruby', '~>1.2.14'
+gem 'feedjira', '~> 3.2', '>= 3.2.3'
 gem "sentry-ruby"
 gem "sentry-rails"
-gem 'redis', '~>4.7.1'
-gem 'redis-objects', '~>1.7'
-
-gem 'hamlit', '~>2.15.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'bootstrap_form', "~>4.0.0"
-gem 'local_time', '~>2.1.0'
-gem 'stripe', '~>10.1.0'
-
-# API
-gem 'jbuilder', '~> 2.6'
-gem 'rest-client', '~> 2.0'
-
-# Jobs
-gem 'sidekiq', '~>6.5'
+gem 'pr_geohash', '~>1.0.0'
+gem 'view_component', '~> 3.12', '>= 3.12.1'
 
 # Protocol Buffers
 # https://github.com/codekitchen/ruby-protocol-buffers
 gem 'ruby-protocol-buffers', '~>1.6.1'
 gem 'varint', '~>0.1.1'
 
-gem 'dotenv', '~> 2.1.1'
-gem 'awesome_print', '~> 1.7.0'
-gem 'feedjira', '~> 2.1.2'
-
-gem 'bcrypt', '~> 3.1.12'
-gem 'strip_attributes', '~>1.8.0'
-
-# gem install nokogiri -v '1.8.4' -- --use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2
-gem 'nokogiri', '~> 1.15.4'
-
-gem 'pr_geohash', '~>1.0.0'
-
-gem 'dalli', '~>2.7.8'
-
-gem 'mailgun-ruby', '~>1.1.10'
+gem 'sidekiq', '~>7.2.4'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~>5.0.1'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri windows ]
+  gem "rspec-rails", '~>6.1.2'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
-  gem 'listen', '~> 3.0.5'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "web-console"
+
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  # gem "rack-mini-profiler"
+
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # gem "spring"
 end
 
 group :test do
-  gem 'vcr', '~> 4.0.0'
-  gem 'webmock', '~> 3.13.0'
-  gem 'simplecov', require: false
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "vcr", '~>6.2.0'
+  gem 'webmock', '~>3.23.0'
+  gem 'simplecov'
 end

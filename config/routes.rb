@@ -1,13 +1,15 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get "up" => "rails/health#show", as: :rails_health_check
+
   root to: 'regions#index'
 
   mount Sidekiq::Web => '/sidekiq', :constraints => AdminRouteConstraint.new
 
   # Confusingly, the ids that are passed in to identify
   # regions are the id values present in the multiregion
-  # file: http://regions.onebusaway.org/regions-v3.json
+  # file: https://regions.onebusaway.org/regions-v3.json
   # These values are referred to as `region_identifier`.
   #
   # The ids that exist locally, in Rails's DB, are

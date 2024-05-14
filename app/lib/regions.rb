@@ -3,8 +3,8 @@ require 'json'
 
 class Regions
   def update_regions
-    url = "http://regions.onebusaway.org/regions-v3.json"
-    json = JSON.load(open(url).read)
+    url = "https://regions.onebusaway.org/regions-v3.json"
+    json = JSON.load(URI.open(url).read)
     raise "Unable to load region data" if json['code'] != 200 || json['text'] != 'OK'
 
     regions = json['data']['list']

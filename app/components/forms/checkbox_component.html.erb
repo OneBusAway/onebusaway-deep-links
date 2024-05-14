@@ -1,0 +1,14 @@
+<div class="relative flex gap-x-3">
+  <div class="flex h-6 items-center">
+    <%= @form.check_box(
+      @method,
+      class: "h-4 w-4 rounded border-gray-300 text-brand focus:ring-brand"
+    ) %>
+  </div>
+  <div class="text-sm leading-6">
+    <%= @form.label @method, class: "font-medium text-gray-900" %>
+    <% if @help_text %>
+      <p class="text-gray-500"><%= @help_text %></p>
+    <% end %>
+  </div>
+</div>

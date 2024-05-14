@@ -1,0 +1,12 @@
+<%= link_to(
+  @title,
+  @path,
+  class: class_names(
+    "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
+    {
+      "border-brand-secondary text-gray-900": active?,
+      "border-transparent text-gray-100 hover:border-gray-300 hover:text-gray-700": !active?
+    }
+  ),
+  aria: { current: active? ? "page" : nil }
+) %>

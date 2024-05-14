@@ -1,6 +1,7 @@
 class KingCountyMetroAlertFeed < AlertFeed
   def fetch
-    rss = Feedjira::Feed.fetch_and_parse(self.url)
+    xml = RestClient.get(self.url)
+    rss = Feedjira.parse(xml)
     rss.entries.each do |entry|
       create_feed_item_from_entry(entry)
     end

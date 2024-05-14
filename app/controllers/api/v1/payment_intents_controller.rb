@@ -2,8 +2,7 @@ class Api::V1::PaymentIntentsController < Api::V1::ApiController
   skip_before_action :load_region
 
   def create
-    json_data = request.body.read
-    data = JSON.parse(json_data)
+    data = JSON.parse(request.raw_post)
 
     if data['donation_frequency'] == 'recurring'
       @recurring_response = Donations::Recurring.new(data).run

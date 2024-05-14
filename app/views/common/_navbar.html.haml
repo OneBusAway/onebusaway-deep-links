@@ -1,9 +1,0 @@
-.d-flex.flex-column.flex-md-row.align-items-center.px-2.py-1.mb-3.bg-oba
-  = link_to root_path, class: 'my-0 mr-auto' do
-    %h5.font-weight-normal
-      = image_tag 'oba_logo.png', alt: 'OneBusAway Logo', title: "OneBusAway", height: "30"
-      OneBusAway
-    - if admin_logged_in?
-      %nav.my-2.my-md-0.mr-md-3
-        = link_to current_admin.name, admin_path, class: 'p-2 text-light'
-        = link_to 'Log Out', logout_path, class: 'p-2 text-light'

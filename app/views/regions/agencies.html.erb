@@ -1,0 +1,47 @@
+<% title("Agencies in #{@region.name}") %>
+
+<%= render Containers::SideTabsComponent.new do |c| %>
+  <%= render Regions::SideTabsComponent.new(@region, context: c, current_path: request.fullpath) %>
+
+  <%= render Tables::TableComponent.new do |c| %>
+    <% c.with_column("Name (ID)") %>
+    <% c.with_column("Lang") %>
+    <% c.with_column("Email") %>
+    <% c.with_column("Fare URL") %>
+    <% c.with_column("Phone") %>
+    <% c.with_column("Private Service?") %>
+    <% c.with_column("Disclaimer") %>
+    <% c.with_column("Timezone") %>
+    <% c.with_column("Bounds") %>
+
+    <% c.with_tbody do %>
+      <% @region.agencies.sort {|a,b| a.name <=> b.name}.each do |a| %>
+        <tr>
+          <td class="oba-td">
+            <%= a.name %> (<%= a.id %>)
+            <br>
+            <span class="break-url">
+              <% if a.url %>
+                <%= link_to a.url, a.url, class: 'link text-wrap' %>
+              <% end %>
+            </span>
+          </td>
+          <td class="oba-td"><%= a.lang %></td>
+          <td class="oba-td"><%= value_or_blank_rep(a.email) %></td>
+          <td class="oba-td text-wrap">
+            <% if a.fare_url.present? %>
+              <%= link_to a.fare_url, a.fare_url, class: 'link' %>
+            <% else %>
+              &mdash;
+            <% end %>
+          </td>
+          <td class="oba-td"><%= value_or_blank_rep(a.phone) %></td>
+          <td class="oba-td"><%= a.private_service %></td>
+          <td class="oba-td"><%= value_or_blank_rep(a.disclaimer) %></td>
+          <td class="oba-td"><%= a.timezone %></td>
+          <td class="oba-td">(<%= a.lat.round(4) %>&plusmn;<%= a.lat_span.round(2) %>, <%= a.lon.round(4) %>&plusmn;<%= a.lon_span.round(2) %>)</td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,14 +1,30 @@
-<div class='row'>
-  <div class='col-sm-12'>
-    <p>
-      Make a donation: <%= link_to "Donate securely with Stripe", "https://donate.stripe.com/cN2dUHej01k46Mo288" %>
-    </p>
-    <p>
-      Manage a recurring donation: <%= link_to "Stripe Billing Portal", "https://billing.stripe.com/p/login/aEU8yVeeIezBd5C3cc" %>
-    </p>
+<% title("Manage Your Donation") %>
 
-    <p>
-      Need a donation receipt or have other questions about your donation? Email us at <%= link_to "info@onebusaway.org", "mailto:info@onebusaway.org?subject=Donation Assistance" %>
-    </p>
+<div class="flex">
+  <div class="flex-1">
+    Help us improve OneBusAway by making a tax-deductible donation to the Open Transit Software Foundation.
+    Our organization has extremely low overhead and your donations will be put right to work improving our
+    software or allowing us to bring real-time transit capabilities to transit agencies around the United
+    States and the world.
+  </div>
+
+  <div class="w-96 text-sm font-semibold text-gray-900">
+    <div class="overflow-hidden rounded-md bg-white shadow">
+      <ul role="list" class="divide-y divide-gray-200">
+        <li class="px-6 py-4">
+          Make a donation: <%= link_to "Donate securely with Stripe", "https://donate.stripe.com/cN2dUHej01k46Mo288", class: 'link' %>
+        </li>
+
+        <li class="px-6 py-4">
+          Manage a recurring donation: <%= link_to "Stripe Billing Portal", "https://billing.stripe.com/p/login/aEU8yVeeIezBd5C3cc", class: 'link' %>
+        </li>
+
+        <li class="px-6 py-4">
+          Need a donation receipt or have other questions about your donation?
+          Email us at <%= link_to "info@onebusaway.org", "mailto:info@onebusaway.org?subject=Donation Assistance", class: 'link' %>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </div>

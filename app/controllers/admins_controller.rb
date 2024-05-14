@@ -44,7 +44,7 @@ class AdminsController < ApplicationController
     @region = @admin.region
     @manual_feed = @region.manual_feed
 
-    unless @manual_feed.nil?
+    if @manual_feed.present?
       @alert_feed_item = @manual_feed.alert_feed_items.build
     end
   end

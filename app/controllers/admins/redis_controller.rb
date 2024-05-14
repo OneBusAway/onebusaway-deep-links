@@ -3,7 +3,7 @@
 require 'redis'
 
 class Admins::RedisController < ApplicationController
-  layout 'admins'
+  before_action :admin_required
 
   def show
     @page = params[:page].to_i || 0
