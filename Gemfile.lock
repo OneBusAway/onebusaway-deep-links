@@ -373,7 +373,6 @@ DEPENDENCIES
   stripe (~> 11.3)
   tailwindcss-rails
   turbo-rails
-  tzinfo-data
   varint (~> 0.1.1)
   vcr (~> 6.2.0)
   view_component (~> 3.12, >= 3.12.1)
