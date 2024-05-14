@@ -24,7 +24,7 @@ class AlarmChecker
     if arr_dep.seconds_until_departure < 0
       @alarm.destroy
       # these should be logged, not treated as exceptions.
-      # raise OBAErrors::PastDueAlarmTriggeredError, "An alarm in Region #{@alarm.region_id} was triggered after its due date. seconds_before: #{@alarm.seconds_before}, Late by: #{arr_dep.seconds_until_departure} (+ the seconds_before value.)"
+      # raise ObaErrors::PastDueAlarmTriggeredError, "An alarm in Region #{@alarm.region_id} was triggered after its due date. seconds_before: #{@alarm.seconds_before}, Late by: #{arr_dep.seconds_until_departure} (+ the seconds_before value.)"
     end
 
     if @debugging

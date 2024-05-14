@@ -25,7 +25,7 @@ class Server
     url = "#{url}?#{params.to_param}"
     response = RestClient.get(url)
 
-    raise OBAErrors::EmptyServerResponse if response.body.blank?
+    raise ObaErrors::EmptyServerResponse if response.body.blank?
 
     JSON.parse(response.body)
   end
@@ -45,7 +45,7 @@ class Server
     url = build_arrival_and_departure_url(stop_id: stop_id, service_date: service_date, stop_sequence: stop_sequence, trip_id: trip_id, vehicle_id: vehicle_id)
     response = RestClient.get(url)
 
-    raise OBAErrors::EmptyServerResponse if response.body.blank?
+    raise ObaErrors::EmptyServerResponse if response.body.blank?
 
     json = JSON.parse(response.body)
     arr_dep = ArrivalDeparture.from_json(json['data']['entry'])
