@@ -3,6 +3,7 @@
 app = "obaco"
 kill_signal = "SIGINT"
 kill_timeout = 5
+swap_size_mb = 512
 
 [processes]
   web = "bin/rails fly:server"
