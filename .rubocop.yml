@@ -3,6 +3,8 @@ AllCops:
     - 'app/protobuf/**/*.rb'
     - 'bin/*'
     - 'db/schema.rb'
+    - 'gemfiles/vendor/bundle/**/*'
+    - 'vendor/**/*'
   SuggestExtensions: false
 
 Layout/LineLength:
