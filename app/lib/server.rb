@@ -42,7 +42,8 @@ class Server
   # @param trip_id [String]
   # @param vehicle_id [String] (`nil`)
   def arrival_and_departure(stop_id:, service_date:, stop_sequence:, trip_id:, vehicle_id:)
-    url = build_arrival_and_departure_url(stop_id: stop_id, service_date: service_date, stop_sequence: stop_sequence, trip_id: trip_id, vehicle_id: vehicle_id)
+    url = build_arrival_and_departure_url(stop_id: stop_id, service_date: service_date, stop_sequence: stop_sequence, 
+                                          trip_id: trip_id, vehicle_id: vehicle_id)
     response = RestClient.get(url)
 
     raise ObaErrors::EmptyServerResponse if response.body.blank?

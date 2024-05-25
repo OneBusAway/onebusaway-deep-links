@@ -1,5 +1,4 @@
 class Api::V1::StopsController < Api::V1::ApiController
-
   def show
     record_pageview(@region, 'stop')
     redirect_to(File.join(@region.web_url, "/where/standard/stop.action?id=#{params[:id]}"), allow_other_host: true)

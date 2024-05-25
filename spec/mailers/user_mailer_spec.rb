@@ -16,5 +16,4 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.body.encoded).to match("Hi")
     end
   end
-
 end

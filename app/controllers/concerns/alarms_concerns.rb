@@ -13,7 +13,7 @@ module AlarmsConcerns
           api_v1_region_alarm_url(alarm_builder.region, alarm, host: "https://onebusaway.co", protocol: "https")
         }
       }
-    else
+                    else
       {json: {error: "Unable to register alarm", messages: alarm.errors.full_messages}, status: response.status}
     end
 

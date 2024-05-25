@@ -1,5 +1,4 @@
 class RegionsController < ApplicationController
-
   def index
     @regions = Region.order(region_identifier: :asc)
     respond_to do |format|

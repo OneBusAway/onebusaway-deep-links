@@ -38,5 +38,4 @@ class Admins::RedisController < ApplicationController
       "Unsupported key type"
     end
   end
-
 end

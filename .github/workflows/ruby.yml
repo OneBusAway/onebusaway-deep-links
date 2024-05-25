@@ -42,9 +42,9 @@ jobs:
       with:
         bundler-cache: true
 
-    # - name: Rubocop
-    #   run: |
-    #     bundle exec rubocop
+    - name: Rubocop
+      run: |
+        bundle exec rubocop
 
     - name: Setup Database
       env:

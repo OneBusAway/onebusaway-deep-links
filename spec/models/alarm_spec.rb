@@ -17,7 +17,8 @@ RSpec.describe Alarm, type: :model do
                                              trip_id: trip_id,
                                              service_date: service_date,
                                              vehicle_id: vehicle_id,
-                                             stop_sequence: stop_sequence }) }
+                                             stop_sequence: stop_sequence })
+    }
     describe "creation" do
       it "is successful" do
         expect(subject).to_not be_new_record
@@ -41,7 +42,8 @@ RSpec.describe Alarm, type: :model do
                                              trip_id: trip_id,
                                              service_date: service_date,
                                              vehicle_id: vehicle_id,
-                                             stop_sequence: stop_sequence }) }
+                                             stop_sequence: stop_sequence })
+    }
     describe "creating an alarm" do
       it "is unsuccessful" do
         expect(subject).to be_new_record
@@ -61,7 +63,8 @@ RSpec.describe Alarm, type: :model do
                                              trip_id: trip_id,
                                              service_date: service_date,
                                              vehicle_id: vehicle_id,
-                                             stop_sequence: stop_sequence }) }
+                                             stop_sequence: stop_sequence })
+    }
     describe "creating an alarm" do
       it "is unsuccessful" do
         expect(subject).to be_new_record
