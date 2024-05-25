@@ -12,7 +12,10 @@ RSpec.describe AlarmChecker do
       end
 
       describe "with an alarm ready to be triggered" do
-        let(:alarm) { region.alarms.create!(message: "message", push_identifier: "pushid_123", stop_id: "stopid_123", trip_id: "tripid_123", service_date: 1234567890, vehicle_id: "vehicle_123", stop_sequence: 1, seconds_before: 300) }
+        let(:alarm) do
+          region.alarms.create!(message: "message", push_identifier: "pushid_123", stop_id: "stopid_123", trip_id: "tripid_123", 
+                                service_date: 1234567890, vehicle_id: "vehicle_123", stop_sequence: 1, seconds_before: 300)
+        end
         let(:mock_pusher) do
           mock = instance_double(OneSignal)
           expect(mock).to receive(:send_message).with("pushid_123", alarm)
@@ -32,7 +35,10 @@ RSpec.describe AlarmChecker do
       end
 
       describe "with an alarm not ready to be triggered" do
-        let(:alarm) { region.alarms.create!(message: "message", push_identifier: "pushid_123", stop_id: "stopid_123", trip_id: "tripid_123", service_date: 1234567890, vehicle_id: "vehicle_123", stop_sequence: 1, seconds_before: 299) }
+        let(:alarm) do
+          region.alarms.create!(message: "message", push_identifier: "pushid_123", stop_id: "stopid_123", trip_id: "tripid_123", 
+                                service_date: 1234567890, vehicle_id: "vehicle_123", stop_sequence: 1, seconds_before: 299)
+        end
         let(:mock_pusher) do
           mock = instance_double(OneSignal)
           mock
@@ -61,7 +67,10 @@ RSpec.describe AlarmChecker do
       let(:mock_pusher) { instance_double(OneSignal) }
 
       describe "with an alarm that is overdue to be triggered" do
-        let(:alarm) { region.alarms.create!(message: "message", push_identifier: "pushid_123", stop_id: "stopid_123", trip_id: "tripid_123", service_date: 1234567890, vehicle_id: "vehicle_123", stop_sequence: 1, seconds_before: 299) }
+        let(:alarm) do
+          region.alarms.create!(message: "message", push_identifier: "pushid_123", stop_id: "stopid_123", trip_id: "tripid_123", 
+                                service_date: 1234567890, vehicle_id: "vehicle_123", stop_sequence: 1, seconds_before: 299)
+        end
         let(:checker) { AlarmChecker.new(id: alarm.id, server: mock_server, pusher: mock_pusher) }
 
         it "does not send a push notification; deletes the alarm" do

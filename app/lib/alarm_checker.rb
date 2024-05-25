@@ -1,7 +1,10 @@
 class AlarmChecker
   # @param id [Integer] Primary key for an Alarm object.
-  # @param server [Server] Optional, used to perform the #arrival_and_departure server call. Pass `nil` here to use the alarm's default server.
-  # @param pusher [#send_message] (OneSignal.client) The object that will be used to send the push notification, if required.
+  # @param server [Server, nil]
+  #   Optional, used to perform the #arrival_and_departure server call.
+  #   Pass `nil` here to use the alarm's default server.
+  # @param pusher [#send_message] (OneSignal.client)
+  #   The object that will be used to send the push notification, if required.
   def initialize(id:, server: nil, pusher: OneSignal.client)
     @alarm = Alarm.find(id)
     @server = server
@@ -23,11 +26,13 @@ class AlarmChecker
     if arr_dep.seconds_until_departure < 0
       @alarm.destroy
       # these should be logged, not treated as exceptions.
-      # raise ObaErrors::PastDueAlarmTriggeredError, "An alarm in Region #{@alarm.region_id} was triggered after its due date. seconds_before: #{@alarm.seconds_before}, Late by: #{arr_dep.seconds_until_departure} (+ the seconds_before value.)"
+      # raise ObaErrors::PastDueAlarmTriggeredError,
+      #       "An alarm in Region #{@alarm.region_id} was triggered after its due date. seconds_before: #{@alarm.seconds_before}, Late by: #{arr_dep.seconds_until_departure} (+ the seconds_before value.)"
     end
 
     if @debugging
-      puts "Alarm #{@alarm.id} has been triggered. (Seconds Before: #{@alarm.seconds_before} // Time til Departure: #{arr_dep.seconds_until_departure}) Sending a push notification."
+      puts "Alarm #{@alarm.id} has been triggered. Sending a push notification."
+      puts "(Seconds Before: #{@alarm.seconds_before} :: Time til Departure: #{arr_dep.seconds_until_departure})"
     end
 
     @pusher.send_message(@alarm.push_identifier, @alarm)

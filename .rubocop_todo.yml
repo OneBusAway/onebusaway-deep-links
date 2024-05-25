@@ -763,10 +763,3 @@ Style/TrailingCommaInHashLiteral:
 Style/WordArray:
   EnforcedStyle: percent
   MinSize: 10
-
-# Offense count: 40
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns.
-# URISchemes: http, https
-Layout/LineLength:
-  Max: 787

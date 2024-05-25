@@ -28,7 +28,8 @@ class Api::V1::RegionsController < Api::V1::ApiController
 
     # Go hit the API for data.
     # [{id: "ID", name: "NAME", vehicle_id: "vid1"}, {...}]
-    agency_vehicle_maps = Rails.cache.fetch("region:#{@region.region_identifier}:agency_vehicles_maps", expires_in: 30.minutes, race_condition_ttl: 30.seconds) do
+    agency_vehicle_maps = Rails.cache.fetch("region:#{@region.region_identifier}:agency_vehicles_maps", 
+                                            expires_in: 30.minutes, race_condition_ttl: 30.seconds) do
       @region.server.all_vehicles_in_region
     end
   

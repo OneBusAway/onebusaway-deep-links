@@ -6,7 +6,16 @@ RSpec.describe Api::V1::AlarmsController, type: :controller do
   describe '#destroy' do
     context 'when an alarm exists' do
       before do
-        @alarm = region.alarms.create!(message: "message", push_identifier: "pushid_123", stop_id: "stopid_123", trip_id: "tripid_123", service_date: 1234567890, vehicle_id: "vehicle_123", stop_sequence: 1, seconds_before: 300)
+        @alarm = region.alarms.create!(
+          message: "message",
+          push_identifier: "pushid_123",
+          stop_id: "stopid_123",
+          trip_id: "tripid_123",
+          service_date: 1234567890,
+          vehicle_id: "vehicle_123",
+          stop_sequence: 1,
+          seconds_before: 300
+        )
       end
 
       describe "when passing in an invalid alarm token" do

@@ -21,7 +21,11 @@ describe "Api::V1::StopsController", type: :request do
     let(:service_date) { '1234567890' }
     let(:stop_sequence) { '1' }
 
-    before { get_json("/api/v1/regions/#{puget_sound.region_identifier}/stops/#{stop_id}/trips?trip_id=#{trip_id}&service_date=#{service_date}&stop_sequence=#{stop_sequence}") }
+    before do
+      path = "/api/v1/regions/#{puget_sound.region_identifier}/stops/#{stop_id}/trips"
+      params = { trip_id:, service_date:, stop_sequence: }
+      get_json("#{path}?#{params.to_query}")
+    end
 
     it { has_status_code(302) }
 

@@ -1,7 +1,13 @@
 AllCops:
   Exclude:
-    - 'app/protobuf'
+    - 'app/protobuf/**/*.rb'
+    - 'bin/*'
     - 'db/schema.rb'
   SuggestExtensions: false
+
+Layout/LineLength:
+  Max: 140
+  AllowedPatterns:
+    - !ruby/regexp /\A *# /
 
 inherit_from: .rubocop_todo.yml
