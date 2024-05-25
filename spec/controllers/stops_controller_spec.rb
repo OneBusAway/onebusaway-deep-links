@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe StopsController, type: :controller do
-
   context 'given a region that exists' do
     let(:region_identifier) { "808" }
     let(:region) { double("region", region_identifier: region_identifier, web_url: 'http://example.com/region_test_url/') }

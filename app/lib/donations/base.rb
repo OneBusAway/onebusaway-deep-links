@@ -1,6 +1,5 @@
 module Donations
   class Base
-
     attr_accessor :donation_amount_in_cents, :test_mode, :rails_env, :name, :email
 
     def initialize(params, rails_env: Rails.env)

@@ -1,5 +1,4 @@
 class AlarmChecker
-
   # @param id [Integer] Primary key for an Alarm object.
   # @param server [Server] Optional, used to perform the #arrival_and_departure server call. Pass `nil` here to use the alarm's default server.
   # @param pusher [#send_message] (OneSignal.client) The object that will be used to send the push notification, if required.

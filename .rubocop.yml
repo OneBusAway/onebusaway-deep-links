@@ -1,5 +1,6 @@
 AllCops:
   Exclude:
+    - 'app/protobuf'
     - 'db/schema.rb'
   SuggestExtensions: false
 

@@ -21,7 +21,7 @@ class GtfsMapper
 
     active_period.end = if alert.ends_at.nil?
      (alert.starts_at.to_i + 8.hours).to_i
-   else
+                        else
      alert.ends_at.to_i
    end
 

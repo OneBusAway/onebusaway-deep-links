@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def render_not_found_response(ex)
     message = if ex.is_a? String
       ex
-    else
+              else
       ex.message
     end
     render json: { error: message }, status: :not_found

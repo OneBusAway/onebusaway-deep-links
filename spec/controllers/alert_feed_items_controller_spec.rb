@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe AlertFeedItemsController, type: :controller do
-
   describe '#items' do
     let(:region) { create_puget_sound_region! }
     before do

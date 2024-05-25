@@ -1,7 +1,6 @@
 
 module Donations
   class Recurring < Donations::Base
-
     def run
       recurring_response = RecurringResponse.new(donation_amount_in_cents)
 
@@ -30,7 +29,7 @@ module Donations
         currency: 'usd',
         recurring: { interval: 'month' },
         product: recurring_donation_product_id,
-        )
+      )
 
       # Create or update the subscription with the new price
       subscription = Stripe::Subscription.create(
@@ -38,7 +37,7 @@ module Donations
         items: [{ price: price.id }],
         payment_behavior: 'default_incomplete',
         expand: ['latest_invoice.payment_intent'],
-        )
+      )
 
       subscription
     end

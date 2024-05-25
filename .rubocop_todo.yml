@@ -6,60 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Layout/ClosingParenthesisIndentation:
-  Exclude:
-    - 'app/lib/donations/recurring.rb'
-
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-Layout/ElseAlignment:
-  Exclude:
-    - 'app/controllers/api/v1/alerts_controller.rb'
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/concerns/alarms_concerns.rb'
-    - 'app/protobuf/gtfs_mapper.rb'
-
-# Offense count: 7
-# This cop supports safe autocorrection (--autocorrect).
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - 'app/lib/one_signal.rb'
-    - 'bin/bundle'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Layout/EmptyLines:
-  Exclude:
-    - 'lib/tasks/scheduler.rake'
-
-# Offense count: 12
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'config/routes.rb'
-    - 'lib/tasks/scheduler.rake'
-    - 'spec/controllers/admins/alarms_controller_spec.rb'
-    - 'spec/controllers/admins/alerts_controller_spec.rb'
-    - 'spec/controllers/admins_controller_spec.rb'
-    - 'spec/controllers/alarms_controller_spec.rb'
-    - 'spec/controllers/alert_feed_items_controller_spec.rb'
-    - 'spec/controllers/api_v1/alarms_controller_spec.rb'
-    - 'spec/controllers/sessions_controller_spec.rb'
-    - 'spec/controllers/stops_controller_spec.rb'
-    - 'spec/mailers/user_mailer_spec.rb'
-    - 'spec/requests/alarms_spec.rb'
-
-# Offense count: 17
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
-Layout/EmptyLinesAroundClassBody:
-  Enabled: false
-
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 Layout/EmptyLinesAroundMethodBody:
