@@ -66,7 +66,7 @@ RSpec.describe AlarmsController, type: :controller do
                         }
                       }
                     }
-                    HEREDOC
+        HEREDOC
 
         response = double("response")
         expect(response).to receive(:body).at_least(:once) { json_text }

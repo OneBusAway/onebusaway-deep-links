@@ -8,13 +8,6 @@
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
-Layout/ClosingHeredocIndentation:
-  Exclude:
-    - 'spec/controllers/alarms_controller_spec.rb'
-    - 'spec/controllers/api_v1/alarms_controller_spec.rb'
-
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
 Layout/ClosingParenthesisIndentation:
   Exclude:
     - 'app/lib/donations/recurring.rb'
