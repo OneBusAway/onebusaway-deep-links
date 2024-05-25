@@ -1,0 +1,68 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Ruby
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  POSTGRES_PASSWORD: mysecretpassword
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install PostgreSQL dev libs
+      run: |
+        sudo apt-get -yqq install libpq-dev
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    # - name: Rubocop
+    #   run: |
+    #     bundle exec rubocop
+
+    - name: Setup Database
+      env:
+        RAILS_ENV: test
+        PGHOST: localhost
+        PGUSER: postgres
+        PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+      run: |
+        bin/rails db:setup
+        bin/rails db:schema:load
+
+    - name: Build and test with rspec
+      env:
+        RAILS_ENV: test
+        PGHOST: localhost
+        PGUSER: postgres
+        PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        APP_REDIS_URL: redis://localhost:6379
+        MINIMUM_COVERAGE: 80
+      run: |
+        bundle exec rake
