@@ -1,5 +1,4 @@
 class ArrivalDeparture
-
   attr_accessor :route_short_name
   attr_accessor :trip_headsign
   attr_accessor :predicted_departure_time

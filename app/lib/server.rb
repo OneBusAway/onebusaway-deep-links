@@ -42,15 +42,20 @@ class Server
   # @param trip_id [String]
   # @param vehicle_id [String] (`nil`)
   def arrival_and_departure(stop_id:, service_date:, stop_sequence:, trip_id:, vehicle_id:)
-    url = build_arrival_and_departure_url(stop_id: stop_id, service_date: service_date, stop_sequence: stop_sequence, trip_id: trip_id, vehicle_id: vehicle_id)
+    url = build_arrival_and_departure_url(stop_id: stop_id, service_date: service_date, stop_sequence: stop_sequence,
+                                          trip_id: trip_id, vehicle_id: vehicle_id)
     response = RestClient.get(url)
 
     raise ObaErrors::EmptyServerResponse if response.body.blank?
 
     json = JSON.parse(response.body)
-    arr_dep = ArrivalDeparture.from_json(json['data']['entry'])
+    entry = json.dig('data', 'entry')
+
+    raise ObaErrors::EmptyServerResponse unless entry
+
+    arr_dep = ArrivalDeparture.from_json(entry)
     arr_dep.current_server_time = json["currentTime"]
-    return arr_dep
+    arr_dep
   end
 
   # @param service_date [Integer]

@@ -42,13 +42,13 @@ gem "bcrypt", "~> 3.1.7"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'haml', '~> 6.3'
-gem 'stripe', '~>11.3'
-gem 'mailgun-ruby', '~>1.2.14'
 gem 'feedjira', '~> 3.2', '>= 3.2.3'
-gem "sentry-ruby"
-gem "sentry-rails"
+gem 'haml', '~> 6.3'
+gem 'mailgun-ruby', '~>1.2.14'
 gem 'pr_geohash', '~>1.0.0'
+gem "sentry-rails"
+gem "sentry-ruby"
+gem 'stripe', '~>11.3'
 gem 'view_component', '~> 3.12', '>= 3.12.1'
 
 # Protocol Buffers
@@ -62,6 +62,8 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug"
   gem "rspec-rails", '~>6.1.2'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :development do
@@ -79,7 +81,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'simplecov'
   gem "vcr", '~>6.2.0'
   gem 'webmock', '~>3.23.0'
-  gem 'simplecov'
 end

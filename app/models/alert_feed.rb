@@ -18,5 +18,4 @@ class AlertFeed < ApplicationRecord
   def fetch_if_necessary
     fetch if last_fetched.blank? || last_fetched < UPDATE_FREQUENCY.seconds.ago
   end
-
 end

@@ -1,11 +1,10 @@
 class Api::V1::AlertsController < Api::V1::ApiController
-
   def index
     record_pageview(@region, 'alerts')
 
     conditions = if params[:test].blank?
       {test_item: false}
-    else
+                 else
       {}
     end
 

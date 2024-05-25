@@ -81,5 +81,4 @@ class Region < ApplicationRecord
       OpenStruct.new(lat: midX, lon: midY)
     end
   end
-
 end
