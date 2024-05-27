@@ -1,17 +1,25 @@
 <% @context.with_tab(
-   title: "Region Info",
-   path: @region,
-   active: @current_path == url_for(@region)
-) %>
+     title: "Region Info",
+     path: @region,
+     active: @current_path == url_for(@region)
+   ) %>
 
 <% @context.with_tab(
-   title: "Agencies",
-   path: agencies_region_path(@region),
-   active: @current_path == agencies_region_path(@region)
- ) %>
+     title: "Agencies",
+     path: agencies_region_path(@region),
+     active: @current_path == agencies_region_path(@region)
+   ) %>
 
 <% @context.with_tab(
-   title: "Alert Feed",
-   path: items_region_alert_feed_items_path(region_id: @region),
-   active: @current_path == items_region_alert_feed_items_path(region_id: @region)
- ) %>
+     title: "Alert Feed",
+     path: items_region_alert_feed_items_path(region_id: @region),
+     active: @current_path == items_region_alert_feed_items_path(region_id: @region)
+   ) %>
+
+<% if helpers.admin_logged_in? %>
+  <% @context.with_tab(
+       title: "Validator",
+       path: validate_region_path(@region),
+       active: @current_path == validate_region_path(@region)
+     ) %>
+<% end %>

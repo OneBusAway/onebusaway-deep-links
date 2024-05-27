@@ -65,6 +65,8 @@ Rails.application.routes.draw do
   # Old, unversioned API+HTML
   resources :regions, only: [:index, :show] do
     get 'agencies', on: :member
+    get 'validate', on: :member
+
     resources :alert_feeds, only: [:index]
     resources :alert_feed_items, only: [:index] do
       get 'items', on: :collection

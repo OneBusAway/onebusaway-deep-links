@@ -1,0 +1,10 @@
+<%= render Containers::SideTabsComponent.new do |c| %>
+  <%= render Regions::SideTabsComponent.new(@region, context: c, current_path: request.fullpath) %>
+
+  <h2 class="h2">Validator Output</h2>
+  <ul class="list-disc pl-8">
+    <% @validator.status.each do |status| %>
+      <li class="text-sm"><pre><%= status %></pre></li>
+    <% end %>
+  </ul>
+<% end %>
