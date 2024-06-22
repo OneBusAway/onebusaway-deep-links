@@ -48,7 +48,7 @@ gem 'mailgun-ruby', '~>1.2.14'
 gem 'pr_geohash', '~>1.0.0'
 gem "sentry-rails"
 gem "sentry-ruby"
-gem 'stripe', '~>11.3'
+gem 'stripe', '~>11.7'
 gem 'view_component', '~> 3.12', '>= 3.12.1'
 
 # Protocol Buffers
