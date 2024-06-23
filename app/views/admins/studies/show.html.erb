@@ -1,0 +1,16 @@
+<% title @study.name %>
+<% back_link "Back to Studies", admin_studies_path %>
+
+<div class="space-y-4">
+  <div class="flex gap-x-4">
+    <%= link_to "Edit Study", edit_admin_study_path(@study), class: "oba-btn" %>
+    <%= button_to "Delete Study", admin_study_path(@study), method: :delete, class: "oba-btn--danger", data: {turbo_confirm: "Are you sure you want to delete this?"} %>
+  </div>
+  <div>
+    <h2 class="h2">Description</h2>
+    <div>
+      <%= @study.description %>
+    </div>
+  </div>
+</div>
+

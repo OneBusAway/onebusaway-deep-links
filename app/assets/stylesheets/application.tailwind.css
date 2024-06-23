@@ -4,7 +4,7 @@
 
 @layer components {
   .link {
-    @apply text-blue-600 hover:underline;
+    @apply text-blue-600 hover:underline fill-blue-600;
   }
 
   .oba-td {

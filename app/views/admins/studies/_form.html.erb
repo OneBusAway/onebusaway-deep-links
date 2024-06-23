@@ -1,0 +1,13 @@
+<%= form_with(
+  model: @study,
+  url: @study.persisted? ? admin_study_path(@study) : admin_studies_path(@study)
+) do |f| %>
+  <div class="space-y-4">
+    <%= render Forms::TextFieldComponent.new(form: f, method: :name, autofocus: true) %>
+    <%= render Forms::TextAreaComponent.new(form: f, method: :description) %>
+    <div class="text-right space-x-2">
+      <%= link_to "Cancel", :back, class: "oba-btn" %>
+      <%= f.submit class: 'oba-btn--primary' %>
+    </div>
+  </div>
+<% end %>

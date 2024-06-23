@@ -1,0 +1,33 @@
+<% title("#{current_admin_region.name} Studies") %>
+
+<%= render Containers::SideTabsComponent.new do |c| %>
+  <%= render Admin::SideTabsComponent.new(context: c, current_path: request.fullpath) %>
+
+  <div class="space-y-4">
+    <div>
+      <%= link_to "New Study", new_admin_study_path, class: 'oba-btn--primary' %>
+    </div>
+
+    <% if @studies.blank? %>
+      <%= render Containers::EmptyStateComponent.new(title: "No Studies Available", description: "Click the New Study to create a study.") %>
+    <% else %>
+      <%= render Tables::TableComponent.new do |c| %>
+        <% c.with_column("ID") %>
+        <% c.with_column("Name") %>
+        <% c.with_column("Description") %>
+        <% c.with_column("Created") %>
+        <% c.with_tbody do %>
+          <% @studies.each do |s| %>
+            <tr>
+              <td class="oba-td"><%= s.id %></td>
+              <td class="oba-td"><%= link_to s.name, admin_study_path(s), class: 'link' %></td>
+              <td class="oba-td"><%= s.description %></td>
+              <td class="oba-td"><%= s.created_at %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  
+<% end %>

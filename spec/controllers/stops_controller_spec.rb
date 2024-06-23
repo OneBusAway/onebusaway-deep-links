@@ -29,7 +29,7 @@ RSpec.describe StopsController, type: :controller do
                      stop_sequence: 3})
       end
       it "redirects the caller to the trips web url for the specified region" do
-        expect(subject).to be_not_found
+        expect { subject }.to raise_error ActiveRecord::RecordNotFound
       end
     end
   end

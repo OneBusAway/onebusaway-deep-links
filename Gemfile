@@ -64,6 +64,7 @@ group :development, :test do
   gem "rspec-rails", '~>6.1.2'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+  gem 'factory_bot_rails', '~>6.4.3'
 end
 
 group :development do
@@ -84,4 +85,5 @@ group :test do
   gem 'simplecov'
   gem "vcr", '~>6.2.0'
   gem 'webmock', '~>3.23.1'
+  gem 'rails-controller-testing'
 end

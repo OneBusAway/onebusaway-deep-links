@@ -81,4 +81,8 @@ class Region < ApplicationRecord
       OpenStruct.new(lat: midX, lon: midY)
     end
   end
+
+  # Studies
+
+  has_many :studies, dependent: :destroy
 end
