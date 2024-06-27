@@ -1,0 +1,2 @@
+module Admins::StudyInvitesHelper
+end

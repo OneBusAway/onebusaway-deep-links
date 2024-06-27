@@ -22,4 +22,10 @@ FactoryBot.define do
     description { "Study Description" }
     region
   end
+
+  factory :study_invite do
+    name { "Study Invite" }
+    study
+    available { false }
+  end
 end

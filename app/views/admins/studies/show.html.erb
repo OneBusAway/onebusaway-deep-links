@@ -5,11 +5,56 @@
   <div class="flex gap-x-4">
     <%= link_to "Edit Study", edit_admin_study_path(@study), class: "oba-btn" %>
     <%= button_to "Delete Study", admin_study_path(@study), method: :delete, class: "oba-btn--danger", data: {turbo_confirm: "Are you sure you want to delete this?"} %>
+    <div class="w-8"></div>
+    <%= link_to "Create Study Invite", new_admin_study_study_invite_path(@study), class: "oba-btn" %>
   </div>
+
   <div>
     <h2 class="h2">Description</h2>
     <div>
       <%= @study.description %>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="h2">Study Invites</h2>
+    <div>
+      <% if @study.study_invites.any? %>
+        <%= render Tables::TableComponent.new do |c| %>
+          <% c.with_column("Name") %>
+          <% c.with_column("Available") %>
+          <% c.with_column("Active Members") %>
+          <% c.with_column("Respondents") %>
+          <% c.with_column("Created At") %>
+          <% c.with_tbody do %>
+            <% @study.study_invites.each do |si| %>
+              <tr>
+                <td class="oba-td">
+                  <%= link_to si.name, admin_study_study_invite_path(@study, si), class: 'link' %>
+                </td>
+                <td class="oba-td">
+                  <%= si.available? ? "Yes" : "No" %>
+                </td>
+                <td class="oba-td">
+                  tk.
+                </td>
+                <td class="oba-td">
+                  tk.
+                </td>
+                <td class="oba-td">
+                  <%= si.created_at %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= render Containers::EmptyStateComponent.new(
+          title: "No Study Invites",
+          description: "No study invites have been created for this study.",
+          icon: render("icons/envelope_regular", classes: "w-16 h-16 mx-auto fill-gray-700")
+        ) %>
+      <% end %>
     </div>
   </div>
 </div>

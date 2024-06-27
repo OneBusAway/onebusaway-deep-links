@@ -34,4 +34,11 @@ RSpec.describe Study, type: :model do
       expect(study.description).to eq('Test Description')
     end
   end
+
+  describe 'study invites' do
+    it 'creates a study invite on creation' do
+      study = Study.create(name: 'Test Study', description: 'Test Description', region: create(:region))
+      expect(study.study_invites.count).to eq(1)
+    end
+  end
 end

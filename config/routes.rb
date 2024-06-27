@@ -47,7 +47,9 @@ Rails.application.routes.draw do
       resources :alarms, only: [:index, :show]
       resources :alerts
       resource :redis, only: [:show]
-      resources :studies
+      resources :studies do
+        resources :study_invites, only: [:new, :create, :edit, :update, :destroy]
+      end
     end
     get 'activate', on: :member
     get 'reset_password', on: :member
