@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_26_213949) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_28_205950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -136,8 +136,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_26_213949) do
     t.index ["study_id"], name: "index_study_invites_on_study_id"
   end
 
+  create_table "survey_questions", force: :cascade do |t|
+    t.bigint "study_invite_id", null: false
+    t.jsonb "content", default: {}, null: false
+    t.integer "position", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position"], name: "index_survey_questions_on_position"
+    t.index ["study_invite_id", "position"], name: "index_survey_questions_on_study_invite_id_and_position", unique: true
+    t.index ["study_invite_id"], name: "index_survey_questions_on_study_invite_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "studies", "regions"
   add_foreign_key "study_invites", "studies"
+  add_foreign_key "survey_questions", "study_invites"
 end

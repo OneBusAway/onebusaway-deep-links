@@ -8,4 +8,8 @@ class StudyInvite < ApplicationRecord
   })
 
   validates :name, presence: true
+
+  # Survey Questions
+
+  has_many :survey_questions, dependent: :destroy
 end

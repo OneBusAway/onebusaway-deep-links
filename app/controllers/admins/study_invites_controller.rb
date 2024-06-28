@@ -15,6 +15,10 @@ class Admins::StudyInvitesController < ApplicationController
     end
   end
 
+  def show
+    @study_invite = @study.study_invites.find(params[:id])
+  end
+
   def edit
     @study_invite = @study.study_invites.find(params[:id])
   end

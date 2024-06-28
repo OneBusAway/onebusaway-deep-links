@@ -28,4 +28,8 @@ FactoryBot.define do
     study
     available { false }
   end
+
+  factory :survey_question do
+    study_invite
+  end
 end

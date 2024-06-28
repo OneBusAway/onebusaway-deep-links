@@ -48,9 +48,12 @@ Rails.application.routes.draw do
       resources :alerts
       resource :redis, only: [:show]
       resources :studies do
-        resources :study_invites, only: [:new, :create, :edit, :update, :destroy]
+        resources :study_invites do
+          resources :survey_questions
+        end
       end
     end
+
     get 'activate', on: :member
     get 'reset_password', on: :member
     get 'alerts', on: :member
