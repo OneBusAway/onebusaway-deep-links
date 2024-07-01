@@ -18,7 +18,7 @@ class Admins::StudiesController < ApplicationController
     if @study.save
       redirect_to admin_studies_path, notice: 'Study created'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +31,7 @@ class Admins::StudiesController < ApplicationController
     if @study.update(permitted_params)
       redirect_to admin_studies_path, notice: 'Study updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

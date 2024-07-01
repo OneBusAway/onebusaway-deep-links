@@ -15,7 +15,7 @@ class Admins::QuestionsController < ApplicationController
     if @question.save
       redirect_to admin_study_survey_path(@survey.study, @survey), notice: 'Question was created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -32,7 +32,7 @@ class Admins::QuestionsController < ApplicationController
     if @question.update(question_params)
       redirect_to admin_study_survey_path(@study, @survey), notice: 'Question was updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

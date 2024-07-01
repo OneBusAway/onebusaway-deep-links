@@ -11,7 +11,7 @@ class Admins::SurveysController < ApplicationController
     if @survey.save
       redirect_to admin_study_survey_path(@study, @survey), notice: 'Survey was created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class Admins::SurveysController < ApplicationController
     if @survey.update(survey_params)
       redirect_to admin_study_survey_path(@study, @survey), notice: 'Survey was updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
