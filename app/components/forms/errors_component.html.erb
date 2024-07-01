@@ -1,0 +1,8 @@
+<div class="bg-red-50 border border-red-200 rounded-md p-2">
+  <h3 class="h3">Errors</h3>
+  <ul class="list-disc list-inside pl-4">
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+</div>
