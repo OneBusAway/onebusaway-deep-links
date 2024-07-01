@@ -48,8 +48,8 @@ Rails.application.routes.draw do
       resources :alerts
       resource :redis, only: [:show]
       resources :studies do
-        resources :study_invites do
-          resources :survey_questions
+        resources :surveys do
+          resources :questions
         end
       end
     end

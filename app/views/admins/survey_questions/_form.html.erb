@@ -1,9 +1,0 @@
-<%= form_with model: @survey_question, url: admin_study_study_invite_survey_questions_path(@study_invite.study, @study_invite) do |f| %>
-  <div class="space-y-4">
-    <%= f.fields_for :content do |f2| %>
-      <%= render partial_for_survey_question(@survey_question), form: f2 %>
-    <% end %>
-
-    <%= render Forms::ButtonBarComponent.new(f) %>
-  </div>
-<% end %>

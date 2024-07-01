@@ -10,6 +10,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe Admins::StudyInvitesHelper, type: :helper do
+RSpec.describe Admins::SurveysHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

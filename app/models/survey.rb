@@ -1,4 +1,4 @@
-class StudyInvite < ApplicationRecord
+class Survey < ApplicationRecord
   belongs_to :study
 
   # Extra Data
@@ -11,5 +11,5 @@ class StudyInvite < ApplicationRecord
 
   # Survey Questions
 
-  has_many :survey_questions, dependent: :destroy
+  has_many :questions, dependent: :destroy
 end

@@ -10,10 +10,10 @@ class Study < ApplicationRecord
   # Study Invites
 
   after_create do
-    study_invites.create(name: "#{name} Invitation")
+    surveys.create(name: "#{name} Survey")
   end
 
-  has_many :study_invites, dependent: :destroy
+  has_many :surveys, dependent: :destroy
 
   # Extra Data
 

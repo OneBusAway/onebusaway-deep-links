@@ -23,13 +23,13 @@ FactoryBot.define do
     region
   end
 
-  factory :study_invite do
-    name { "Study Invite" }
+  factory :survey do
+    name { "Survey Name" }
     study
     available { false }
   end
 
-  factory :survey_question do
-    study_invite
+  factory :question do
+    survey
   end
 end

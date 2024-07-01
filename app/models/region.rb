@@ -85,5 +85,5 @@ class Region < ApplicationRecord
   # Studies
 
   has_many :studies, dependent: :destroy
-  has_many :study_invites, through: :studies
+  has_many :surveys, through: :studies
 end

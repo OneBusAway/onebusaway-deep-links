@@ -1,4 +1,4 @@
-class SurveyQuestionContent
+class QuestionContent
   include StoreModel::Model
 
   attribute :type, :string

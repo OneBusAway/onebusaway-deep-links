@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe SurveyQuestions::OptionsBuilderComponent, type: :component do
+RSpec.describe Questions::OptionsBuilderComponent, type: :component do
   pending "add some examples to (or delete) #{__FILE__}"
 
   # it "renders something useful" do

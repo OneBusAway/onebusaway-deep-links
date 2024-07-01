@@ -105,6 +105,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_205950) do
     t.index ["url"], name: "index_alert_feeds_on_url", unique: true
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.jsonb "content", default: {}, null: false
+    t.integer "position", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position"], name: "index_questions_on_position"
+    t.index ["survey_id", "position"], name: "index_questions_on_survey_id_and_position", unique: true
+    t.index ["survey_id"], name: "index_questions_on_survey_id"
+  end
+
   create_table "regions", id: :serial, force: :cascade do |t|
     t.integer "region_identifier"
     t.string "api_url"
@@ -126,30 +137,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_205950) do
     t.index ["region_id"], name: "index_studies_on_region_id"
   end
 
-  create_table "study_invites", force: :cascade do |t|
+  create_table "surveys", force: :cascade do |t|
     t.bigint "study_id", null: false
     t.boolean "available", default: true
     t.jsonb "extra_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["available"], name: "index_study_invites_on_available"
-    t.index ["study_id"], name: "index_study_invites_on_study_id"
-  end
-
-  create_table "survey_questions", force: :cascade do |t|
-    t.bigint "study_invite_id", null: false
-    t.jsonb "content", default: {}, null: false
-    t.integer "position", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["position"], name: "index_survey_questions_on_position"
-    t.index ["study_invite_id", "position"], name: "index_survey_questions_on_study_invite_id_and_position", unique: true
-    t.index ["study_invite_id"], name: "index_survey_questions_on_study_invite_id"
+    t.index ["available"], name: "index_surveys_on_available"
+    t.index ["study_id"], name: "index_surveys_on_study_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "questions", "surveys"
   add_foreign_key "studies", "regions"
-  add_foreign_key "study_invites", "studies"
-  add_foreign_key "survey_questions", "study_invites"
+  add_foreign_key "surveys", "studies"
 end

@@ -1,6 +1,6 @@
-class CreateStudyInvites < ActiveRecord::Migration[7.1]
+class CreateSurveys < ActiveRecord::Migration[7.1]
   def change
-    create_table :study_invites do |t|
+    create_table :surveys do |t|
       t.references :study, null: false, foreign_key: true
       t.boolean :available, default: true
       t.index :available
