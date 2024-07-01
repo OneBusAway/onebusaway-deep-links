@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 
         # Alerts
         resources :alerts, only: [:index], defaults: {format: 'pb'}
+
+        # Surveys
+        resources :surveys, only: [:index]
       end
     end
   end
@@ -47,7 +50,13 @@ Rails.application.routes.draw do
       resources :alarms, only: [:index, :show]
       resources :alerts
       resource :redis, only: [:show]
+      resources :studies do
+        resources :surveys do
+          resources :questions
+        end
+      end
     end
+
     get 'activate', on: :member
     get 'reset_password', on: :member
     get 'alerts', on: :member

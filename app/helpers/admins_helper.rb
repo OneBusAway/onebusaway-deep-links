@@ -3,6 +3,10 @@ module AdminsHelper
     @current_admin ||= Admin.find_by(session_token: cookies[:session_token].to_s) if !cookies[:session_token].blank?
   end
 
+  def current_admin_region
+    current_admin&.region
+  end
+
   def admin_logged_in?
     !!current_admin
   end

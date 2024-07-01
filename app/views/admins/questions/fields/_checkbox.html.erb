@@ -1,0 +1,7 @@
+<% form = local_assigns[:form] %>
+<div>
+  <h2 class="h2">New Checkbox List</h2>
+  <%= form.hidden_field :type, value: 'checkbox' %>
+  <%= render Forms::TextFieldComponent.new(form:, method: :label_text) %>
+  <%= render Questions::OptionsBuilderComponent.new %>
+</div>

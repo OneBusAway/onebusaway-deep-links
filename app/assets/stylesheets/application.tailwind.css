@@ -4,7 +4,7 @@
 
 @layer components {
   .link {
-    @apply text-blue-600 hover:underline;
+    @apply text-blue-600 hover:underline fill-blue-600;
   }
 
   .oba-td {
@@ -12,7 +12,10 @@
   }
 
   .oba-btn {
-    @apply rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-700 font-semibold shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand;
+    @apply bg-gradient-to-b from-slate-50 to-slate-100;
+    @apply text-sm text-gray-700 font-semibold;
+    @apply border border-gray-300/70 hover:border-gray-400/50;
+    @apply rounded-md px-3 py-2 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand;
   }
 
   .oba-btn--primary {

@@ -27,10 +27,10 @@ class ArrivalDeparture
   end
 
   def best_departure_time
-    if self.predicted_departure_time != 0
-      self.predicted_departure_time
-    else
+    if self.predicted_departure_time.zero?
       self.scheduled_departure_time
+    else
+      self.predicted_departure_time
     end
   end
 

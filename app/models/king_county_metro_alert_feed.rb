@@ -33,6 +33,6 @@ class KingCountyMetroAlertFeed < AlertFeed
 
     def parse_summary(summary)
       doc = Nokogiri::HTML(summary)
-      doc.text.gsub(/\n/, ' ').strip
+      doc.text.gsub("\n", ' ').strip
     end
 end

@@ -1,5 +1,5 @@
 class RegionsController < ApplicationController
-  before_action :admin_required, except: [:index, :show, :agencies]
+  before_action :admin_required, except: %i[index show agencies]
 
   def index
     @regions = Region.order(region_identifier: :asc)

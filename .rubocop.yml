@@ -6,6 +6,13 @@ AllCops:
     - 'gemfiles/vendor/bundle/**/*'
     - 'vendor/**/*'
   SuggestExtensions: false
+  NewCops: enable
+
+Naming/PredicateName:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
 
 Layout/LineLength:
   Max: 140

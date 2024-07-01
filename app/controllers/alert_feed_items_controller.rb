@@ -55,7 +55,7 @@ class AlertFeedItemsController < ApplicationController
     if @item.update_attributes(permitted_params)
       redirect_to admin_alerts_path, note: "Updated alert feed item: #{@item.title}."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  unless Rails.env.development?
+  if Rails.env.production?
     rescue_from ActiveRecord::RecordNotFound do |exception|
       render file: Rails.public_path.join('404.html'), status: :not_found, layout: false
     end

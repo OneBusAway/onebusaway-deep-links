@@ -4,6 +4,6 @@ module ApiHelper
   end
   
   def get_json(path)
-    get(path, headers: { 'Accept': 'application/json' })
+    get(path, headers: { Accept: 'application/json' })
   end
 end

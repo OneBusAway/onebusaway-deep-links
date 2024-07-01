@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       redirect_to admin_path, notice: "You are now logged in"
     else
       flash.now.alert = "Unable to log in. Check your email and password and try again"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
   

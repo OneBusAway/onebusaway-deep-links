@@ -7,6 +7,11 @@ module ApplicationHelper
       @title = t
     end
   end
+
+  def back_link(title, path)
+    @back_link_title = title
+    @back_link_path = path
+  end
   
   def severity_to_string(sev)
     case sev

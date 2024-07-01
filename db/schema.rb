@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2021_07_10_150803) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_28_205950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,6 +105,17 @@ ActiveRecord::Schema[7.1].define(version: 2021_07_10_150803) do
     t.index ["url"], name: "index_alert_feeds_on_url", unique: true
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.jsonb "content", default: {}, null: false
+    t.integer "position", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position"], name: "index_questions_on_position"
+    t.index ["survey_id", "position"], name: "index_questions_on_survey_id_and_position", unique: true
+    t.index ["survey_id"], name: "index_questions_on_survey_id"
+  end
+
   create_table "regions", id: :serial, force: :cascade do |t|
     t.integer "region_identifier"
     t.string "api_url"
@@ -116,6 +127,29 @@ ActiveRecord::Schema[7.1].define(version: 2021_07_10_150803) do
     t.index ["region_identifier"], name: "index_regions_on_region_identifier", unique: true
   end
 
+  create_table "studies", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "region_id", null: false
+    t.jsonb "extra_data", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["region_id"], name: "index_studies_on_region_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.bigint "study_id", null: false
+    t.boolean "available", default: true
+    t.jsonb "extra_data", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["available"], name: "index_surveys_on_available"
+    t.index ["study_id"], name: "index_surveys_on_study_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "questions", "surveys"
+  add_foreign_key "studies", "regions"
+  add_foreign_key "surveys", "studies"
 end
