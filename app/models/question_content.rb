@@ -17,11 +17,9 @@ class QuestionContent
     case type
     when 'label'
       { type:, label_text: }
-    when 'checkbox'
+    when 'checkbox', 'radio'
       { type:, label_text:, options: }
-    when 'radio'
-      { type:, label_text:, options: }
-    else # text
+    else # text # rubocop:disable Lint/DuplicateBranch
       { type:, label_text: }
     end
   end
@@ -30,7 +28,7 @@ class QuestionContent
     to_h.as_json(options)
   end
 
-  def to_json
+  def to_json(*_args)
     to_h.to_json
   end
 end

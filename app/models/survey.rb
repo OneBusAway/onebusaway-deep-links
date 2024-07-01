@@ -4,8 +4,8 @@ class Survey < ApplicationRecord
   # Extra Data
 
   jsonb_accessor(:extra_data, {
-    name: :string,
-  })
+                   name: :string
+                 })
 
   validates :name, presence: true
 

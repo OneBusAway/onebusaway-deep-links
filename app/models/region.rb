@@ -75,8 +75,8 @@ class Region < ApplicationRecord
   def region_center
     @region_center ||= begin
       bounds = bounding_rect
-      midX = bounds.x + bounds.width / 2.0
-      midY = bounds.y + bounds.height / 2.0
+      midX = bounds.x + (bounds.width / 2.0)
+      midY = bounds.y + (bounds.height / 2.0)
 
       OpenStruct.new(lat: midX, lon: midY)
     end

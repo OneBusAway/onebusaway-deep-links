@@ -48,8 +48,8 @@ RSpec.describe AlarmsController, type: :controller do
   describe '#create' do
     context 'with an unknown region id' do
       before do
-        post(:create, params: {"region_id": "99", "seconds_before": "600", "service_date": "0", "stop_id": "312_30832",
-  "stop_sequence": "52", "trip_id": "312_396972.5", "user_push_id": "5c2fd7dd-23cd-4c5d-84b0-1ce7576e27a2", "vehicle_id": "" })
+        post(:create, params: {region_id: "99", seconds_before: "600", service_date: "0", stop_id: "312_30832",
+  stop_sequence: "52", trip_id: "312_396972.5", user_push_id: "5c2fd7dd-23cd-4c5d-84b0-1ce7576e27a2", vehicle_id: "" })
       end
 
       it 'returns status 404' do
@@ -82,14 +82,14 @@ RSpec.describe AlarmsController, type: :controller do
         expect(RestClient).to receive(:get).with(/http:\/\/api.pugetsound.onebusaway.org\/api\/where\/arrival-and-departure-for-stop\/312_30832.json/) { response }
 
         post(:create, params: {
-            "region_id": region.region_identifier,
-            "seconds_before": "600",
-            "service_date": "0",
-            "stop_id": "312_30832",
-            "stop_sequence": "52",
-            "trip_id": "312_396972.5",
-            "user_push_id": "5c2fd7dd-23cd-4c5d-84b0-1ce7576e27a2",
-            "vehicle_id": ""
+            region_id: region.region_identifier,
+            seconds_before: "600",
+            service_date: "0",
+            stop_id: "312_30832",
+            stop_sequence: "52",
+            trip_id: "312_396972.5",
+            user_push_id: "5c2fd7dd-23cd-4c5d-84b0-1ce7576e27a2",
+            vehicle_id: ""
           })
       end
 

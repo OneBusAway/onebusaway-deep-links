@@ -41,7 +41,9 @@ class Admins::StudiesController < ApplicationController
     redirect_to admin_studies_path, notice: 'Study deleted'
   end
 
-  private def permitted_params
+  private
+
+  def permitted_params
     params.require(:study).permit(:name, :description)
   end
 end

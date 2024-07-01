@@ -37,9 +37,9 @@ RSpec.describe "Admins::Studies", type: :request do
   describe "POST /create" do
     it "creates a new study" do
       sign_in(admin)
-      expect {
+      expect do
         post admin_studies_path, params: { study: attributes_for(:study) }
-      }.to change(Study, :count).by(1)
+      end.to change(Study, :count).by(1)
     end
 
     it "redirects to the studies list" do

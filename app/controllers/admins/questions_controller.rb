@@ -9,8 +9,8 @@ class Admins::QuestionsController < ApplicationController
 
   def create
     @question = @survey
-                         .questions
-                         .new(question_params)
+                .questions
+                .new(question_params)
     
     if @question.save
       redirect_to admin_study_survey_path(@survey.study, @survey), notice: 'Question was created.'
@@ -50,20 +50,17 @@ class Admins::QuestionsController < ApplicationController
 
   def question_params
     content_type = params.dig(:question, :content_attributes, :type)
+    permitted_params_for_content_type(content_type)
+  end
 
-    attrs_for_type = if content_type
-                       base_attrs = %i[label_text type]
-
-                       if content_type = 'checkbox' || 'radio'
-                         base_attrs << {options: []}
-                       end
-                     else
-                       nil
-                     end
-
-    params.require(:question).permit(
-      :position,
-      content_attributes: attrs_for_type
-    )
+  def permitted_params_for_content_type(content_type)
+    case content_type
+    when 'label', 'text'
+      params.require(:question).permit(:position, content_attributes: %i[type label_text])
+    when 'checkbox', 'radio'
+      params.require(:question).permit(:position, content_attributes: [:type, :label_text, { options: [] }])
+    else
+      raise "Unknown content type: #{content_type}"
+    end
   end
 end

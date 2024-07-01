@@ -22,9 +22,9 @@ RSpec.describe "Admins::StudyInvites", type: :request do
       # force the creation of a survey
       expect(study.surveys.count).to eq(1)
 
-      expect {
+      expect do
         post admin_study_surveys_path(study), params: { survey: attributes_for(:survey) }
-      }.to change(Survey, :count).by(1)
+      end.to change(Survey, :count).by(1)
     end
 
     it "redirects to the survey" do
@@ -65,9 +65,9 @@ RSpec.describe "Admins::StudyInvites", type: :request do
     let!(:survey) { create(:survey, study:) }
 
     it "destroys the requested survey" do
-      expect {
+      expect do
         delete admin_study_survey_path(study, survey)
-      }.to change(Survey, :count).by(-1)
+      end.to change(Survey, :count).by(-1)
     end
 
     it "redirects to the study" do

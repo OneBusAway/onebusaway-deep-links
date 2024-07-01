@@ -1,6 +1,8 @@
-class ServerValidator
+# rubocop:disable Metrics/MethodLength, Metrics/PerceivedComplexity, Security/Open
 
+class ServerValidator
   attr_accessor :api_url, :status
+
   def initialize(server)
     @api_url = server
     @status = []
@@ -8,7 +10,7 @@ class ServerValidator
 
   def run
     output = fetch("/api/where/current-time.json?key=org.onebusaway.iphone", 'data', 'entry', 'time')
-    if output.is_a?(Integer) && output > 0
+    if output.is_a?(Integer) && output.positive?
       @status << 'current-time.json endpoint works'
     else
       @status << 'current-time broken'
@@ -16,11 +18,11 @@ class ServerValidator
     end
 
     agency_id = fetch("/api/where/agencies-with-coverage.json?key=org.onebusaway.iphone", 'data', 'list', 0, 'agencyId')
-    if agency_id.is_a?(String)
-      @status << 'agencies-with-coverage.json endpoint works'
-    else
-      @status << 'agencies-with-coverage broken'
-    end
+    @status << if agency_id.is_a?(String)
+                 'agencies-with-coverage.json endpoint works'
+               else
+                 'agencies-with-coverage broken'
+               end
 
     route_id = fetch("/api/where/routes-for-agency/#{agency_id}.json?key=org.onebusaway.iphone", 'data', 'list', 0, 'id')
     if route_id.is_a?(String)
@@ -43,15 +45,17 @@ class ServerValidator
       @status << 'stop endpoint works'
     else
       @status << 'stop broken'
-      return
+      nil
     end
   end
 
   private
 
-  def fetch(endpoint, *args)
+  def fetch(endpoint, *)
     url = File.join(@api_url, endpoint)
     json = URI.open(url).read
-    JSON.parse(json).dig(*args)
+    JSON.parse(json).dig(*)
   end
 end
+
+# rubocop:enable Metrics/MethodLength, Metrics/PerceivedComplexity, Security/Open

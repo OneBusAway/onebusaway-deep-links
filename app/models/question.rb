@@ -9,9 +9,7 @@ class Question < ApplicationRecord
   accepts_nested_attributes_for :content, allow_destroy: true
 
   after_initialize do
-    if new_record? && !content&.has_content?
-      self.content = QuestionContent.new(type: 'text')
-    end
+    self.content = QuestionContent.new(type: 'text') if new_record? && !content&.has_content?
   end
 end
 

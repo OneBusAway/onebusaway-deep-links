@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[7.1]
       t.jsonb :content, null: false, default: {}
       t.integer :position, null: false
       t.index :position
-      t.index [:survey_id, :position], unique: true
+      t.index %i[survey_id position], unique: true
       t.timestamps
     end
   end
