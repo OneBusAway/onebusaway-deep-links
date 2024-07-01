@@ -3,6 +3,7 @@
   url: @study.persisted? ? admin_study_path(@study) : admin_studies_path(@study)
 ) do |f| %>
   <div class="space-y-4">
+    <%= render Forms::ErrorsComponent.new(errors: @study.errors.full_messages) %>
     <%= render Forms::TextFieldComponent.new(form: f, method: :name, autofocus: true) %>
     <%= render Forms::TextAreaComponent.new(form: f, method: :description) %>
     <%= render Forms::ButtonBarComponent.new(f) %>

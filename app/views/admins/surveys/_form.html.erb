@@ -1,5 +1,6 @@
 <%= form_with model: @survey, url: admin_study_surveys_path(@study) do |f| %>
   <div class="space-y-4">
+    <%= render Forms::ErrorsComponent.new(errors: @survey.errors.full_messages) %>
     <%= render Forms::TextFieldComponent.new(form: f, method: :name, autofocus: true) %>
     <%= render Forms::CheckboxComponent.new(form: f, method: :available) %>
     <%= render Forms::ButtonBarComponent.new(f) %>

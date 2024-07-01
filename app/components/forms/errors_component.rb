@@ -5,4 +5,8 @@ class Forms::ErrorsComponent < ViewComponent::Base
     super()
     @errors = errors
   end
+
+  def render?
+    @errors.any?
+  end
 end

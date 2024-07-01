@@ -1,5 +1,7 @@
 <%= form_with model: @question, url: admin_study_survey_questions_path(@survey.study, @survey) do |f| %>
   <div class="space-y-4">
+    <%= render Forms::ErrorsComponent.new(errors: @question.errors.full_messages) %>
+
     <%= f.fields_for :content do |f2| %>
       <%= render partial_for_question(@question), form: f2 %>
     <% end %>
