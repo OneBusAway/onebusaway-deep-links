@@ -402,7 +402,7 @@ DEPENDENCIES
   feedjira (~> 3.2, >= 3.2.3)
   haml (~> 6.3)
   importmap-rails
-  jbuilder
+  jbuilder (~> 2.12)
   jsonb_accessor (~> 1.4)
   mailgun-ruby (~> 1.2.14)
   pg (~> 1.1)

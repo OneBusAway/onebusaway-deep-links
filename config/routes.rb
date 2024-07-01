@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 
         # Alerts
         resources :alerts, only: [:index], defaults: {format: 'pb'}
+
+        # Surveys
+        resources :surveys, only: [:index]
       end
     end
   end

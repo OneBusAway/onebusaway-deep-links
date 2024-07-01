@@ -5,7 +5,7 @@ ruby "3.3.0"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "importmap-rails"
-gem "jbuilder"
+gem "jbuilder", '~>2.12'
 gem "pg", "~> 1.1"
 gem 'positioning', '~> 0.2.2'
 gem "puma", ">= 5.0"
