@@ -7,7 +7,7 @@ class Study < ApplicationRecord
 
   belongs_to :region
 
-  # Study Invites
+  # Surveys
 
   after_create do
     surveys.create(name: "#{name} Survey")

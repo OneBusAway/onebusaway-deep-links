@@ -12,7 +12,7 @@
   <% if @survey.questions.blank? %>
     <%= render Containers::EmptyStateComponent.new(
       title: "No Survey Questions",
-      description: "Add survey questions to this study invite to collect data from participants."
+      description: "Add survey questions to this survey to collect data from participants."
     ) %>
   <% else %>
     <div>

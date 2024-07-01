@@ -16,10 +16,10 @@ RSpec.describe "Admins::StudyInvites", type: :request do
   describe "POST /create" do
     before { sign_in(admin) }
 
-    it "creates a new study invite" do
+    it "creates a new survey" do
       sign_in(admin)
 
-      # force the creation of a study invite
+      # force the creation of a survey
       expect(study.surveys.count).to eq(1)
 
       expect {
@@ -27,7 +27,7 @@ RSpec.describe "Admins::StudyInvites", type: :request do
       }.to change(Survey, :count).by(1)
     end
 
-    it "redirects to the study invite" do
+    it "redirects to the survey" do
       post admin_study_surveys_path(study), params: { survey: attributes_for(:survey) }
       expect(response).to redirect_to(admin_study_survey_path(study, Survey.last))
     end
@@ -45,14 +45,14 @@ RSpec.describe "Admins::StudyInvites", type: :request do
   describe "PUT /update" do
     before { sign_in(admin) }
 
-    it "updates the requested study invite" do
+    it "updates the requested survey" do
       survey = study.surveys.first
       put admin_study_survey_path(study, survey), params: { survey: { name: 'New Name' } }
       survey.reload
       expect(survey.name).to eq('New Name')
     end
 
-    it "redirects to the study invite" do
+    it "redirects to the survey" do
       survey = study.surveys.first
       put admin_study_survey_path(study, survey), params: { survey: { name: 'New Name' } }
       expect(response).to redirect_to(admin_study_survey_path(study, survey))
@@ -64,7 +64,7 @@ RSpec.describe "Admins::StudyInvites", type: :request do
 
     let!(:survey) { create(:survey, study:) }
 
-    it "destroys the requested study invite" do
+    it "destroys the requested survey" do
       expect {
         delete admin_study_survey_path(study, survey)
       }.to change(Survey, :count).by(-1)
