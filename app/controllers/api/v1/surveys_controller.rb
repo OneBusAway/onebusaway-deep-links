@@ -8,6 +8,6 @@ class Api::V1::SurveysController < ApplicationController
   private
 
   def load_region
-    @region = Region.find(params[:region_id])
+    @region = Region.find_by(region_identifier: params[:region_id])
   end
 end
