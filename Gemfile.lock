@@ -252,7 +252,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.2.0)
       redis-client (>= 0.22.0)
-    redis-client (0.22.1)
+    redis-client (0.22.2)
       connection_pool
     regexp_parser (2.9.2)
     reline (0.5.9)
@@ -315,11 +315,12 @@ GEM
     sentry-ruby (5.17.3)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sidekiq (7.2.4)
+    sidekiq (7.3.0)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
+      logger
       rack (>= 2.2.4)
-      redis-client (>= 0.19.0)
+      redis-client (>= 0.22.2)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -422,7 +423,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails
   sentry-ruby
-  sidekiq (~> 7.2.4)
+  sidekiq (~> 7.3.0)
   simplecov
   sprockets-rails
   stimulus-rails
