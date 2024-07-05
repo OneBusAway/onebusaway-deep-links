@@ -338,7 +338,7 @@ GEM
     store_model (3.0.2)
       activerecord (>= 5.2)
     stringio (3.1.1)
-    stripe (11.7.0)
+    stripe (12.1.0)
     strscan (3.1.0)
     tailwindcss-rails (2.6.1)
       railties (>= 7.0.0)
@@ -427,7 +427,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   store_model (~> 3.0, >= 3.0.2)
-  stripe (~> 11.3)
+  stripe (~> 12.1)
   tailwindcss-rails
   turbo-rails
   varint (~> 0.1.1)
