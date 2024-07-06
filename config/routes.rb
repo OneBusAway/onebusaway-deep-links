@@ -42,6 +42,8 @@ Rails.application.routes.draw do
         # Surveys
         resources :surveys, only: [:index]
       end
+
+      resources :survey_responses, only: [:create, :update]
     end
   end
 

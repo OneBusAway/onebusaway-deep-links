@@ -14,6 +14,10 @@ class SurveyResponse < ApplicationRecord
     self.public_identifier ||= SecureRandom.hex(10)
   end
 
+  def to_param
+    public_identifier
+  end
+
   # Response Data
 
   attribute :responses, SurveyResponseContent.to_array_type
