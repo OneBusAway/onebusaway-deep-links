@@ -1,8 +1,17 @@
 <% question = local_assigns[:question] %>
 
 <div>
-  checkbox!
-  <pre><code>
-<%= question.content.to_json.strip %>
-  </code></pre>
+  <div>
+    <label class="font-medium text-sm">
+      <%= question.content.label_text %>:
+    </label>
+  </div>
+  <div class="flex flex-col gap-y-2">
+    <% question.content.options.each do |r| %>
+      <label class="font-medium text-sm block">
+        <%= check_box_tag r, r %>
+        <%= r %>
+      </label>
+    <% end %>
+  </div>
 </div>
