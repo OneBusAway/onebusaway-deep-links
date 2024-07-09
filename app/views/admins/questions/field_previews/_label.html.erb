@@ -1,8 +1,5 @@
 <% question = local_assigns[:question] %>
 
-<div>
-  label!
-  <pre><code>
-<%= question.content.to_json.strip %>
-  </code></pre>
+<div class="font-medium text-sm">
+  <%= question.content.label_text %>
 </div>

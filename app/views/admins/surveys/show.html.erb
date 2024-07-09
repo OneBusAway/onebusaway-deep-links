@@ -31,7 +31,7 @@
               <%= render("icons/grip_vertical_solid", classes: "w-4 h-4 fill-gray-500") %>
             </div>
             <div class="flex-1">
-              <h3 class="h3">Q<%= sq.position %>: <%= sq.content.label_text %></h3>
+              <h3 class="h3">Q<%= sq.position %>: <%= sq.content.type.titleize %></h3>
             </div>
           </div>
           <%= render partial_for_field_preview(sq), question: sq %>
