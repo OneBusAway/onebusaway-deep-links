@@ -16,6 +16,7 @@
     ) %>
   <% else %>
     <div
+      class="flex flex-col gap-y-4"
       data-controller="sortable"
       data-sortable-resource-name-value="question"
       data-sortable-response-kind-value="json"
@@ -30,12 +31,10 @@
               <%= render("icons/grip_vertical_solid", classes: "w-4 h-4 fill-gray-500") %>
             </div>
             <div class="flex-1">
-              <h3 class="h3"><%= sq.content.type.titleize %></h3>
+              <h3 class="h3">Q<%= sq.position %>: <%= sq.content.label_text %></h3>
             </div>
           </div>
-          <pre><code>
-            <%= sq.content.to_json.strip %>
-          </code></pre>
+          <%= render partial_for_field_preview(sq), question: sq %>
         </div>
       <% end %>
     </div>
