@@ -15,10 +15,24 @@
       description: "Add survey questions to this survey to collect data from participants."
     ) %>
   <% else %>
-    <div>
+    <div
+      data-controller="sortable"
+      data-sortable-resource-name-value="question"
+      data-sortable-response-kind-value="json"
+      data-sortable-animation-value="150"
+      data-sortable-handle-value=".handle">
       <% @survey.questions.each do |sq| %>
-        <div class="border bg-slate-50 p-2">
-          <h3 class="h3"><%= sq.content.type.titleize %></h3>
+        <div
+          data-sortable-update-url="<%= admin_study_survey_question_path(@survey.study, @survey, sq) %>"
+          class="border bg-slate-50 p-2">
+          <div class="flex">
+            <div class="handle self-center cursor-move">
+              <%= render("icons/grip_vertical_solid", classes: "w-4 h-4 fill-gray-500") %>
+            </div>
+            <div class="flex-1">
+              <h3 class="h3"><%= sq.content.type.titleize %></h3>
+            </div>
+          </div>
           <pre><code>
             <%= sq.content.to_json.strip %>
           </code></pre>

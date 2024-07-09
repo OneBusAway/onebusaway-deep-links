@@ -29,10 +29,17 @@ class Admins::QuestionsController < ApplicationController
 
   def update
     @question = @survey.questions.find(params[:id])
-    if @question.update(question_params)
-      redirect_to admin_study_survey_path(@study, @survey), notice: 'Question was updated.'
-    else
+
+    if !@question.update(question_params)
       render :edit, status: :unprocessable_entity
+      return
+    end
+
+    respond_to do |format|
+      format.json { render json: {status: :ok} }
+      format.html do
+        redirect_to admin_study_survey_path(study_id: @study.to_param, survey_id: @survey.to_param), notice: 'Question was updated.'
+      end
     end
   end
 
@@ -60,7 +67,7 @@ class Admins::QuestionsController < ApplicationController
     when 'checkbox', 'radio'
       params.require(:question).permit(:position, content_attributes: [:type, :label_text, { options: [] }])
     else
-      raise "Unknown content type: #{content_type}"
+      params.require(:question).permit(:position)
     end
   end
 end
