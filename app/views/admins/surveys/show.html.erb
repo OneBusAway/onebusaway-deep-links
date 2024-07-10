@@ -33,6 +33,9 @@
             <div class="flex-1">
               <h3 class="h3">Q<%= sq.position %>: <%= sq.content.type.titleize %></h3>
             </div>
+            <div>
+              <%= link_to "Edit", edit_admin_study_survey_question_path(@survey.study, @survey, sq), class: "link text-sm" %>
+            </div>
           </div>
           <%= render partial_for_field_preview(sq), question: sq %>
         </div>

@@ -30,15 +30,19 @@ class Admins::QuestionsController < ApplicationController
   def update
     @question = @survey.questions.find(params[:id])
 
-    if !@question.update(question_params)
-      render :edit, status: :unprocessable_entity
-      return
-    end
-
-    respond_to do |format|
-      format.json { render json: {status: :ok} }
-      format.html do
-        redirect_to admin_study_survey_path(study_id: @study.to_param, survey_id: @survey.to_param), notice: 'Question was updated.'
+    if @question.update(question_params)
+      respond_to do |format|
+        format.json { render json: {status: :ok} }
+        format.html do
+          redirect_to admin_study_survey_path(@survey.study, @survey), notice: 'Question was updated.'
+        end
+      end
+    else
+      respond_to do |format|
+        format.json { render json: { status: :unprocessable_entity } }
+        format.html do
+          render :edit, status: :unprocessable_entity
+        end
       end
     end
   end

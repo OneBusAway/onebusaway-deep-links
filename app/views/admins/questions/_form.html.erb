@@ -1,4 +1,7 @@
-<%= form_with model: @question, url: admin_study_survey_questions_path(@survey.study, @survey) do |f| %>
+<%= form_with(
+  model: @question,
+  url: question_form_post_url(@question)
+) do |f| %>
   <div class="space-y-4">
     <%= render Forms::ErrorsComponent.new(errors: @question.errors.full_messages) %>
 

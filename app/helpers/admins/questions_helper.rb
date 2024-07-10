@@ -24,4 +24,12 @@ module Admins::QuestionsHelper
       'admins/questions/field_previews/text'
     end
   end
+
+  def question_form_post_url(question)
+    if question.persisted?
+      admin_study_survey_question_path(question.survey.study, question.survey, question)
+    else
+      admin_study_survey_questions_path(question.survey.study, question.survey)
+    end
+  end
 end

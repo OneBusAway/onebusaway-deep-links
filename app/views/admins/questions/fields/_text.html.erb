@@ -1,6 +1,8 @@
 <% form = local_assigns[:form] %>
 <div>
-  <h2 class="h2">New Text Field</h2>
+  <h2 class="h2">
+    New Text Field
+  </h2>
   <%= form.hidden_field :type, value: 'text' %>
   <%= render Forms::TextFieldComponent.new(form:, method: :label_text) %>
 </div>
