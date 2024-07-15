@@ -32,7 +32,7 @@ class Admins::QuestionsController < ApplicationController
 
     if @question.update(question_params)
       respond_to do |format|
-        format.json { render json: {status: :ok} }
+        format.json { render json: { status: :ok } }
         format.html do
           redirect_to admin_study_survey_path(@survey.study, @survey), notice: 'Question was updated.'
         end
