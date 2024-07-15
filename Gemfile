@@ -11,7 +11,7 @@ gem "jbuilder", '~>2.12'
 gem 'jsonb_accessor', '~> 1.4'
 gem 'mailgun-ruby', '~>1.2.14'
 gem "pg", "~> 1.1"
-gem 'positioning', '~> 0.2.2'
+gem 'positioning', '~> 0.2.3'
 gem 'pr_geohash', '~>1.0.0'
 gem "puma", ">= 5.0"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
