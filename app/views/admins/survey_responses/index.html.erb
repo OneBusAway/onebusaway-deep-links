@@ -1,0 +1,33 @@
+<% title("#{@survey.name} Responses") %>
+<% back_link "Back to Study", admin_study_path(@survey.study) %>
+<%= render 'admins/survey_tabs' %>
+
+<%= render Tables::TableComponent.new do |c| %>
+  <% c.with_column("ID") %>
+  <% c.with_column("User ID") %>
+  <% c.with_column("Responses") %>
+  <% c.with_column("Created") %>
+  <% c.with_column("Updated") %>
+
+  <% c.with_tbody do %>
+    <% @survey_responses.each do |r| %>
+      <tr>
+        <td class="oba-td">
+          <%= link_to r.to_param, admin_study_survey_survey_response_path(@survey.study, @survey, r), class: 'link' %>
+        </td>
+        <td class="oba-td">
+          <%= r.user_identifier %>
+        </td>
+        <td class="oba-td">
+          <%= r.responses.to_json %>
+        </td>
+        <td class="oba-td">
+          <%= r.created_at %>
+        </td>
+        <td class="oba-td">
+          <%= r.updated_at %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>

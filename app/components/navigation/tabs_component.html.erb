@@ -1,0 +1,13 @@
+<div class="flex gap-x-4 my-4 border-b text-sm text-gray-700 font-medium">
+  <% @tabs.each do |t| %>
+    <%= link_to(t[:name],
+                t[:path],
+                class: class_names(
+                  "p-2 mb-2 rounded-md hover:bg-gray-200",
+                  {
+                    "bg-blue-400 bg-gradient-to-br from-blue-500 to-blue-600 text-white": request.fullpath == t[:path]
+                  }
+                )
+        ) %>
+  <% end %>
+</div>

@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       resources :studies do
         resources :surveys do
           resources :questions
+          resources :survey_responses, only: [:index, :show]
         end
       end
     end
