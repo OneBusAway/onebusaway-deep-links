@@ -1,6 +1,8 @@
 <% title @survey.name %>
 <% back_link "Back to Study", admin_study_path(@survey.study) %>
 
+<%= render 'admins/survey_tabs' %>
+
 <div class="space-y-4">
   <div>
     <%= link_to "New Text Field", new_admin_study_survey_question_path(@survey.study, @survey, content: 'text'), class: 'oba-btn' %>

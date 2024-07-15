@@ -23,8 +23,7 @@
         <%= render Tables::TableComponent.new do |c| %>
           <% c.with_column("Name") %>
           <% c.with_column("Available") %>
-          <% c.with_column("Active Members") %>
-          <% c.with_column("Respondents") %>
+          <% c.with_column("Responses") %>
           <% c.with_column("Created At") %>
           <% c.with_tbody do %>
             <% @study.surveys.each do |si| %>
@@ -36,10 +35,10 @@
                   <%= si.available? ? "Yes" : "No" %>
                 </td>
                 <td class="oba-td">
-                  tk.
-                </td>
-                <td class="oba-td">
-                  tk.
+                  <%= link_to admin_study_survey_survey_responses_path(@study, si), class: 'link' do %>
+                    <%= si.survey_responses.size %>
+                    <%= render("icons/arrow_up_right_from_square", classes: "w-3 inline") %>
+                  <% end %>
                 </td>
                 <td class="oba-td">
                   <%= si.created_at %>
