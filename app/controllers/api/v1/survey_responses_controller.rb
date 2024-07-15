@@ -16,6 +16,14 @@ class Api::V1::SurveyResponsesController < Api::V1::ApiController
   end
 
   def update
-    # tk.
+    @survey_response = SurveyResponse.find_by(public_identifier: params[:id])
+    responses = JSON.parse(params[:responses]).map { |r| SurveyResponseContent.new(r) }
+    @survey_response.upsert_responses(responses)
+
+    if @survey_response.save
+      render 'create', status: :ok, formats: :json
+    else
+      render_api_errors(@survey_response)
+    end
   end
 end
