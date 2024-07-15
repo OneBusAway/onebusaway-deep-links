@@ -6,6 +6,10 @@ FactoryBot.define do
     region
   end
 
+  factory :question do
+    survey
+  end
+
   factory :region do
     sequence(:region_identifier) { |n| n }
     sequence(:api_url) { |n| "https://example.org/#{n}/" }
@@ -25,7 +29,8 @@ FactoryBot.define do
     available { false }
   end
 
-  factory :question do
+  factory :survey_response do
     survey
+    sequence(:user_identifier) { |n| "user_identifier_#{n}" }
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_28_205950) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_06_205804) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -137,6 +137,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_205950) do
     t.index ["region_id"], name: "index_studies_on_region_id"
   end
 
+  create_table "survey_responses", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.string "user_identifier", null: false
+    t.string "public_identifier", null: false
+    t.jsonb "responses", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["public_identifier"], name: "index_survey_responses_on_public_identifier", unique: true
+    t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
+    t.index ["user_identifier"], name: "index_survey_responses_on_user_identifier"
+  end
+
   create_table "surveys", force: :cascade do |t|
     t.bigint "study_id", null: false
     t.boolean "available", default: true
@@ -151,5 +163,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_205950) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "questions", "surveys"
   add_foreign_key "studies", "regions"
+  add_foreign_key "survey_responses", "surveys"
   add_foreign_key "surveys", "studies"
 end

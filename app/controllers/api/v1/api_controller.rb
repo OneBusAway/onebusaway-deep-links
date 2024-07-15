@@ -3,6 +3,8 @@ class Api::V1::ApiController < ApplicationController
   before_action :load_region
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
+  include Api::V1::ErrorsHelper
+
   protected
 
   def load_region
