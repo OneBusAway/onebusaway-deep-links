@@ -12,4 +12,8 @@ class Survey < ApplicationRecord
   # Survey Questions
 
   has_many :questions, -> { order(position: :asc) }, dependent: :destroy
+
+  # Survey Responses
+
+  has_many :survey_responses, dependent: :destroy
 end
