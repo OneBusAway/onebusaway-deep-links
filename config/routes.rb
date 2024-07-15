@@ -43,7 +43,9 @@ Rails.application.routes.draw do
         resources :surveys, only: [:index]
       end
 
-      resources :survey_responses, only: [:create, :update]
+      resources :survey_responses, only: [:create, :update] do
+        post :update, on: :member
+      end
     end
   end
 
