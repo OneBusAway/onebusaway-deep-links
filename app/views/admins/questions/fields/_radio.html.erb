@@ -1,7 +1,7 @@
 <% form = local_assigns[:form] %>
 <div>
-  <h2 class="h2">New Radio List</h2>
+  <h2 class="h2">Radio List</h2>
   <%= form.hidden_field :type, value: 'radio' %>
   <%= render Forms::TextFieldComponent.new(form:, method: :label_text) %>
-  <%= render Questions::OptionsBuilderComponent.new %>
+  <%= render Questions::OptionsBuilderComponent.new(options: form.object.options) %>
 </div>

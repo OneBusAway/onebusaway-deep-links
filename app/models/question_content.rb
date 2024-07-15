@@ -5,6 +5,10 @@ class QuestionContent
   attribute :label_text, :string
   attribute :options, array: true, default: []
 
+  def prune
+    options.reject!(&:blank?)
+  end
+
   def has_content?
     label_text.present? || options.any?
   end

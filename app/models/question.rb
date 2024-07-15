@@ -5,6 +5,10 @@ class Question < ApplicationRecord
   # survey question content
   include StoreModel::NestedAttributes
 
+  before_save do
+    content.prune
+  end
+
   attribute :content, QuestionContent.to_type
   accepts_nested_attributes_for :content, allow_destroy: true
 

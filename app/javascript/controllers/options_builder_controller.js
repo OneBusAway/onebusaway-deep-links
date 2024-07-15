@@ -14,8 +14,8 @@ export default class extends Controller {
   }
 
   removeField(event) {
-    event.preventDefault()
-    const field = event.target.closest(".nested-fields")
-    field.remove()
+    event.preventDefault();
+    const field = event.target.closest(".oba-option-component");
+    field.remove();
   }
 }
