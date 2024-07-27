@@ -9,6 +9,7 @@
     <%= link_to "New Label", new_admin_study_survey_question_path(@survey.study, @survey, content: 'label'), class: 'oba-btn' %>
     <%= link_to "New Radio List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'radio'), class: 'oba-btn' %>
     <%= link_to "New Checkbox List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'checkbox'), class: 'oba-btn' %>
+    <%= link_to "New External Survey", new_admin_study_survey_question_path(@survey.study, @survey, content: 'external_survey'), class: 'oba-btn' %>
   </div>
 
   <% if @survey.questions.blank? %>

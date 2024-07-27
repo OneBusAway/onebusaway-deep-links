@@ -1,0 +1,27 @@
+<% form = local_assigns[:form] %>
+<div>
+  <h2 class="h2">External Survey</h2>
+  <%= form.hidden_field :type, value: 'external_survey' %>
+  <%= render Forms::TextFieldComponent.new(form:, method: :label_text) %>
+
+  <%= render Forms::TextFieldComponent.new(form:, method: :url) %>
+
+  <%= render Forms::SelectComponent.new(
+    form:,
+    method: :survey_provider,
+    collection: survey_provider_options
+  ) %>
+
+  <%= render Forms::TextAreaComponent.new(
+    form:,
+    method: :sdk_configuration_values
+  ) %>
+
+  <%= render Questions::OptionsBuilderComponent.new(
+    label: "Embedded Data",
+    option_name: "embedded_data_fields",
+    options: form.object.embedded_data_fields
+  ) %>
+  <p class="text-sm text-gray-500">Valid values for embedded data are: <code>region_id</code>, <code>route_id</code>, <code>stop_id</code>, <code>user_id</code>.</p>
+</div>
+

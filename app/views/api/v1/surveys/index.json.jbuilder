@@ -8,7 +8,22 @@ json.surveys do
 
     json.questions do
       json.array! survey.questions do |question|
-        json.extract! question, :id, :position, :content
+        json.extract! question, :id, :position
+        json.content do
+          json.type question.content.type
+          json.label_text question.content.label_text
+
+          if question.content.type == 'external_survey'
+            begin
+              json.sdk_configuration_values JSON.parse(question.content.sdk_configuration_values)
+            rescue StandardError
+              nil
+            end
+            json.extract! question.content, :url, :embedded_data_fields, :survey_provider
+          elsif question.content.type == 'checkbox' || question.content.type == 'radio'
+            json.options question.content.options
+          end
+        end
       end
     end
   end

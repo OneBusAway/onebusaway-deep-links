@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Questions::OptionComponent < ViewComponent::Base
-  def initialize(value = "")
+  def initialize(key:, value: "")
     super()
+    @key = key
     @value = value
   end
 end

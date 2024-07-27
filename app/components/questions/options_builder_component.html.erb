@@ -1,13 +1,15 @@
 <div data-controller="options-builder">
   <div class="flex gap-x-2 mt-4 mb-2">
-    <h3 class="h3">Options:</h3>
+    <h3 class="h3">
+      <%= @label %>
+    </h3>
 
     <div class="flex-1">
       <button
         type="button"
         class="oba-btn--sm oba-btn--primary"
         data-action="click->options-builder#addField">
-        Add Option
+        Add <%= @option_name %>
       </button>
     </div>
   </div>
@@ -20,11 +22,11 @@
     data-options-builder-target="fields">
 
     <% @options.each do |opt| %>
-      <%= render Questions::OptionComponent.new(opt) %>
+      <%= render Questions::OptionComponent.new(key: @option_name, value: opt) %>
     <% end %>
   </div>
 
   <template data-options-builder-target="template">
-    <%= render Questions::OptionComponent.new %>
+    <%= render Questions::OptionComponent.new(key: @option_name) %>
   </template>
 </div>
