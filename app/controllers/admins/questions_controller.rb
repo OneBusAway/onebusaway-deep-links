@@ -11,7 +11,7 @@ class Admins::QuestionsController < ApplicationController
     @question = @survey
                 .questions
                 .new(question_params)
-    
+
     if @question.save
       redirect_to admin_study_survey_path(@survey.study, @survey), notice: 'Question was created.'
     else
@@ -70,6 +70,12 @@ class Admins::QuestionsController < ApplicationController
       params.require(:question).permit(:position, content_attributes: %i[type label_text])
     when 'checkbox', 'radio'
       params.require(:question).permit(:position, content_attributes: [:type, :label_text, { options: [] }])
+    when 'external_survey'
+      params.require(:question).permit(:position, 
+                                       content_attributes: [
+                                         :type, :label_text, :survey_provider, :url, :sdk_configuration_values,
+                                         { embedded_data_fields: [] }
+                                       ])
     else
       params.require(:question).permit(:position)
     end

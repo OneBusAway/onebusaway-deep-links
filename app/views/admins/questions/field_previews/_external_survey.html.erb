@@ -1,0 +1,35 @@
+<% question = local_assigns[:question] %>
+
+<div class="space-y-2">
+  <div>
+    <label class="font-medium text-sm">
+      <%= question.content.label_text %>:
+    </label>
+  </div>
+
+  <div>
+    Survey provider: <span class="font-medium"><%= question.content.survey_provider.titleize %></span>
+  </div>
+
+  <div>
+    URL: <span class="font-medium"><%= link_to question.content.url %></span>
+  </div>
+
+  <div>
+    SDK configuration values:
+    <%= question.content.sdk_configuration_values %>
+  </div>
+
+  <div>
+    Embedded data fields:
+    <% if question.content.embedded_data_fields.any? %>
+      <ul class="list-disc ml-6">
+        <% question.content.embedded_data_fields.each do |field| %>
+          <li><%= field %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-gray-500">None</p>
+    <% end %>
+  </div>
+</div>

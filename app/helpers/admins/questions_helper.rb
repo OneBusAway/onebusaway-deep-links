@@ -3,6 +3,8 @@ module Admins::QuestionsHelper
     case question.content&.type
     when 'checkbox'
       'admins/questions/fields/checkbox'
+    when 'external_survey'
+      'admins/questions/fields/external_survey'
     when 'label'
       'admins/questions/fields/label'
     when 'radio'
@@ -16,6 +18,8 @@ module Admins::QuestionsHelper
     case question.content&.type
     when 'checkbox'
       'admins/questions/field_previews/checkbox'
+    when 'external_survey'
+      'admins/questions/field_previews/external_survey'
     when 'label'
       'admins/questions/field_previews/label'
     when 'radio'
