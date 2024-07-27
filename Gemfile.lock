@@ -366,7 +366,7 @@ GEM
     unicode-display_width (2.5.0)
     varint (0.1.1)
     vcr (6.2.0)
-    view_component (3.12.1)
+    view_component (3.13.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -433,7 +433,7 @@ DEPENDENCIES
   turbo-rails
   varint (~> 0.1.1)
   vcr (~> 6.2.0)
-  view_component (~> 3.12, >= 3.12.1)
+  view_component (~> 3.13)
   web-console
   webmock (~> 3.23.1)
 
