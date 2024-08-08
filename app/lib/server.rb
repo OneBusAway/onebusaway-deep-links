@@ -46,12 +46,15 @@ class Server
                                           trip_id: trip_id, vehicle_id: vehicle_id)
     response = RestClient.get(url)
 
-    raise ObaErrors::EmptyServerResponse if response.body.blank?
+    raise ObaErrors::EmptyServerResponse, "response.body is blank" if response.body.blank?
 
     json = JSON.parse(response.body)
+
+    raise ObaErrors::EmptyServerResponse, "json is blank" if json.blank?
+
     entry = json.dig('data', 'entry')
 
-    raise ObaErrors::EmptyServerResponse unless entry
+    raise ObaErrors::EmptyServerResponse, "entry is blank" if entry.blank?
 
     arr_dep = ArrivalDeparture.from_json(entry)
     arr_dep.current_server_time = json["currentTime"]
