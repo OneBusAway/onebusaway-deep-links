@@ -1,0 +1,8 @@
+<div>
+  <% @items.each do |i| %>
+    <div class='border-b pb-1 mb-2'>
+      <strong><%= i[:name] %></strong>
+      <%= i[:value] %>
+    </div>
+  <% end %>
+</div>
