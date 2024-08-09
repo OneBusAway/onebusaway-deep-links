@@ -1,8 +1,27 @@
-<%= form_with model: @survey, url: admin_study_surveys_path(@study) do |f| %>
+<% url = @survey.persisted? ? admin_study_survey_path(@study, @survey) : admin_study_surveys_path(@study) %>
+<%= form_with model: @survey, url: url do |f| %>
   <div class="space-y-4">
     <%= render Forms::ErrorsComponent.new(errors: @survey.errors.full_messages) %>
     <%= render Forms::TextFieldComponent.new(form: f, method: :name, autofocus: true) %>
     <%= render Forms::CheckboxComponent.new(form: f, method: :available) %>
+
+    <%= render Forms::CheckboxComponent.new(form: f, method: :show_on_map) %>
+    <%= render Forms::CheckboxComponent.new(form: f, method: :show_on_stops) %>
+
+    <div>
+      <%= render Forms::TextFieldComponent.new(form: f, method: :visible_stop_list) %>
+      <div class='text-gray-500 text-sm'>
+        Optional, comma separated list of stop IDs that this survey should be visible on. When blank, it implies visibility on all stops.
+      </div>
+    </div>
+
+    <div>
+      <%= render Forms::TextFieldComponent.new(form: f, method: :visible_route_list) %>
+      <div class='text-gray-500 text-sm'>
+        Optional, comma separated list of route IDs that this survey should be visible on. When blank, it implies visibility on all routes.
+      </div>
+    </div>
+
     <%= render Forms::ButtonBarComponent.new(f) %>
   </div>
 <% end %>

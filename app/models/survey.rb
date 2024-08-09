@@ -4,7 +4,12 @@ class Survey < ApplicationRecord
   # Extra Data
 
   jsonb_accessor(:extra_data, {
-                   name: :string
+                   name: :string,
+
+                   show_on_map: :boolean,
+                   show_on_stops: :boolean,
+                   visible_stop_list: :string,
+                   visible_route_list: :string
                  })
 
   validates :name, presence: true

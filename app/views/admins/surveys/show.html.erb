@@ -1,48 +1,70 @@
 <% title @survey.name %>
 <% back_link "Back to Study", admin_study_path(@survey.study) %>
-
 <%= render 'admins/survey_tabs' %>
 
-<div class="space-y-4">
-  <div>
-    <%= link_to "New Text Field", new_admin_study_survey_question_path(@survey.study, @survey, content: 'text'), class: 'oba-btn' %>
-    <%= link_to "New Label", new_admin_study_survey_question_path(@survey.study, @survey, content: 'label'), class: 'oba-btn' %>
-    <%= link_to "New Radio List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'radio'), class: 'oba-btn' %>
-    <%= link_to "New Checkbox List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'checkbox'), class: 'oba-btn' %>
-    <%= link_to "New External Survey", new_admin_study_survey_question_path(@survey.study, @survey, content: 'external_survey'), class: 'oba-btn' %>
+<div class='flex flex-col md:flex-row-reverse space-y-4 md:space-y-0 md:gap-x-2'>
+  <div class='md:w-72 bg-neutral-50 rounded-md p-2'>
+    <div class='flex mb-2'>
+      <h2 class="h2">Settings</h2>
+      <div class='flex-1 text-right text-sm self-center'>
+        <%= link_to "Edit", edit_admin_study_survey_path(@survey.study, @survey), class: "oba-btn oba-btn--sm" %>
+      </div>
+    </div>
+
+    <div class='text-sm'>
+      <%= render Data::DataListComponent.new(
+        [
+          { name: "Name", value: @survey.name },
+          { name: "Show on Map", value: @survey.show_on_map? ? "Yes" : "No" },
+          { name: "Show on Stops", value: @survey.show_on_stops? ? "Yes" : "No" },
+          { name: "Visible stop list", value: @survey.visible_stop_list },
+          { name: "Visible route list", value: @survey.visible_route_list },
+        ]
+      ) %>
+    </div>
   </div>
 
-  <% if @survey.questions.blank? %>
-    <%= render Containers::EmptyStateComponent.new(
-      title: "No Survey Questions",
-      description: "Add survey questions to this survey to collect data from participants."
-    ) %>
-  <% else %>
-    <div
-      class="flex flex-col gap-y-4"
-      data-controller="sortable"
-      data-sortable-resource-name-value="question"
-      data-sortable-response-kind-value="json"
-      data-sortable-animation-value="150"
-      data-sortable-handle-value=".handle">
-      <% @survey.questions.each do |sq| %>
-        <div
-          data-sortable-update-url="<%= admin_study_survey_question_path(@survey.study, @survey, sq) %>"
-          class="border bg-slate-50 p-2">
-          <div class="flex">
-            <div class="handle self-center cursor-move">
-              <%= render("icons/grip_vertical_solid", classes: "w-4 h-4 fill-gray-500") %>
-            </div>
-            <div class="flex-1">
-              <h3 class="h3">Q<%= sq.position %>: <%= sq.content.type.titleize %></h3>
-            </div>
-            <div>
-              <%= link_to "Edit", edit_admin_study_survey_question_path(@survey.study, @survey, sq), class: "link text-sm" %>
-            </div>
-          </div>
-          <%= render partial_for_field_preview(sq), question: sq %>
-        </div>
-      <% end %>
+  <div class="space-y-4 flex-1">
+    <div class='flex gap-x-2'>
+      <%= link_to "New Text Field", new_admin_study_survey_question_path(@survey.study, @survey, content: 'text'), class: 'oba-btn' %>
+      <%= link_to "New Label", new_admin_study_survey_question_path(@survey.study, @survey, content: 'label'), class: 'oba-btn' %>
+      <%= link_to "New Radio List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'radio'), class: 'oba-btn' %>
+      <%= link_to "New Checkbox List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'checkbox'), class: 'oba-btn' %>
+      <%= link_to "New External Survey", new_admin_study_survey_question_path(@survey.study, @survey, content: 'external_survey'), class: 'oba-btn' %>
     </div>
-  <% end %>
+
+    <% if @survey.questions.blank? %>
+      <%= render Containers::EmptyStateComponent.new(
+        title: "No Survey Questions",
+        description: "Add survey questions to this survey to collect data from participants."
+      ) %>
+    <% else %>
+      <div
+        class="flex flex-col gap-y-4"
+        data-controller="sortable"
+        data-sortable-resource-name-value="question"
+        data-sortable-response-kind-value="json"
+        data-sortable-animation-value="150"
+        data-sortable-handle-value=".handle">
+        <% @survey.questions.each do |sq| %>
+          <div
+            data-sortable-update-url="<%= admin_study_survey_question_path(@survey.study, @survey, sq) %>"
+            class="border bg-slate-50 p-2">
+            <div class="flex">
+              <div class="handle self-center cursor-move">
+                <%= render("icons/grip_vertical_solid", classes: "w-4 h-4 fill-gray-500") %>
+              </div>
+              <div class="flex-1">
+                <h3 class="h3">Q<%= sq.position %>: <%= sq.content.type.titleize %></h3>
+              </div>
+              <div>
+                <%= link_to "Edit", edit_admin_study_survey_question_path(@survey.study, @survey, sq), class: "link text-sm" %>
+              </div>
+            </div>
+            <%= render partial_for_field_preview(sq), question: sq %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

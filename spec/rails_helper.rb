@@ -10,6 +10,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 
 # Add additional requires below this line. Rails is not loaded until this point!
+require "view_component/test_helpers"
 
 Rails.root.glob('spec/support/**/*.rb').sort.each { |f| require f }
 
@@ -30,6 +31,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
+  config.include ViewComponent::TestHelpers, type: :component
   config.include ApiHelper, type: :request
   config.include RequestHelper, type: :request
   config.include ModelsHelper
