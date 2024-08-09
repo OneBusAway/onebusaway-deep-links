@@ -1,4 +1,2 @@
-<%= render Navigation::TabsComponent.new([
-  { name: "Designer", path: admin_study_survey_path(@survey.study, @survey) },
-  { name: "Responses", path: admin_study_survey_survey_responses_path(@survey.study, @survey) }
-]) %>
+<% sub_tab(name: "Designer", path: admin_study_survey_path(@survey.study, @survey)) %>
+<% sub_tab(name: "Responses", path: admin_study_survey_survey_responses_path(@survey.study, @survey)) %>

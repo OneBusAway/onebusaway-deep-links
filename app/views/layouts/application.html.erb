@@ -39,13 +39,15 @@
       <% end %>
 
       <div class="py-5 space-y-4">
-        <header>
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <% if @back_link_title.present? && @back_link_path.present? %>
-              <%= render Navigation::BackLinkComponent.new(title: @back_link_title, link: @back_link_path) %>
-            <% end %>
-            <h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900"><%= @title %></h1>
-          </div>
+        <header class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <% if @back_link_title.present? && @back_link_path.present? %>
+            <%= render Navigation::BackLinkComponent.new(title: @back_link_title, link: @back_link_path) %>
+          <% end %>
+          <h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900"><%= @title %></h1>
+
+          <% if defined?(@sub_tabs) && @sub_tabs.count > 0 %>
+            <%= render Navigation::TabsComponent.new(@sub_tabs) %>
+          <% end %>
         </header>
         <main>
           <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">

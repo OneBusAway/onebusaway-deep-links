@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   def title(t = nil)
     if t.nil?
       @title
@@ -8,11 +8,6 @@ module ApplicationHelper
     end
   end
 
-  def back_link(title, path)
-    @back_link_title = title
-    @back_link_path = path
-  end
-  
   def severity_to_string(sev)
     case sev
     when 2
@@ -23,9 +18,9 @@ module ApplicationHelper
       return "Severe"
     else
       return "Unknown"
-    end      
+    end
   end
-  
+
   def value_or_blank_rep(val)
     if val.blank?
       "—"
