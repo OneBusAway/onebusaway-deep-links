@@ -41,7 +41,16 @@ class Admins::SurveysController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit(:name, :enabled, :extra_data, questions: [])
+    params.require(:survey).permit(
+      :name,
+      :enabled,
+      :extra_data,
+      :show_on_map,
+      :show_on_stops,
+      :visible_stop_list,
+      :visible_route_list,
+      questions: []
+    )
   end
 
   def load_study
