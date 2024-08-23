@@ -1,5 +1,6 @@
 class Api::V1::SurveyResponsesController < Api::V1::ApiController
   skip_before_action :load_region
+
   def create
     @survey = Survey.find(params[:survey_id])
     @survey_response = @survey.survey_responses.build
@@ -11,7 +12,7 @@ class Api::V1::SurveyResponsesController < Api::V1::ApiController
     if @survey_response.save
       render 'create', status: :created, formats: :json
     else
-      render_api_errors(@survey_response)
+      render_api_errors(model: @survey_response)
     end
   end
 
@@ -23,7 +24,7 @@ class Api::V1::SurveyResponsesController < Api::V1::ApiController
     if @survey_response.save
       render 'create', status: :ok, formats: :json
     else
-      render_api_errors(@survey_response)
+      render_api_errors(model: @survey_response)
     end
   end
 end

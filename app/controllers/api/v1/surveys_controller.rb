@@ -1,7 +1,12 @@
-class Api::V1::SurveysController < ApplicationController
+class Api::V1::SurveysController < Api::V1::ApiController
   before_action :load_region
 
   def index
+    if params[:user_id].blank?
+      render_api_errors(message: 'user_id is required')
+      return
+    end
+
     @surveys = Survey.includes(:study).where(available: true, studies: { region: @region })
   end
 
