@@ -16,6 +16,19 @@ RSpec.describe SurveyResponse, type: :model do
       survey_response = build(:survey_response, public_identifier: nil)
       expect(survey_response).not_to be_valid
     end
+
+    describe 'survey.require_stop_id_in_response == true' do
+      let(:survey) { create(:survey, require_stop_id_in_response: true, show_on_stops: true) }
+      it 'is invalid without a stop_identifier' do
+        survey_response = build(:survey_response, survey:, stop_identifier: nil)
+        expect(survey_response).not_to be_valid
+      end
+
+      it 'is valid with a stop_identifier' do
+        survey_response = build(:survey_response, survey:, stop_identifier: '123')
+        expect(survey_response).to be_valid
+      end
+    end
   end
 
   describe '#upsert_responses' do

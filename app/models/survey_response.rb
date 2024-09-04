@@ -10,6 +10,8 @@ class SurveyResponse < ApplicationRecord
   # and leaking information about the number of responses.
   validates :public_identifier, presence: true
 
+  validates :stop_identifier, presence: true, if: -> { survey.require_stop_id_in_response? }
+
   after_initialize do
     self.public_identifier ||= SecureRandom.hex(10)
   end
