@@ -45,6 +45,7 @@ class Admins::SurveysController < ApplicationController
       :name,
       :enabled,
       :extra_data,
+      :require_stop_id_in_response,
       :show_on_map,
       :show_on_stops,
       :visible_stop_list,

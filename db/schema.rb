@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_06_205804) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_04_160018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -144,7 +144,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_06_205804) do
     t.jsonb "responses", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stop_identifier"
     t.index ["public_identifier"], name: "index_survey_responses_on_public_identifier", unique: true
+    t.index ["stop_identifier"], name: "index_survey_responses_on_stop_identifier"
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
     t.index ["user_identifier"], name: "index_survey_responses_on_user_identifier"
   end
