@@ -6,9 +6,9 @@ class Survey < ApplicationRecord
   jsonb_accessor(:extra_data, {
                    name: :string,
 
-                   show_on_map: :boolean,
-                   show_on_stops: :boolean,
-                   require_stop_id_in_response: :boolean,
+                   show_on_map: [:boolean, default: false],
+                   show_on_stops: [:boolean, default: false],
+                   require_stop_id_in_response: [:boolean, default: false],
                    visible_stop_list: :string,
                    visible_route_list: :string
                  })
@@ -35,6 +35,6 @@ class Survey < ApplicationRecord
     return unless require_stop_id_in_response && show_on_map
 
     errors.add(:require_stop_id_in_response, 'is only valid if Show on Map is false')
-    
+
   end
 end
