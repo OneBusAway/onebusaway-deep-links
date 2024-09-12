@@ -24,7 +24,7 @@ gem 'sidekiq', '~>7.3.0'
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem 'store_model', '~> 3.0', '>= 3.0.2'
-gem 'stripe', '~>12.4'
+gem 'stripe', '~>12.6'
 gem "tailwindcss-rails"
 gem "turbo-rails"
 gem 'varint', '~>0.1.1' # needed for protobuf
