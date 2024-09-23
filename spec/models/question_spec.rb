@@ -14,7 +14,7 @@ RSpec.describe Question, type: :model do
   describe 'required' do
     it 'defaults to true' do
       new_question = Question.new
-      expect(new_question.required).to be_true
+      expect(new_question.required).to be true
     end
   end
 end
