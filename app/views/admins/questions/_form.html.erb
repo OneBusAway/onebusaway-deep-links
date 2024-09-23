@@ -9,6 +9,8 @@
       <%= render partial_for_question(@question), form: f2 %>
     <% end %>
 
+    <%= render Forms::CheckboxComponent.new(form: f, method: :required, help_text: "Mark this if this question requires a response.") %>
+
     <%= render Forms::ButtonBarComponent.new(f) %>
   </div>
 <% end %>

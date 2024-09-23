@@ -12,12 +12,16 @@ RSpec.describe "Admins::Questions", type: :request do
         sign_in admin
         post admin_study_survey_questions_path(study, survey),
              params: {
-               question: { content_attributes: { type: 'label', label_text: 'Question' } }
+               question: {
+                 content_attributes: { type: 'label', label_text: 'Question' },
+                 required: false
+               }
              }
 
         q = Question.last
         expect(q.content).to be_a(QuestionContent)
         expect(q.content.label_text).to eq('Question')
+        expect(q.required).to eq(false)
       end
     end
   end
