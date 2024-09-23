@@ -67,17 +67,17 @@ class Admins::QuestionsController < ApplicationController
   def permitted_params_for_content_type(content_type)
     case content_type
     when 'label', 'text'
-      params.require(:question).permit(:position, content_attributes: %i[type label_text])
+      params.require(:question).permit(:position, :required, content_attributes: %i[type label_text])
     when 'checkbox', 'radio'
-      params.require(:question).permit(:position, content_attributes: [:type, :label_text, { options: [] }])
+      params.require(:question).permit(:position, :required, content_attributes: [:type, :label_text, { options: [] }])
     when 'external_survey'
-      params.require(:question).permit(:position, 
+      params.require(:question).permit(:position, :required,
                                        content_attributes: [
                                          :type, :label_text, :survey_provider, :url, :sdk_configuration_values,
                                          { embedded_data_fields: [] }
                                        ])
     else
-      params.require(:question).permit(:position)
+      params.require(:question).permit(:position, :required)
     end
   end
 end

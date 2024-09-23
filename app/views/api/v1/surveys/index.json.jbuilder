@@ -20,7 +20,7 @@ json.surveys do
 
     json.questions do
       json.array! survey.questions do |question|
-        json.extract! question, :id, :position
+        json.extract! question, :id, :position, :required
         json.content do
           json.type question.content.type
           json.label_text question.content.label_text
