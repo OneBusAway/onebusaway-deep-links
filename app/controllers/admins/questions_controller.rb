@@ -50,7 +50,7 @@ class Admins::QuestionsController < ApplicationController
   def destroy
     @question = @survey.questions.find(params[:id])
     @question.destroy
-    redirect_to admin_study_survey_path(@study, @survey), notice: 'Question was deleted.'
+    redirect_to admin_study_survey_path(@survey.study, @survey), notice: 'Question was deleted.'
   end
 
   private

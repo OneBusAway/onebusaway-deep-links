@@ -25,4 +25,17 @@ RSpec.describe "Admins::Questions", type: :request do
       end
     end
   end
+
+  context "DELETE /admin/studies/:study_id/surveys/:survey_id/questions/:id" do
+    let!(:question) { create(:question, survey:) }
+    it "deletes the question" do
+      sign_in admin
+      expect do
+        delete admin_study_survey_question_path(study, survey, question)
+      end.to change(Question, :count).by(-1)
+      expect(response).to redirect_to(admin_study_survey_path(study, survey))
+      expect(flash[:notice]).to eq("Question was deleted.")
+    end
+  end
+
 end

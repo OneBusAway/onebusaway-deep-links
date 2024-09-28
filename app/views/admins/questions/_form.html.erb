@@ -11,6 +11,15 @@
 
     <%= render Forms::CheckboxComponent.new(form: f, method: :required, help_text: "Mark this if this question requires a response.") %>
 
-    <%= render Forms::ButtonBarComponent.new(f) %>
+    <div class="flex justify-between items-center">
+      <% if @question.persisted? %>
+        <%= link_to "Delete Question", admin_study_survey_question_path(@survey.study, @survey, @question), class: "oba-btn--danger",
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <% end %>
+
+      <div class="flex-grow"></div>
+
+      <%= render Forms::ButtonBarComponent.new(f) %>
+    </div>
   </div>
 <% end %>
