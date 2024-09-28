@@ -37,5 +37,4 @@ RSpec.describe "Admins::Questions", type: :request do
       expect(flash[:notice]).to eq("Question was deleted.")
     end
   end
-
 end
