@@ -20,7 +20,7 @@
           <%= r.user_identifier %>
         </td>
         <td class="oba-td">
-          <%= (r.stop_identifier.blank? || r.stop_identifier.to_s == "null") ? "N/A" : r.stop_identifier %>
+          <%= (r.stop_identifier.blank? || r.stop_identifier == "null") ? "N/A" : r.stop_identifier %>
         </td>
         <td class="oba-td">
           <%= r.responses.to_json %>
