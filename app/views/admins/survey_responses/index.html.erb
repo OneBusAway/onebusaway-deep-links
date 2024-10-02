@@ -2,6 +2,11 @@
 <% back_link "Back to Study", admin_study_path(@survey.study) %>
 <%= render 'admins/survey_tabs' %>
 
+
+<div class="flex justify-end items-center mb-4">
+  <%= link_to "Download CSV", admin_study_survey_survey_responses_path(survey_id: @survey.id, format: :csv), class: "oba-btn--primary" %>
+</div>
+
 <%= render Tables::TableComponent.new do |c| %>
   <% c.with_column("ID") %>
   <% c.with_column("User ID") %>
