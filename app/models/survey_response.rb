@@ -1,3 +1,5 @@
+require "csv"
+
 class SurveyResponse < ApplicationRecord
   belongs_to :survey
 
@@ -45,5 +47,23 @@ class SurveyResponse < ApplicationRecord
   def upsert_responses!(new_responses)
     upsert_responses(new_responses)
     save!
+  end
+
+  # Helper method to generate CSV
+  def self.to_csv(survey_responses)
+    CSV.generate(headers: true) do |csv|
+      csv << ["ID", "User ID", "Stop", "Responses", "Created", "Updated"]
+
+      survey_responses.find_each do |response|
+        csv << [
+          response.id,
+          response.user_identifier,
+          response.stop_identifier,
+          response.responses.to_json,
+          response.created_at,
+          response.updated_at
+        ]
+      end
+    end
   end
 end
