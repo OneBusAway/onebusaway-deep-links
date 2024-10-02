@@ -1,3 +1,5 @@
+require "csv"
+
 class SurveyResponse < ApplicationRecord
   belongs_to :survey
 
@@ -45,5 +47,74 @@ class SurveyResponse < ApplicationRecord
   def upsert_responses!(new_responses)
     upsert_responses(new_responses)
     save!
+  end
+
+  # Helper method to generate CSV
+  def self.to_csv(survey_responses)
+    all_question_labels = extract_question_labels(survey_responses)
+
+    CSV.generate(headers: true) do |csv|
+      csv << csv_header(all_question_labels)
+
+      survey_responses.each do |response|
+        csv << build_row(response, all_question_labels)
+      end
+    end
+  end
+
+  # Extracts all question labels from all responses
+  def self.extract_question_labels(survey_responses)
+    survey_responses.flat_map do |response|
+      response.responses.map(&:question_label).compact
+    end.uniq
+  end
+
+  # Generates a CSV header
+  def self.csv_header(all_question_labels)
+    ["ID", "User ID", "Stop", "Created"] + all_question_labels
+  end
+
+  # Generates a CSV row
+  def self.build_row(response, all_question_labels)
+    answer_hash = build_answer_hash(response)
+
+    row = [
+      response.id,
+      response.user_identifier,
+      response.stop_identifier,
+      response.created_at
+    ]
+
+    all_question_labels.each do |label|
+      row << (answer_hash[label] || "")
+    end
+
+    row
+  end
+
+  # Builds a hash of question labels to their answers
+  def self.build_answer_hash(response)
+    response.responses.each_with_object({}) do |r, h|
+      question_label = r.question_label || "Unknown Label"
+      h[question_label] = parse_answer(r)
+    end
+  end
+
+  # Parses the answer based on the question type
+  def self.parse_answer(response)
+    case response.question_type
+    when 'checkbox'
+      parse_checkbox_answer(response.answer)
+    when 'radio', 'text'
+      response.answer
+    else
+      response.answer || ""
+    end
+  end
+
+  # Parses checkbox answers into a comma-separated string
+  def self.parse_checkbox_answer(answer)
+    parsed_answer = answer.gsub(/[\[\]]/, '')
+    parsed_answer.split(',').map(&:strip).join(', ')
   end
 end

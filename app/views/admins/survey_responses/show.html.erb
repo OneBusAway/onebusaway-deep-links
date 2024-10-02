@@ -2,9 +2,15 @@
 <% back_link "Back to Responses", admin_study_survey_survey_responses_path(@survey.study, @survey) %>
 
 <div class="flex gap-y-4">
-  <% @survey_response.responses.each do |r| %>
-    <div class="border bg-slate-50 p-4">
-      <%= r.as_json %>
+  <% if @survey_response.responses.any? %>
+    <% @survey_response.responses.each do |r| %>
+      <div class="border bg-slate-50 p-4">
+        <%= r.as_json %>
+      </div>
+    <% end %>
+  <% else %>
+    <div>
+      No responses available for this survey
     </div>
   <% end %>
 </div>
