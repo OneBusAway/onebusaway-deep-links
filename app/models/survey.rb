@@ -3,7 +3,7 @@ class Survey < ApplicationRecord
 
   belongs_to :study
 
-  scope :filter_currently_active, -> {
+  scope :filter_currently_active, lambda {
     where('? BETWEEN start_date AND end_date OR (start_date IS NULL OR end_date IS NULL)', Time.now.utc)
   }
 
