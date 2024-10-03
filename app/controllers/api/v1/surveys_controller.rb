@@ -7,7 +7,6 @@ class Api::V1::SurveysController < Api::V1::ApiController
       return
     end
 
-
     @surveys = Survey.includes(:study).filter_currently_active
                      .where(available: true, studies: { region: @region })
   end
