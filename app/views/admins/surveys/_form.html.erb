@@ -23,6 +23,20 @@
       </div>
     </div>
 
+    <div>
+      <%= render Forms::TextFieldComponent.new(form: f, method: :start_date, type: 'datetime-local', value: @survey.start_date&.strftime('%Y-%m-%dT%H:%M')) %>
+      <div class='text-gray-500 text-sm'>
+        Optional, start date and time for the survey.
+      </div>
+    </div>
+
+    <div>
+      <%= render Forms::TextFieldComponent.new(form: f, method: :end_date, type: 'datetime-local', value: @survey.end_date&.strftime('%Y-%m-%dT%H:%M')) %>
+      <div class='text-gray-500 text-sm'>
+        Optional, end date and time for the survey.
+      </div>
+    </div>
+
     <%= render Forms::ButtonBarComponent.new(f) %>
   </div>
 <% end %>
