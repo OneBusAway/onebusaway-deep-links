@@ -57,10 +57,8 @@ class Survey < ApplicationRecord
   end
 
   def validate_date_order
-    return unless start_date.present? && end_date.present?
+    return unless start_date.present? && end_date.present? && end_date <= start_date
 
-    if end_date <= start_date
-      errors.add(:end_date, "must be after the start date")
-    end
+    errors.add(:end_date, "must be after the start date")
   end
 end
