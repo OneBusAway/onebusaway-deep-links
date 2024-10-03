@@ -1,4 +1,3 @@
-# app/controllers/api/v1/surveys_controller.rb
 class Api::V1::SurveysController < Api::V1::ApiController
   before_action :load_region
 
