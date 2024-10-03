@@ -58,7 +58,15 @@ RSpec.describe "Admins::StudyInvites", type: :request do
       new_start_date = (current_time + 1.day).change(usec: 0)
       new_end_date = (current_time + 2.days).change(usec: 0)
 
-      put admin_study_survey_path(study, survey), params: { survey: { name: 'New Name', start_date: new_start_date, end_date: new_end_date } }
+      put admin_study_survey_path(study, survey),
+          params: {
+            survey: {
+              name: 'New Name',
+              start_date: new_start_date,
+              end_date: new_end_date
+            }
+          }
+
       survey.reload
 
       expect(survey.name).to eq('New Name')
