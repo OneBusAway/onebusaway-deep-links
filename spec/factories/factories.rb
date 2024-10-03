@@ -27,6 +27,13 @@ FactoryBot.define do
     name { "Survey Name" }
     study
     available { false }
+    start_date { Time.current + 1.day }
+    end_date { Time.current + 2.day }
+
+    trait :invalid_end_date_before_start_date do
+      start_date { Time.current + 2.days }
+      end_date { Time.current + 1.day }
+    end
   end
 
   factory :survey_response do
