@@ -1,5 +1,11 @@
 class Survey < ApplicationRecord
+  include Filterable
+
   belongs_to :study
+
+  scope :filter_currently_active, -> {
+    where('? BETWEEN start_date AND end_date OR (start_date IS NULL OR end_date IS NULL)', Time.now.utc)
+  }
 
   # Extra Data
 
@@ -16,6 +22,9 @@ class Survey < ApplicationRecord
   validates :name, presence: true
 
   validate :require_stop_id_sensibility
+
+  validate :validate_date_presence
+  validate :validate_date_order
 
   # Survey Questions
 
@@ -35,5 +44,23 @@ class Survey < ApplicationRecord
     return unless require_stop_id_in_response && show_on_map
 
     errors.add(:require_stop_id_in_response, 'is only valid if Show on Map is false')
+  end
+
+  def validate_date_presence
+    return unless start_date.present? || end_date.present?
+
+    if start_date.present? && end_date.blank?
+      errors.add(:end_date, "must be present if start_date is provided")
+    elsif end_date.present? && start_date.blank?
+      errors.add(:start_date, "must be present if end_date is provided")
+    end
+  end
+
+  def validate_date_order
+    return unless start_date.present? && end_date.present?
+
+    if end_date <= start_date
+      errors.add(:end_date, "must be after the start date")
+    end
   end
 end
