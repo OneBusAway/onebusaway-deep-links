@@ -1,3 +1,4 @@
+# app/controllers/api/v1/surveys_controller.rb
 class Api::V1::SurveysController < Api::V1::ApiController
   before_action :load_region
 
@@ -7,7 +8,9 @@ class Api::V1::SurveysController < Api::V1::ApiController
       return
     end
 
-    @surveys = Survey.includes(:study).where(available: true, studies: { region: @region })
+
+    @surveys = Survey.includes(:study).filter_currently_active
+                     .where(available: true, studies: { region: @region })
   end
 
   private
