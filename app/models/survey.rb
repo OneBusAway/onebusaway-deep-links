@@ -1,6 +1,4 @@
 class Survey < ApplicationRecord
-  include Filterable
-
   belongs_to :study
 
   scope :filter_currently_active, lambda {
