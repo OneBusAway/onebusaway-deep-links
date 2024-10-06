@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def title(t = nil)
     if t.nil?
       @title
