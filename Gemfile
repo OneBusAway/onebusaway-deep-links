@@ -7,7 +7,7 @@ gem "bootsnap", require: false
 gem 'feedjira', '~> 3.2', '>= 3.2.3'
 gem 'haml', '~> 6.3'
 gem "importmap-rails"
-gem "jbuilder", '~>2.12'
+gem "jbuilder", '~>2.13'
 gem 'jsonb_accessor', '~> 1.4'
 gem 'mailgun-ruby', '~>1.2.14'
 gem "pg", "~> 1.5"

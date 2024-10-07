@@ -137,7 +137,7 @@ GEM
     irb (1.14.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    jbuilder (2.12.0)
+    jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.7.2)
@@ -401,7 +401,7 @@ DEPENDENCIES
   feedjira (~> 3.2, >= 3.2.3)
   haml (~> 6.3)
   importmap-rails
-  jbuilder (~> 2.12)
+  jbuilder (~> 2.13)
   jsonb_accessor (~> 1.4)
   mailgun-ruby (~> 1.2.14)
   pg (~> 1.5)
