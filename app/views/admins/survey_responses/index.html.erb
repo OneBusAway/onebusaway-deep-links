@@ -10,6 +10,8 @@
   <% c.with_column("ID") %>
   <% c.with_column("User ID") %>
   <% c.with_column("Stop") %>
+  <% c.with_column("Stop latitude") %>
+  <% c.with_column("Stop longitude") %>
   <% c.with_column("Responses") %>
   <% c.with_column("Created") %>
   <% c.with_column("Updated") %>
@@ -24,7 +26,13 @@
           <%= r.user_identifier %>
         </td>
         <td class="oba-td">
-          <%= (r.stop_identifier.blank? || r.stop_identifier == "null") ? "N/A" : r.stop_identifier %>
+          <%= (r.stop_identifier.blank? || r.stop_identifier == "null") ? "N/A" : r.stop_identifier %><br>
+        </td>
+        <td class="oba-td">
+          <%= (r.stop_identifier.blank? || r.stop_identifier == "null" || r.stop_latitude.blank?) ? "N/A" : r.stop_latitude %><br>
+        </td>
+        <td class="oba-td">
+          <%= (r.stop_identifier.blank? || r.stop_identifier == "null" || r.stop_longitude.blank?) ? "N/A" : r.stop_longitude %><br>
         </td>
         <td class="oba-td">
           <%= r.responses.to_json %>

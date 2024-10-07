@@ -6,6 +6,8 @@ class Api::V1::SurveyResponsesController < Api::V1::ApiController
     @survey_response = @survey.survey_responses.build
     @survey_response.user_identifier = params[:user_identifier]
     @survey_response.stop_identifier = params[:stop_identifier]
+    @survey_response.stop_latitude = params[:stop_latitude]
+    @survey_response.stop_longitude = params[:stop_longitude]
 
     responses = JSON.parse(params[:responses]).map { |r| SurveyResponseContent.new(r) }
     @survey_response.upsert_responses(responses)

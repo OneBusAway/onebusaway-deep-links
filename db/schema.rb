@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_23_204512) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_07_194402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -146,6 +146,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_23_204512) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stop_identifier"
+    t.decimal "stop_latitude", precision: 15, scale: 10
+    t.decimal "stop_longitude", precision: 15, scale: 10
     t.index ["public_identifier"], name: "index_survey_responses_on_public_identifier", unique: true
     t.index ["stop_identifier"], name: "index_survey_responses_on_stop_identifier"
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
