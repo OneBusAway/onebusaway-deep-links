@@ -2,6 +2,8 @@
 <% back_link "Back to Study", admin_study_path(@survey.study) %>
 <%= render 'admins/survey_tabs' %>
 
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+
 <%= render Tables::TableComponent.new do |c| %>
   <% c.with_column("ID") %>
   <% c.with_column("User ID") %>
@@ -43,3 +45,6 @@
     <% end %>
   <% end %>
 <% end %>
+
+
+
