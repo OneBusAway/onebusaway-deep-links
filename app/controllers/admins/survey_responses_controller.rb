@@ -3,7 +3,7 @@ class Admins::SurveyResponsesController < ApplicationController
   before_action :load_resources
 
   def index
-    @survey_responses = @survey.survey_responses.order(:created_at)
+    @pagy, @survey_responses = pagy(@survey.survey_responses.order(:created_at))
   end
 
   def show

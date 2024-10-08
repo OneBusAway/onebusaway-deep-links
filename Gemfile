@@ -10,6 +10,7 @@ gem "importmap-rails"
 gem "jbuilder", '~>2.13'
 gem 'jsonb_accessor', '~> 1.4'
 gem 'mailgun-ruby', '~>1.2.14'
+gem 'pagy', '~>9'
 gem "pg", "~> 1.5"
 gem 'positioning', '~> 0.2.3'
 gem 'pr_geohash', '~>1.0.0'
@@ -29,6 +30,7 @@ gem "tailwindcss-rails"
 gem "turbo-rails"
 gem 'varint', '~>0.1.1' # needed for protobuf
 gem 'view_component', '~> 3.16'
+gem 'pagy'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
