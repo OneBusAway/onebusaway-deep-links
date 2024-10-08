@@ -1,6 +1,6 @@
 json.surveys do
   json.array! @surveys do |survey|
-    json.extract! survey, :id, :name, :created_at, :updated_at, :show_on_map, :show_on_stops
+    json.extract! survey, :id, :name, :created_at, :updated_at, :show_on_map, :show_on_stops, :start_date, :end_date
 
     if survey.visible_stop_list.blank?
       json.visible_stop_list nil

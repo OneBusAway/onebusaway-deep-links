@@ -50,6 +50,8 @@ class Admins::SurveysController < ApplicationController
       :show_on_stops,
       :visible_stop_list,
       :visible_route_list,
+      :start_date,
+      :end_date,
       questions: []
     )
   end
