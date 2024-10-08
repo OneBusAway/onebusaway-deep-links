@@ -61,46 +61,6 @@ begin
 rescue
 end
 
-# begin
-# Region.create!({
-#   region_identifier: 7,
-#   api_url: "http://developer.onebusaway.org/mbta-api/",
-#   web_url: "TODO",
-#   name: "Boston"
-# })
-# rescue
-# end
-
-# begin
-# Region.create!({
-#   region_identifier: 8,
-#   api_url: "http://194.89.230.196:8080/",
-#   web_url: "TODO",
-#   name: "Lappeenranta"
-# })
-# rescue
-# end
-
-begin
-  Region.create!({
-    region_identifier: 9,
-    api_url: "http://oba.rvtd.org:8080/onebusaway-api-webapp/",
-    web_url: "http://oba.rvtd.org:8080/onebusaway-webapp/",
-    name: "Rogue Valley, Oregon"
-  })
-rescue
-end
-
-begin
-  Region.create!({
-    region_identifier: 10,
-    api_url: "http://www.obartd.com/onebusaway-api-webapp/",
-    web_url: "http://www.obartd.com/onebusaway-webapp/",
-    name: "San Joaquin RTD"
-  })
-rescue
-end
-
 begin
   region = Region.create!({
     region_identifier: 11,
@@ -127,3 +87,34 @@ rescue
 end
 
 Regions.new.update_regions
+
+if Rails.env.development?
+  puget_sound = Region.find_by(region_identifier: 1)
+  study = puget_sound.studies.create({
+    name: 'Demo Survey',
+    description: 'This is a demo survey'
+  })
+  survey = study.surveys.first
+  q = survey.questions.create({
+    position: 1,
+    required: true,
+    content_attributes: {
+      type: 'text',
+      label_text: 'What is your name?'
+    }
+  })
+
+  30.times do
+    resp = survey.survey_responses.build({
+      user_identifier: SecureRandom.uuid
+    })
+    responses = [SurveyResponseContent.new({
+      question_id: q.id,
+      question_type: 'text',
+      question_label: 'What is your name?',
+      answer: 'John Doe'
+    })]
+    resp.upsert_responses(responses)
+    resp.save
+  end
+end
