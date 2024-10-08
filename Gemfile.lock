@@ -405,7 +405,7 @@ DEPENDENCIES
   jbuilder (~> 2.13)
   jsonb_accessor (~> 1.4)
   mailgun-ruby (~> 1.2.14)
-  pagy
+  pagy (~> 9)
   pg (~> 1.5)
   positioning (~> 0.2.3)
   pr_geohash (~> 1.0.0)
