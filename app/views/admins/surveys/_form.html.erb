@@ -3,6 +3,12 @@
   <div class="space-y-4">
     <%= render Forms::ErrorsComponent.new(errors: @survey.errors.full_messages) %>
     <%= render Forms::TextFieldComponent.new(form: f, method: :name, autofocus: true) %>
+
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
+      <p class="font-bold">Note:</p>
+      <p>If the route and stop lists are blank, this survey will show up everywhere. If you specify any routes or stops, it will show up on all routes and stops specified.</p>
+    </div>
+
     <%= render Forms::CheckboxComponent.new(form: f, method: :available) %>
 
     <%= render Forms::CheckboxComponent.new(form: f, method: :show_on_map) %>
