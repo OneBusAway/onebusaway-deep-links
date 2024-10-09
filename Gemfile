@@ -9,7 +9,7 @@ gem 'haml', '~> 6.3'
 gem "importmap-rails"
 gem "jbuilder", '~>2.13'
 gem 'jsonb_accessor', '~> 1.4'
-gem 'mailgun-ruby', '~>1.2.14'
+gem 'mailgun-ruby', '~>1.2.15'
 gem 'pagy', '~>9'
 gem "pg", "~> 1.5"
 gem 'positioning', '~> 0.2.3'
