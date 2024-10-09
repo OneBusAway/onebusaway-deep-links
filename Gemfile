@@ -57,6 +57,6 @@ group :test do
   gem 'rails-controller-testing'
   gem "selenium-webdriver"
   gem 'simplecov'
-  gem "vcr", '~>6.2.0'
+  gem "vcr", '~>6.3.1'
   gem 'webmock', '~>3.23.1'
 end

@@ -363,7 +363,8 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
     varint (0.1.1)
-    vcr (6.2.0)
+    vcr (6.3.1)
+      base64
     view_component (3.16.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
@@ -431,7 +432,7 @@ DEPENDENCIES
   tailwindcss-rails
   turbo-rails
   varint (~> 0.1.1)
-  vcr (~> 6.2.0)
+  vcr (~> 6.3.1)
   view_component (~> 3.16)
   web-console
   webmock (~> 3.23.1)
