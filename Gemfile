@@ -15,7 +15,7 @@ gem "pg", "~> 1.5"
 gem 'positioning', '~> 0.2.3'
 gem 'pr_geohash', '~>1.0.0'
 gem "puma", ">= 5.0"
-gem "rails", "~> 7.1.3", ">= 7.1.3.2"
+gem "rails", "~> 7.2"
 gem "redis", ">= 4.0.1"
 gem 'rest-client', '~> 2.1'
 gem 'ruby-protocol-buffers', '~>1.6.1' # https://github.com/codekitchen/ruby-protocol-buffers
@@ -24,7 +24,7 @@ gem "sentry-ruby"
 gem 'sidekiq', '~>7.3.0'
 gem "sprockets-rails"
 gem "stimulus-rails"
-gem 'store_model', '~> 3.0', '>= 3.0.2'
+gem 'store_model', '~> 4.1'
 gem 'stripe', '~>12.4'
 gem "tailwindcss-rails"
 gem "turbo-rails"
