@@ -32,6 +32,8 @@
       <%= link_to "New Radio List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'radio'), class: 'oba-btn' %>
       <%= link_to "New Checkbox List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'checkbox'), class: 'oba-btn' %>
       <%= link_to "New External Survey", new_admin_study_survey_question_path(@survey.study, @survey, content: 'external_survey'), class: 'oba-btn' %>
+      <%= link_to 'Delete Survey', admin_study_survey_path(@study, @survey), class: "oba-btn--danger",
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this survey?" } %>
     </div>
 
     <% if @survey.questions.blank? %>
