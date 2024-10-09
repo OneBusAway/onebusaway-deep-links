@@ -71,7 +71,7 @@ class SurveyResponse < ApplicationRecord
 
   # Generates a CSV header
   def self.csv_header(all_question_labels)
-    ["ID", "User ID", "Stop", "Created"] + all_question_labels
+    ["ID", "User ID", "Stop", "Stop latitude", "Stop longitude", "Created"] + all_question_labels
   end
 
   # Generates a CSV row
@@ -82,6 +82,8 @@ class SurveyResponse < ApplicationRecord
       response.id,
       response.user_identifier,
       response.stop_identifier,
+      response.stop_latitude,
+      response.stop_longitude,
       response.created_at
     ]
 
