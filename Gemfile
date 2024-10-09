@@ -21,7 +21,7 @@ gem 'rest-client', '~> 2.1'
 gem 'ruby-protocol-buffers', '~>1.6.1' # https://github.com/codekitchen/ruby-protocol-buffers
 gem "sentry-rails"
 gem "sentry-ruby"
-gem 'sidekiq', '~>7.3.0'
+gem 'sidekiq', '~>7.3.2'
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem 'store_model', '~> 4.1'
