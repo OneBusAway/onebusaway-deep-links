@@ -362,7 +362,7 @@ GEM
     varint (0.1.1)
     vcr (6.3.1)
       base64
-    view_component (3.16.0)
+    view_component (3.17.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -430,7 +430,7 @@ DEPENDENCIES
   turbo-rails
   varint (~> 0.1.1)
   vcr (~> 6.3.1)
-  view_component (~> 3.16)
+  view_component (~> 3.17)
   web-console
   webmock (~> 3.23.1)
 
