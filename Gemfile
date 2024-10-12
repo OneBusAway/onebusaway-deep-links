@@ -21,7 +21,7 @@ gem 'rest-client', '~> 2.1'
 gem 'ruby-protocol-buffers', '~>1.6.1' # https://github.com/codekitchen/ruby-protocol-buffers
 gem "sentry-rails"
 gem "sentry-ruby"
-gem 'sidekiq', '~>7.3.0'
+gem 'sidekiq', '~>7.3.2'
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem 'store_model', '~> 4.1'
@@ -29,13 +29,13 @@ gem 'stripe', '~>12.4'
 gem "tailwindcss-rails"
 gem "turbo-rails"
 gem 'varint', '~>0.1.1' # needed for protobuf
-gem 'view_component', '~> 3.16'
+gem 'view_component', '~> 3.17'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug"
   gem 'factory_bot_rails', '~>6.4.3'
-  gem "rspec-rails", '~>6.1.3'
+  gem "rspec-rails", '~>7.0.1'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
 end
