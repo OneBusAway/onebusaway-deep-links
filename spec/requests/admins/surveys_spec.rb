@@ -32,7 +32,7 @@ RSpec.describe "Admins::StudyInvites", type: :request do
       expect(response).to redirect_to(admin_study_survey_path(study, Survey.last))
     end
 
-    it "does not create a new survey end_date is before start_date" do
+    it "does not create a new survey when end_date is before start_date" do
       expect do
         post admin_study_surveys_path(study), params: { survey: attributes_for(:survey, :invalid_end_date_before_start_date) }
       end.to change(Survey, :count).by(1)
@@ -55,8 +55,8 @@ RSpec.describe "Admins::StudyInvites", type: :request do
 
     it "updates the requested survey" do
       survey = study.surveys.first
-      new_start_date = (current_time + 1.day).change(usec: 0)
-      new_end_date = (current_time + 2.days).change(usec: 0)
+      new_start_date = 1.day.from_now.change(usec: 0)
+      new_end_date = 2.days.from_now.change(usec: 0)
 
       put admin_study_survey_path(study, survey),
           params: {
