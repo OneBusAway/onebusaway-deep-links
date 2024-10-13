@@ -14,6 +14,9 @@ class SurveyResponse < ApplicationRecord
 
   validates :stop_identifier, presence: true, if: -> { survey.require_stop_id_in_response? }
 
+  validates :stop_latitude, presence: true, if: -> { stop_identifier.present? }
+  validates :stop_longitude, presence: true, if: -> { stop_identifier.present? }
+
   after_initialize do
     self.public_identifier ||= SecureRandom.hex(10)
   end
