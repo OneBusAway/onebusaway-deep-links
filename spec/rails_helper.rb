@@ -35,4 +35,5 @@ RSpec.configure do |config|
   config.include ApiHelper, type: :request
   config.include RequestHelper, type: :request
   config.include ModelsHelper
+  config.include CsvHelper
 end
