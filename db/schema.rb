@@ -160,6 +160,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_07_194402) do
     t.jsonb "extra_data", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.index ["available"], name: "index_surveys_on_available"
     t.index ["study_id"], name: "index_surveys_on_study_id"
   end
