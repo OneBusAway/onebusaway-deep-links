@@ -6,7 +6,9 @@ class Admins::SurveyResponsesController < ApplicationController
     @survey_responses = @survey.survey_responses.order(:created_at)
 
     respond_to do |format|
-      format.html
+      format.html do
+        @pagy, @survey_responses = pagy(@survey_responses)
+      end
       format.csv do
         filename = generate_filename(@survey)
         send_data SurveyResponse.to_csv(@survey_responses), filename:, content_type: 'text/csv'
