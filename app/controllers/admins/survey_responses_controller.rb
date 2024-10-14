@@ -3,13 +3,15 @@ class Admins::SurveyResponsesController < ApplicationController
   before_action :load_resources
 
   def index
+    @survey_responses = @survey.survey_responses.order(:created_at)
+
     respond_to do |format|
       format.html do
-        @pagy, @survey_responses = pagy(@survey.survey_responses.order(:created_at))
+        @pagy, @survey_responses = pagy(@survey_responses)
       end
       format.csv do
         filename = generate_filename(@survey)
-        send_data SurveyResponse.to_csv(@survey.survey_responses), filename:, content_type: 'text/csv'
+        send_data SurveyResponse.to_csv(@survey_responses), filename:, content_type: 'text/csv'
       end
     end
   end

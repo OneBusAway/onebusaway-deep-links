@@ -28,6 +28,19 @@
       </div>
     </div>
 
+  <div>
+    <%= render Forms::DateTimeFieldComponent.new(form: f, method: :start_date, value: @survey.start_date) %>
+    <div class="text-gray-500 text-sm">
+      Optional, start date and time for the survey.
+    </div>
+  </div>
+
+  <div>
+    <%= render Forms::DateTimeFieldComponent.new(form: f, method: :end_date, value: @survey.end_date) %>
+    <div class="text-gray-500 text-sm">
+      Optional, end date and time for the survey.
+    </div>
+  </div>
     <%= render Forms::ButtonBarComponent.new(f) %>
   </div>
 <% end %>
