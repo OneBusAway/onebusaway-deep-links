@@ -12,7 +12,7 @@ gem 'jsonb_accessor', '~> 1.4'
 gem 'mailgun-ruby', '~>1.2.15'
 gem 'pagy', '~>9'
 gem "pg", "~> 1.5"
-gem 'positioning', '~> 0.2.3'
+gem 'positioning', '~> 0.3.0'
 gem 'pr_geohash', '~>1.0.0'
 gem "puma", ">= 5.0"
 gem "rails", "~> 7.2"
