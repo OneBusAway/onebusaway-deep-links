@@ -14,3 +14,4 @@ pin "tailwindcss/plugin", to: "tailwindcss--plugin.js" # @3.4.3
 pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.8
 pin "@stimulus-components/sortable", to: "@stimulus-components--sortable.js" # @5.0.1
 pin "sortablejs" # @1.15.2
+pin "toggle_stop_and_route", to: "toggle_stop_and_route.js"
