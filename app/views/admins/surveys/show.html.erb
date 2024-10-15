@@ -18,8 +18,14 @@
           { name: "Show on Map", value: @survey.show_on_map? ? "Yes" : "No" },
           { name: "Show on Stops", value: @survey.show_on_stops? ? "Yes" : "No" },
           { name: "Require stop ID in responses", value: @survey.require_stop_id_in_response? ? "Yes" : "No" },
-          { name: "Visible stop list", value: @survey.visible_stop_list },
-          { name: "Visible route list", value: @survey.visible_route_list },
+          {
+            name: "Visible stop list",
+            value: (@survey.show_on_stops && @survey.visible_stop_list.present?) ? @survey.visible_stop_list : "N/A"
+          },
+          {
+            name: "Visible route list",
+            value: (@survey.show_on_stops && @survey.visible_route_list.present?) ? @survey.visible_route_list : "N/A"
+          },
           { name: "Survey visibility", value: survey_visibility(@survey) },
           { name: "Start Date", value: @survey.start_date },
           { name: "End Date", value: @survey.end_date }
