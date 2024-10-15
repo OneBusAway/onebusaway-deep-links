@@ -40,4 +40,4 @@ services:
 databases:
   - name: obaco-postgresql
     databaseName: onebusaway_production
-    plan: starter
+    plan: basic-256mb
