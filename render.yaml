@@ -9,7 +9,7 @@ services:
   - type: worker
     name: sidekiq-worker
     runtime: ruby
-    plan: free
+    plan: starter
     region: oregon
     buildCommand: bundle install
     startCommand: bundle exec sidekiq -t 25 -C config/sidekiq.yml
