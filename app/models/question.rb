@@ -5,6 +5,7 @@ class Question < ApplicationRecord
   # survey question content
   include StoreModel::NestedAttributes
 
+  before_validation :set_required_param
   before_save do
     content.prune
   end
@@ -14,6 +15,12 @@ class Question < ApplicationRecord
 
   after_initialize do
     self.content = QuestionContent.new(type: 'text') if new_record? && !content&.has_content?
+  end
+  
+  private
+
+  def set_required_param
+    self.required = false if %w[external_survey label].include?(content&.type)
   end
 end
 

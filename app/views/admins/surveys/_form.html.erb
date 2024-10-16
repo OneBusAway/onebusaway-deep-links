@@ -1,41 +1,63 @@
 <% url = @survey.persisted? ? admin_study_survey_path(@study, @survey) : admin_study_surveys_path(@study) %>
 <%= form_with model: @survey, url: url do |f| %>
-  <div class="space-y-4">
+  <div data-controller="toggle-stop-route" class="space-y-4">
     <%= render Forms::ErrorsComponent.new(errors: @survey.errors.full_messages) %>
     <%= render Forms::TextFieldComponent.new(form: f, method: :name, autofocus: true) %>
     <%= render Forms::CheckboxComponent.new(form: f, method: :available) %>
 
     <%= render Forms::CheckboxComponent.new(form: f, method: :show_on_map) %>
-    <%= render Forms::CheckboxComponent.new(form: f, method: :show_on_stops) %>
+    <%= render Forms::CheckboxComponent.new(form: f, method: :show_on_stops, input_html: {
+      data: {
+        toggle_stop_route_target: "showOnStopsCheckbox",
+        action: "change->toggle-stop-route#toggle"
+      }
+    }) %>
     <%= render Forms::CheckboxComponent.new(form: f, method: :require_stop_id_in_response) %>
 
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
+      <p class="font-bold">Note:</p>
+      <p>If the route and stop lists are blank, this survey will show up everywhere. If you specify any routes or stops,
+        it will show up on all routes and stops specified.</p>
+    </div>
+
     <div>
-      <%= render Forms::TextFieldComponent.new(form: f, method: :visible_stop_list) %>
+      <%= render Forms::TextFieldComponent.new(form: f, method: :visible_stop_list, input_html: {
+        data: {
+          toggle_stop_route_target: "visibleStopList"
+        }
+      }
+      ) %>
       <div class='text-gray-500 text-sm'>
-        Optional, comma separated list of stop IDs that this survey should be visible on. When blank, it implies visibility on all stops.
+        Optional, comma separated list of stop IDs that this survey should be visible on. When blank, it implies
+        visibility on all stops.
       </div>
     </div>
 
     <div>
-      <%= render Forms::TextFieldComponent.new(form: f, method: :visible_route_list) %>
+      <%= render Forms::TextFieldComponent.new(form: f, method: :visible_route_list, input_html: {
+        data: {
+          toggle_stop_route_target: "visibleRouteList"
+        }
+      }) %>
       <div class='text-gray-500 text-sm'>
-        Optional, comma separated list of route IDs that this survey should be visible on. When blank, it implies visibility on all routes.
+        Optional, comma separated list of route IDs that this survey should be visible on. When blank, it implies
+        visibility on all routes.
       </div>
     </div>
 
-  <div>
-    <%= render Forms::DateTimeFieldComponent.new(form: f, method: :start_date, value: @survey.start_date) %>
-    <div class="text-gray-500 text-sm">
-      Optional, start date and time for the survey.
+    <div>
+      <%= render Forms::DateTimeFieldComponent.new(form: f, method: :start_date, value: @survey.start_date) %>
+      <div class="text-gray-500 text-sm">
+        Optional, start date and time for the survey.
+      </div>
     </div>
-  </div>
 
-  <div>
-    <%= render Forms::DateTimeFieldComponent.new(form: f, method: :end_date, value: @survey.end_date) %>
-    <div class="text-gray-500 text-sm">
-      Optional, end date and time for the survey.
+    <div>
+      <%= render Forms::DateTimeFieldComponent.new(form: f, method: :end_date, value: @survey.end_date) %>
+      <div class="text-gray-500 text-sm">
+        Optional, end date and time for the survey.
+      </div>
     </div>
-  </div>
     <%= render Forms::ButtonBarComponent.new(f) %>
   </div>
 <% end %>

@@ -14,6 +14,9 @@ class SurveyResponse < ApplicationRecord
 
   validates :stop_identifier, presence: true, if: -> { survey.require_stop_id_in_response? }
 
+  validates :stop_latitude, presence: true, if: -> { stop_identifier.present? }
+  validates :stop_longitude, presence: true, if: -> { stop_identifier.present? }
+
   after_initialize do
     self.public_identifier ||= SecureRandom.hex(10)
   end
@@ -71,7 +74,7 @@ class SurveyResponse < ApplicationRecord
 
   # Generates a CSV header
   def self.csv_header(all_question_labels)
-    ["ID", "User ID", "Stop", "Created"] + all_question_labels
+    ["ID", "User ID", "Stop", "Stop latitude", "Stop longitude", "Created"] + all_question_labels
   end
 
   # Generates a CSV row
@@ -82,6 +85,8 @@ class SurveyResponse < ApplicationRecord
       response.id,
       response.user_identifier,
       response.stop_identifier,
+      response.stop_latitude,
+      response.stop_longitude,
       response.created_at
     ]
 

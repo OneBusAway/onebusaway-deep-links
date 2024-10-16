@@ -18,8 +18,15 @@
           { name: "Show on Map", value: @survey.show_on_map? ? "Yes" : "No" },
           { name: "Show on Stops", value: @survey.show_on_stops? ? "Yes" : "No" },
           { name: "Require stop ID in responses", value: @survey.require_stop_id_in_response? ? "Yes" : "No" },
-          { name: "Visible stop list", value: @survey.visible_stop_list },
-          { name: "Visible route list", value: @survey.visible_route_list },
+          { name: "Visibility", value: survey_visibility(@survey) },
+          {
+            name: "Visible stop list",
+            value: (@survey.show_on_stops && @survey.visible_stop_list.present?) ? @survey.visible_stop_list : "N/A"
+          },
+          {
+            name: "Visible route list",
+            value: (@survey.show_on_stops && @survey.visible_route_list.present?) ? @survey.visible_route_list : "N/A"
+          },
           { name: "Start Date", value: @survey.start_date },
           { name: "End Date", value: @survey.end_date }
         ]
@@ -34,6 +41,8 @@
       <%= link_to "New Radio List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'radio'), class: 'oba-btn' %>
       <%= link_to "New Checkbox List", new_admin_study_survey_question_path(@survey.study, @survey, content: 'checkbox'), class: 'oba-btn' %>
       <%= link_to "New External Survey", new_admin_study_survey_question_path(@survey.study, @survey, content: 'external_survey'), class: 'oba-btn' %>
+      <%= link_to 'Delete Survey', admin_study_survey_path(@study, @survey), class: "oba-btn--danger",
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this survey?" } %>
     </div>
 
     <% if @survey.questions.blank? %>
