@@ -16,16 +16,7 @@
 
 # Features
 
-## Service Alerts
-
-Service alerts involve the following models:
-
-- `AlertFeed` - Represents a single service alert feed. It is primarily designed to consume RSS feeds. This is an STI model; child classes are responsible for knowing how to parse their own feed types. See `KingCountyMetroAlertFeed`.
-- `AlertFeedItem` - Represents an item in an `AlertFeed`
-
-Alert feeds are updated from their sources by running `rake update_alert_feeds`. In production, this is managed with the Heroku Scheduler add-on.
-
-### API Endpoint
+## API Endpoint
 
 [GTFS-RT compliant alerts](https://developers.google.com/transit/gtfs-realtime/#data_format) are available in protobuf format from:
 

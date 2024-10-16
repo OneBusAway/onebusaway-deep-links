@@ -1,2 +1,0 @@
-*/10 * * * * /app/bin/rails obaco:update_alert_feeds
-* * * * * /app/bin/rails obaco:queue_alarms
