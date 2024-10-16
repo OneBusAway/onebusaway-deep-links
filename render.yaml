@@ -1,0 +1,51 @@
+services:
+  - type: redis
+    name: sidekiq-redis
+    plan: free
+    region: oregon
+    maxmemoryPolicy: noeviction
+    ipAllowList: [] # only allow internal connections
+
+  - type: worker
+    name: sidekiq-worker
+    runtime: ruby
+    plan: free
+    region: oregon
+    buildCommand: bundle install
+    startCommand: bundle exec sidekiq
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: sidekiq-redis
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+
+  - type: web
+    name: rails-web
+    runtime: ruby
+    region: oregon
+    plan: standard
+    buildCommand: "./bin/render-build.sh"
+    preDeployCommand: "bundle exec rails db:migrate"
+    startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: sidekiq-redis
+          property: connectionString
+      - key: DATABASE_URL
+        fromDatabase:
+          name: obaco-postgresql
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2
+
+databases:
+  - name: obaco-postgresql
+    databaseName: onebusaway_production
+    plan: basic-256mb
