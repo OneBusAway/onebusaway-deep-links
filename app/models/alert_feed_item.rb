@@ -39,7 +39,7 @@ class AlertFeedItem < ApplicationRecord
     TransitRealtime::Alert::Cause::UNKNOWN_CAUSE
   end
 
-  enum cause: CAUSES.collect(&:first)
+  enum :cause, CAUSES.collect(&:first)
 
   ###########
   # Effect
@@ -57,7 +57,7 @@ class AlertFeedItem < ApplicationRecord
     [:stop_moved, TransitRealtime::Alert::Effect::STOP_MOVED]
   ].freeze
 
-  enum effect: EFFECTS.collect(&:first)
+  enum :effect, EFFECTS.collect(&:first)
 
   def gtfs_effect
     EFFECTS.each do |sym, gtfs_val|
