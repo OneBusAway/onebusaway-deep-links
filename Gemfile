@@ -29,7 +29,7 @@ gem 'stripe', '~>12.4'
 gem "tailwindcss-rails"
 gem "turbo-rails"
 gem 'varint', '~>0.1.1' # needed for protobuf
-gem 'view_component', '~> 3.17'
+gem 'view_component', '~> 3.18'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
