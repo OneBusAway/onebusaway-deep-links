@@ -151,8 +151,6 @@ GEM
       net-imap
       net-pop
       net-smtp
-    mailgun-ruby (1.2.15)
-      rest-client (>= 2.0.2)
     marcel (1.0.4)
     matrix (0.4.2)
     method_source (1.1.0)
@@ -403,7 +401,6 @@ DEPENDENCIES
   importmap-rails
   jbuilder (~> 2.13)
   jsonb_accessor (~> 1.4)
-  mailgun-ruby (~> 1.2.15)
   pagy (~> 9)
   pg (~> 1.5)
   positioning (~> 0.3.0)
