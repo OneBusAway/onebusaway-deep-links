@@ -11,7 +11,7 @@ class Admin < ApplicationRecord
   # Creation
   ######
 
-  # after_create :send_password_reset
+  after_create :send_password_reset
 
   def self.create_admin!(name, email, region_id)
     region = Region.find(region_id)
@@ -24,24 +24,20 @@ class Admin < ApplicationRecord
     admin
   end
 
-  # def send_password_reset
-  #   self.reset_sent_at = DateTime.now
-  #   self.reset_digest = SecureRandom.urlsafe_base64
-  #   self.save!
+  def send_password_reset
+    self.reset_sent_at = DateTime.now
+    self.reset_digest = SecureRandom.urlsafe_base64
+    self.save!
 
-  #   mailer = UserMailer.password_reset(self)
-  #   mailer.deliver_now
-  # end
+    mailer = UserMailer.password_reset(self)
+    mailer.deliver_now
+  end
 
   ######
   # Regions
   ######
 
   belongs_to :region
-
-  ######
-  # Password Resets
-  ######
 
   ######
   # Sessions
