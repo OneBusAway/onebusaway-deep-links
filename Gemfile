@@ -23,7 +23,7 @@ gem "sentry-ruby"
 gem 'sidekiq', '~>7.3.2'
 gem "sprockets-rails"
 gem "stimulus-rails"
-gem 'store_model', '~> 4.1'
+gem 'store_model', '~> 4.2'
 gem 'stripe', '~>12.4'
 gem "tailwindcss-rails"
 gem "turbo-rails"
