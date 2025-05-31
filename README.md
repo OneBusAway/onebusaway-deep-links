@@ -43,3 +43,9 @@ Append `?test=1` to the URL to view any test feed items that have been created:
 ```
 http://alerts.onebusaway.org/api/v1/regions/1/alerts.pb?test=1
 ```
+
+# Other Topics
+
+## Debugging Push Notifications
+
+We like to use [ngrok](https://ngrok.com) to debug push notifications. Launch a server locally at http://localhost:3000, and then expose it with ngrok to consume it as the OBACO URL in the iOS or Android app. [Learn more on their docs site](https://ngrok.com/docs).
