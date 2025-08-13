@@ -14,7 +14,7 @@ gem "pg", "~> 1.5"
 gem 'positioning', '~> 0.3.0'
 gem 'pr_geohash', '~>1.0.0'
 gem "puma", ">= 5.0"
-gem "rails", "~> 7.2"
+gem "rails", "~> 8.0"
 gem "redis", ">= 4.0.1"
 gem 'rest-client', '~> 2.1'
 gem 'ruby-protocol-buffers', '~>1.6.1' # https://github.com/codekitchen/ruby-protocol-buffers
