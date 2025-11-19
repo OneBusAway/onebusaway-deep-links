@@ -76,7 +76,7 @@ GEM
     ast (2.4.2)
     base64 (0.3.0)
     bcrypt (3.1.20)
-    bigdecimal (3.2.2)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
@@ -91,7 +91,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.3)
+    connection_pool (2.5.4)
     crack (1.0.0)
       bigdecimal
       rexml
@@ -154,14 +154,13 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    method_source (1.1.0)
     mime-types (3.6.0)
       logger
       mime-types-data (~> 3.2015)
     mime-types-data (3.2024.1001)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.25.5)
+    minitest (5.26.2)
     msgpack (1.7.3)
     net-imap (0.4.17)
       date
@@ -367,10 +366,10 @@ GEM
     varint (0.1.1)
     vcr (6.3.1)
       base64
-    view_component (3.17.0)
-      activesupport (>= 5.2.0, < 8.0)
-      concurrent-ruby (~> 1.0)
-      method_source (~> 1.0)
+    view_component (4.1.1)
+      actionview (>= 7.1.0, < 8.2)
+      activesupport (>= 7.1.0, < 8.2)
+      concurrent-ruby (~> 1)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -433,7 +432,7 @@ DEPENDENCIES
   turbo-rails
   varint (~> 0.1.1)
   vcr (~> 6.3.1)
-  view_component (~> 3.17)
+  view_component (~> 4.1)
   web-console
   webmock (~> 3.25.1)
 
