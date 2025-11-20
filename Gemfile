@@ -4,7 +4,7 @@ ruby "3.3.0"
 
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
-gem 'feedjira', '~> 3.2'
+gem 'feedjira', '~> 4.0'
 gem 'haml', '~> 6.3'
 gem "importmap-rails"
 gem "jbuilder", '~>2.13'
